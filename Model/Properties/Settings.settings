@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Model.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TextPathFolderResult" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+    <Setting Name="TextPathFileWordUdostovereniyeTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+    <Setting Name="TextPathFileWordEvidenceTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+    <Setting Name="TextPathFileWordStatementTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+    <Setting Name="TextPathResulInputForParallelFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+    <Setting Name="TextPathFileWordCertificateDGTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+    <Setting Name="TextPathFileExcelDataStudentsUdostovereniye" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+    <Setting Name="TextPathFileExcelDataStudentsForStatement" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+    <Setting Name="TextPathFileExcelDataStudentsForCertificateDG" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
