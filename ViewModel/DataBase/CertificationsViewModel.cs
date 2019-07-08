@@ -1,35 +1,37 @@
-﻿using Model.Data;
-using Model.Data.PatternMVVM.DataBase;
-using Model.DataBase.Context;
-using Model.DataBase.Model;
-using System;
-using System.Collections.Generic;
+﻿using Model.Data.PatternMVVM;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Model.DataBase.Model;
+using System.Windows.Input;
+using Model.DataBase.Context;
+using Model.Data.PatternMVVM.DataBase;
 
 namespace ViewModel.DataBase
 {
     public class CertificationsViewModel
     {
-        public CertificationsModel certifications { get; set; }
+        public CertificateModel _certificate { get; set; }
+        public FindCertificateModel findModel { get; set; }
         DataBaseContext DataBaseContext;
-        RelayCommand certifictationEdit;
-        RelayCommand certifictationDelete;
-        RelayCommand certifictationLoad;
-
+        
         public CertificationsViewModel()
         {
             DataBaseContext = new DataBaseContext();
-            DataBaseContext.Certifications.Load();
-
-            certifications = new CertificationsModel()
+            DataBaseContext.Certificate.Load();
+            _certificate = new CertificateModel()
             {
-                Certifications = DataBaseContext.Certifications.Local.ToBindingList()
+                Certifications = DataBaseContext.Certificate.Local.ToBindingList()
             };
+
+            findModel = new FindCertificateModel()
+            {
+                Fio = "",
+                Group = "",
+                DataBirth = ""
+            };
+            certifictationFind = new RelayCommand(arg => CertifictationFind());
         }
 
+        RelayCommand certifictationEdit;
         // команда редактирования
         public RelayCommand CertifictationEdit
         {
@@ -40,9 +42,9 @@ namespace ViewModel.DataBase
                   {
                     if (selectedItem == null) return;
                     // получаем выделенный объект
-                    Certifications certification = selectedItem as Certifications;
+                    Certificate certification = selectedItem as Certificate;
 
-                    Certifications certificateEdit = new Certifications()
+                    Certificate certificateEdit = new Certificate()
                     {
                         id = certification.id,
                         party = certification.party,
@@ -52,7 +54,7 @@ namespace ViewModel.DataBase
                     };
 
                     // получаем измененный объект
-                    certification = DataBaseContext.Certifications.Find(certificateEdit.id);
+                    certification = DataBaseContext.Certificate.Find(certificateEdit.id);
                     if (certification != null)
                     {
                         certification.party = certificateEdit.party;
@@ -65,6 +67,8 @@ namespace ViewModel.DataBase
                   }));
             }
         }
+
+        RelayCommand certifictationDelete;
         // команда удаления
         public RelayCommand CertifictationDelete
         {
@@ -75,13 +79,14 @@ namespace ViewModel.DataBase
                   {
                       if (selectedItem == null) return;
                       // получаем выделенный объект
-                      Certifications certification = selectedItem as Certifications;
-                      DataBaseContext.Certifications.Remove(certification);
+                      Certificate certification = selectedItem as Certificate;
+                      DataBaseContext.Certificate.Remove(certification);
                       DataBaseContext.SaveChanges();
                   }));
             }
         }
 
+        RelayCommand certifictationLoad;
         /// <summary>
         /// Загрузка Сертификата
         /// </summary>
@@ -94,9 +99,41 @@ namespace ViewModel.DataBase
                   {
                       if (selectedItem == null) return;
                       // получаем выделенный объект
-                      Certifications certification = selectedItem as Certifications;
-                      certification.LoadCertification(certification);
+                      Certificate certification = selectedItem as Certificate;
+                      certification.LoadCertificate(certification);
                   }));
+            }
+        }
+
+        /// <summary>
+        /// Поиск по параметрам
+        /// </summary>
+        public ICommand certifictationFind { get; set; }
+        public void CertifictationFind()
+        {
+            Students student = new Students();
+            Certificate certificate = new Certificate();
+            using (DataBaseContext context = new DataBaseContext())
+            {
+                if (findModel.Fio != "" && findModel.DataBirth != "")
+                {
+                    _certificate.IdStudent = student.FindIdStudentByFioAndDateBirth(context, findModel.Fio.Trim(), findModel.DataBirth.Trim());
+                    _certificate.FindCertificateByIdStudent = DataBaseContext.Certificate.Local.ToBindingList();
+                }
+                else
+                {
+                    if (findModel.Fio != "")
+                    {
+                        _certificate.IdStudent = student.FindIdStudentByFio(context, findModel.Fio.Trim());
+                        _certificate.FindCertificateByIdStudent = DataBaseContext.Certificate.Local.ToBindingList();
+                    }
+                }
+
+                if(findModel.Group != "")
+                {
+                    _certificate.IdCertificate = certificate.FindIdCertificateByNumber(context, findModel.Group.Trim());
+                    _certificate.FindCertificateByIdCertificate = DataBaseContext.Certificate.Local.ToBindingList();
+                }
             }
         }
     }

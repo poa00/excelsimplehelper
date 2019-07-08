@@ -12,7 +12,7 @@
 
             <StackPanel HorizontalAlignment="Left" Width="1100" >
                 <StackPanel Height="470">
-                    <DataGrid x:Name="DataGridDataBase" AutoGenerateColumns="false" Height="470" ItemsSource="{Binding certifications.Certifications}">
+                    <DataGrid x:Name="DataGridDataBase" AutoGenerateColumns="false" Height="470" ItemsSource="{Binding _certificate.Certifications}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Номер" Binding="{Binding id}" Width="200"/>
                             <DataGridTextColumn Header="№ Документа" Binding="{Binding party}" Width="200"/>
@@ -33,27 +33,19 @@
                 </StackPanel>
                 <StackPanel x:Name="Find" Orientation="Horizontal">
                     <StackPanel Margin="20 0 0 0">
-                        <TextBlock Width="80">Фамилия</TextBlock>
-                        <TextBox Height="20" Width="100" />
+                        <TextBlock Width="140">Фамилия Имя Отчество</TextBlock>
+                        <TextBox Text="{Binding Path=findModel.Fio, Mode=TwoWay}" Height="20" Width="140" />
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0">
-                        <TextBlock Width="80">Имя</TextBlock>
-                        <TextBox Height="20" Width="100" />
+                        <TextBlock Width="80">Дата рождения</TextBlock>
+                        <TextBox Text="{Binding Path=findModel.DataBirth, Mode=TwoWay}" Height="20" Width="100" />
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0">
-                        <TextBlock Width="80">Отчество</TextBlock>
-                        <TextBox Height="20" Width="100" />
-                    </StackPanel>
-                    <StackPanel Margin="20 0 0 0">
-                        <TextBlock Width="80">Группа</TextBlock>
-                        <TextBox Height="20" Width="100" />
-                    </StackPanel>
-                    <StackPanel Margin="20 0 0 0">
-                        <TextBlock Width="80">№ Документа</TextBlock>
-                        <TextBox Height="20" Width="100" />
+                        <TextBlock Width="80">Номер сертификата</TextBlock>
+                        <TextBox Text="{Binding Path=findModel.Group, Mode=TwoWay}" Height="20" Width="100" />
                     </StackPanel>
                     <StackPanel Margin="20 15 0 0">
-                        <Button Content="Найти" Command="{Binding CertifictationFind}"/>
+                        <Button Content="Найти" Command="{Binding certifictationFind}"/>
                     </StackPanel>
                     
                 </StackPanel>

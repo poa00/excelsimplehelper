@@ -22,7 +22,8 @@ namespace Model.Data
         }
         
         /// <summary>
-        /// Добавить новую запись в словарь
+        /// Добавить новую запись
+        /// Если ее нет вставить пробел
         /// </summary>
         /// <param name="bookmark">Название записи</param>
         /// <param name="value">Запись</param>
@@ -30,7 +31,7 @@ namespace Model.Data
         {
             if (bookmark == null || value == null)
                 return;
-            OneStudent.Add(bookmark.Trim(), Correction(bookmark, value));
+            OneStudent.Add(bookmark.Trim(), Check(bookmark, value));
         }
 
         /// <summary>
@@ -60,17 +61,15 @@ namespace Model.Data
                                                 .ToDictionary(c => c.Key, c => c.Value);           
         }
         /// <summary>
-        /// Корректирует данные
+        /// Проверяет данные
         /// </summary>
-        /// <param name="marker">0 - даты</param>
         /// <param name="key">Ключ</param>
         /// <param name="value">значение</param>
         /// <returns></returns>
-        private string Correction(string key, string value)
+        private string Check(string key, string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                MessageBug.AddMessage("Значение " + key + " null или пробел в excel");
                 value = " ";
                 return value;
             }
@@ -78,6 +77,10 @@ namespace Model.Data
             if (key.Contains("Дата") || key.Contains("дата"))
             {
                 return CheckDate(key.Trim(), value.Trim());
+            }
+            if (key.Contains("ФИО") || key.Contains("фио"))
+            {
+                return CheckFIO(key.Trim(), value.Trim());
             }
 
             return value.Trim();

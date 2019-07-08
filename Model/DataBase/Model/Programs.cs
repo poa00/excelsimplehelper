@@ -11,9 +11,10 @@ namespace Model.DataBase.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Programs()
         {
-            Certifications = new HashSet<Certifications>();
+            Certificate = new HashSet<Certificate>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [Required]
@@ -33,7 +34,7 @@ namespace Model.DataBase.Model
         public int typeId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Certifications> Certifications { get; set; }
+        public virtual ICollection<Certificate> Certificate { get; set; }
 
         public virtual Lesson Lesson { get; set; }
 

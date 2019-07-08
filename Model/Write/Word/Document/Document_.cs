@@ -26,6 +26,7 @@ namespace Model.Write.Word.Document
         private string PathTemplateWord;
         private Record[] DataForDocuments;
         private string TypeDocument;
+        private string Group;
 
         /// <summary>
         /// 
@@ -33,13 +34,14 @@ namespace Model.Write.Word.Document
         /// <param name="program">Программа(Модель)</param>
         /// <param name="evidenceAndUdostovereniyeSpec">Данные которые будут добавляться в файл</param>
         /// <param name="pathTemplateWord">Путь к шаблону ворда</param>
-        public Document_(Record[] evidenceAndUdostovereniyeSpec, string pathTemplateWord)
+        public Document_(Record[] evidenceAndUdostovereniyeSpec, string pathTemplateWord, string group)
         {
             PathTemplateWord = pathTemplateWord;
             DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudentsUdostovereniye, 1);
             DataForDocuments = evidenceAndUdostovereniyeSpec;
             FileName = CreateVoidCertification();
             TypeDocument = DataForDocuments[0].GetOneStudent()["Тип"];
+            Group = group;
         }
         
         public void AddBookmarksWord(string[] bookmarksWord)
@@ -132,9 +134,10 @@ namespace Model.Write.Word.Document
                     {
                         foreach (KeyValuePair<string, string> keyValue in DataForDocuments[j].GetOneStudent())
                         {
-                            if (keyValue.Key == BookmarksWord[idBookmarkWord])
+                            if (keyValue.Key.Equals(BookmarksWord[idBookmarkWord]))
                             {
                                 InsertBookmarkCertification(bookmark, document, DataForDocuments[j].GetOneStudent()[BookmarksWord[idBookmarkWord]], idBookmarkWord);
+                                break;
                             }
                         }
                     }
@@ -178,8 +181,8 @@ namespace Model.Write.Word.Document
             }
             else
             {
-                Certifications certifications = new Certifications();
-                certifications.SaveCertification(DataForDocuments);
+                Certificate certifications = new Certificate();
+                certifications.SaveCertificate(DataForDocuments);
             }    
         }
 

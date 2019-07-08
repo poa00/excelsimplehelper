@@ -13,11 +13,11 @@
                 <StackPanel HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
                         <TextBlock Text="Группа" Width="140"/>
-                        <TextBox Height="30" Width="90" Background="White" Text="{Binding Path=Statement.Group}"/>
+                        <TextBox Height="30" Width="90" Background="White" Text="{Binding Path=_Statement.Group}"/>
                     </StackPanel>
                     <StackPanel>
                         <TextBlock Width="200" Margin="0 15 0 0"/>
-                        <TextBox Height="350" Width="250" Text="{Binding Statement.Message, Mode=TwoWay}" Margin="70 0 80 0"/>
+                        <TextBox Height="350" Width="250" Text="{Binding Path=_Statement.Message, Mode=TwoWay}" Margin="70 0 80 0"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right">

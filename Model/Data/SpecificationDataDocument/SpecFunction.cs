@@ -41,7 +41,15 @@ namespace Model.Data.SpecificationDataDocument
             }
             if (count == 3)
             {
-                Number = CutFromStringElements(date, '.')[2];//date.Substring(8, 2);// Пример: берет 1299 из 02.12.1999
+                string dateYear = CutFromStringElements(date, '.')[2];
+                if (dateYear.Length == 2)
+                {
+                    Number = dateYear;
+                }
+                else
+                {
+                    Number = dateYear.Substring(2, 2);//date.Substring(8, 2);// Пример: берет 1299 из 02.12.1999
+                }
             }
             return Number;
         }

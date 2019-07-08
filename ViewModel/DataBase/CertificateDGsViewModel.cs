@@ -1,29 +1,38 @@
-﻿using Model.Data.PatternMVVM.DataBase;
+﻿using Model.Data.PatternMVVM;
+using Model.Data.PatternMVVM.DataBase;
 using Model.DataBase.Context;
 using Model.DataBase.Model;
 using System.Data.Entity;
+using System.Windows.Input;
 
 namespace ViewModel.DataBase
 {
     public class CertificateDGsViewModel
     {
-        public CertificateDGsModel certifications { get; set; }
+        public CertificateDGsModel _certificate { get; set; }
         DataBaseContext DataBaseContext;
-        RelayCommand certifictationEdit;
-        RelayCommand certifictationDelete;
-        RelayCommand certifictationLoad;
+
+        public FindCertificateModel findModel { get; set; }
 
         public CertificateDGsViewModel()
         {
             DataBaseContext = new DataBaseContext();
             DataBaseContext.CertificateDGs.Load();
-
-            certifications = new CertificateDGsModel()
+            _certificate = new CertificateDGsModel()
             {
-                Certifications = DataBaseContext.CertificateDGs.Local.ToBindingList()
+                Certificate = DataBaseContext.CertificateDGs.Local.ToBindingList()
             };
+
+            findModel = new FindCertificateModel()
+            {
+                Fio = "",
+                Group = "",
+                DataBirth = ""
+            };
+            certifictationFind = new RelayCommand(arg => CertifictationFind());
         }
 
+        RelayCommand certifictationEdit;
         // команда редактирования
         public RelayCommand CertifictationEdit
         {
@@ -56,6 +65,8 @@ namespace ViewModel.DataBase
                   }));
             }
         }
+
+        RelayCommand certifictationDelete;
         // команда удаления
         public RelayCommand CertifictationDelete
         {
@@ -72,6 +83,9 @@ namespace ViewModel.DataBase
                   }));
             }
         }
+
+
+        RelayCommand certifictationLoad;
         /// <summary>
         /// Загрузка Сертификата
         /// </summary>
@@ -87,6 +101,38 @@ namespace ViewModel.DataBase
                       CertificateDGs certification = selectedItem as CertificateDGs;
                       certification.LoadCertification(certification);
                   }));
+            }
+        }
+
+        /// <summary>
+        /// Поиск по параметрам
+        /// </summary>
+        public ICommand certifictationFind { get; set; }
+        public void CertifictationFind()
+        {
+            Students student = new Students();
+            Certificate certificate = new Certificate();
+            using (DataBaseContext context = new DataBaseContext())
+            {
+                if (findModel.Fio != "" && findModel.DataBirth != "")
+                {
+                    _certificate.IdStudent = student.FindIdStudentByFioAndDateBirth(context, findModel.Fio.Trim(), findModel.DataBirth.Trim());
+                    _certificate.FindCertificateDGByIdStudent = DataBaseContext.CertificateDGs.Local.ToBindingList();
+                }
+                else
+                {
+                    if (findModel.Fio != "")
+                    {
+                        _certificate.IdStudent = student.FindIdStudentByFio(context, findModel.Fio.Trim());
+                        _certificate.FindCertificateDGByIdStudent = DataBaseContext.CertificateDGs.Local.ToBindingList();
+                    }
+                }
+
+                if (findModel.Group != "")
+                {
+                    _certificate.IdCertificateDG = certificate.FindIdCertificateByNumber(context, findModel.Group.Trim());
+                    _certificate.FindCertificateDGByIdCertificate = DataBaseContext.CertificateDGs.Local.ToBindingList();
+                }
             }
         }
     }

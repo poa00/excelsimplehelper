@@ -18,7 +18,7 @@ namespace Model.Write.Word
         //Количество колонок в таблице
         private const int COLUMN_REGISTER = 5;
         // Название программы обучения
-        private Programs Program;
+        private string ProgramName;
 
         Table TableRegister;
         // Размер отступа в таблице
@@ -28,9 +28,9 @@ namespace Model.Write.Word
         private StatementModel StatementModel;
         private FileExcel DateFromFile;
 
-        public Statement(Programs program, StatementModel statementModel)
+        public Statement(string programName, StatementModel statementModel)
         {
-            Program = program;
+            ProgramName = programName;
             StatementModel = statementModel;
             BookamrkStatement = new string[2] { "группа", "НаименованиеПрограммыУтверждения" };
             SizeIndentationHanging = 300;
@@ -89,32 +89,25 @@ namespace Model.Write.Word
         /// <param name="records"></param>
         public List<string> DocumentCreate()
         {
-            if (MessageBug.GetMessages().Count > 0)
+            DateFromFile.ReadFile();
+            statementSpec = new StatementSpec(DateFromFile.GetRecords(), StatementModel.Group, ProgramName);
+            statementSpec.Correction();
+            using (var document = DocX.Load(Properties.Settings.Default.TextPathFileWordStatementTemplate))
             {
-                return MessageBug.GetMessages();
+                TableRegister = document.AddTable(statementSpec.GetRecords().Length + 1, COLUMN_REGISTER);
+                SettingStatement();
+                var NameProgrammBookmark = document.Bookmarks["НаименованиеПрограммыУтверждения"];
+                NameProgrammBookmark.SetText(statementSpec.GetRecords()[0].GetOneStudent()["НаименованиеПрограммыУтверждения"]);
+
+                var IdGroupBookmark = document.Bookmarks["группа"];
+                IdGroupBookmark.SetText(statementSpec.GetRecords()[0].GetOneStudent()["группа"]);
+
+                document.InsertTable(CreateTable());
+
+                document.InsertParagraph("Методист АУЦ					Ю.А. Нестеренко ").FontSize(14).Bold();
+                document.SaveAs(Properties.Settings.Default.TextPathFolderResult + "\\Ведомость_" + StatementModel.Group + "-группы.doc");
             }
-            else
-            {
-                DateFromFile.ReadFile();
-                statementSpec = new StatementSpec(DateFromFile.GetRecords(), StatementModel.Group, Program);
-                statementSpec.Correction();
-                using (var document = DocX.Load(Properties.Settings.Default.TextPathFileWordStatementTemplate))
-                {
-                    TableRegister = document.AddTable(statementSpec.GetRecords().Length + 1, COLUMN_REGISTER);
-                    SettingStatement();
-                    var NameProgrammBookmark = document.Bookmarks["НаименованиеПрограммыУтверждения"];
-                    NameProgrammBookmark.SetText(statementSpec.GetRecords()[0].GetOneStudent()["НаименованиеПрограммыУтверждения"]);
-
-                    var IdGroupBookmark = document.Bookmarks["группа"];
-                    IdGroupBookmark.SetText(statementSpec.GetRecords()[0].GetOneStudent()["группа"]);
-
-                    document.InsertTable(CreateTable());
-
-                    document.InsertParagraph("Методист АУЦ					Ю.А. Нестеренко ").FontSize(14).Bold();
-                    document.SaveAs(Properties.Settings.Default.TextPathFolderResult + "\\Ведомость_" + StatementModel.Group + "-группы.doc");
-                }
-                return MessageBug.GetMessages();
-            }
+            return MessageBug.GetMessages();
         }
     }
 }

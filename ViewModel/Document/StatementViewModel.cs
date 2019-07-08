@@ -35,7 +35,7 @@ namespace ViewModel.Document
                         if (selectedItem == null) return;
                         // получаем выделенный объект
                         Programs programs = selectedItem as Programs;
-                        Statement statement = new Statement(programs, _Statement);
+                        Statement statement = new Statement(programs.name, _Statement);
                         List<string> result = statement.DocumentCreate();
                         foreach (string itr in result)
                         {

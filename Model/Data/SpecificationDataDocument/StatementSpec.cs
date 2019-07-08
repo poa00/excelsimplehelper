@@ -12,13 +12,12 @@ namespace Model.Data.SpecificationDataDocument
     {
         private Record[] StatementRecords;
         private string Group;
-        private Programs Programm;
-
-        public StatementSpec(Record[] records, string group, Programs programm)
+        private string ProgrammName;
+        public StatementSpec(Record[] records, string group, string programmName)
         {
             StatementRecords = records;
             Group = group;
-            Programm = programm;
+            ProgrammName = programmName;
         }
 
         public Record[] GetRecords()
@@ -32,13 +31,13 @@ namespace Model.Data.SpecificationDataDocument
             {
                 StatementRecords[i] = CorrectMark(StatementRecords[i]);
                 StatementRecords[i] = CorrectIndexInDocument(StatementRecords[i], Group, i);
-                StatementRecords[i] = CorrectProgram(StatementRecords[i]);
+                StatementRecords[i] = CorrectProgram(StatementRecords[i], ProgrammName);
             }
         }
 
-        private Record CorrectProgram(Record dataStudent)
+        private Record CorrectProgram(Record dataStudent, string programm)
         {
-            dataStudent.AddPropertyRecord("НаименованиеПрограммыУтверждения", Programm.name);
+            dataStudent.AddPropertyRecord("НаименованиеПрограммыУтверждения", programm);
 
             return dataStudent;
         }

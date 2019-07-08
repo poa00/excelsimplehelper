@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model.Data.PatternMVVM
 {
-    public class FindCertificate : INotifyPropertyChanged
+    public class FindCertificateModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -19,50 +19,50 @@ namespace Model.Data.PatternMVVM
             }
         }
 
-        private string _Name;
-        public string Name
+        /// <summary>
+        /// Фамилия Имя Отчество
+        /// </summary>
+        private string _Fio;
+        public string Fio
         {
-            get { return _Name; }
+            get { return _Fio; }
             set
             {
-                if (_Name != value)
+                if (_Fio != value)
                 {
-                    _Name = value;
-                    OnPropertyChanged("Name");
+                    _Fio = value;
+                    OnPropertyChanged("Fio");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Группа
+        /// </summary>
+        private string _Group;
+        public string Group
+        {
+            get { return _Group; }
+            set
+            {
+                if (_Group != value)
+                {
+                    _Group = value;
+                    OnPropertyChanged("Group");
                 }
             }
         }
 
-        /// <summary>
-        /// Отчество
-        /// </summary>
-        private string _Patronymic;
-        public string Patronymic
+        private string _DataBirth;
+        public string DataBirth
         {
-            get { return _Patronymic; }
+            get { return _DataBirth; }
             set
             {
-                if (_Patronymic != value)
+                if (_DataBirth != value)
                 {
-                    _Patronymic = value;
-                    OnPropertyChanged("Patronymic");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Фамилия
-        /// </summary>
-        private string _Surname;
-        public string Surname
-        {
-            get { return _Surname; }
-            set
-            {
-                if (_Surname != value)
-                {
-                    _Surname = value;
-                    OnPropertyChanged("Surname");
+                    _DataBirth = value;
+                    OnPropertyChanged("DataBirth");
                 }
             }
         }

@@ -82,8 +82,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBase\Model\Certificate.cs" />
     <Compile Include="DataBase\Model\CertificateDGs.cs" />
-    <Compile Include="DataBase\Model\Certifications.cs" />
     <Compile Include="DataBase\Context\DataBaseContext.cs" />
     <Compile Include="DataBase\Model\Lesson.cs" />
     <Compile Include="DataBase\Model\ProgramDGs.cs" />
@@ -92,10 +92,10 @@
     <Compile Include="DataBase\Model\TypeDocument.cs" />
     <Compile Include="Data\Month.cs" />
     <Compile Include="Data\PatternMVVM\CertificateDangerousGoodsModel.cs" />
-    <Compile Include="Data\PatternMVVM\DataBase\CertificationsModel.cs" />
     <Compile Include="Data\PatternMVVM\DataBase\CertificateDGsModel.cs" />
+    <Compile Include="Data\PatternMVVM\DataBase\CertificateModel.cs" />
     <Compile Include="Data\PatternMVVM\DocumentEvidenceAndUdostovereniyeModel.cs" />
-    <Compile Include="Data\PatternMVVM\FindCertificate.cs" />
+    <Compile Include="Data\PatternMVVM\FindCertificateModel.cs" />
     <Compile Include="Data\PatternMVVM\PathModel.cs" />
     <Compile Include="Data\PatternMVVM\StatementModel.cs" />
     <Compile Include="Data\Record.cs" />

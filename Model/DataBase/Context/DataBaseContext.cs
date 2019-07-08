@@ -3,7 +3,6 @@ using Model.DataBase.Model;
 
 namespace Model.DataBase.Context
 {
-
     public partial class DataBaseContext : DbContext
     {
         public DataBaseContext()
@@ -11,8 +10,8 @@ namespace Model.DataBase.Context
         {
         }
 
+        public virtual DbSet<Certificate> Certificate { get; set; }
         public virtual DbSet<CertificateDGs> CertificateDGs { get; set; }
-        public virtual DbSet<Certifications> Certifications { get; set; }
         public virtual DbSet<Lesson> Lesson { get; set; }
         public virtual DbSet<ProgramDGs> ProgramDGs { get; set; }
         public virtual DbSet<Programs> Programs { get; set; }
@@ -29,18 +28,6 @@ namespace Model.DataBase.Context
                 .Property(e => e.party)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Certifications>()
-                .Property(e => e.startEducation)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Certifications>()
-                .Property(e => e.endEducation)
-                .IsFixedLength();
-
-            modelBuilder.Entity<Certifications>()
-                .Property(e => e.issueDate)
-                .IsFixedLength();
-
             modelBuilder.Entity<Lesson>()
                 .HasMany(e => e.Programs)
                 .WithRequired(e => e.Lesson)
@@ -53,7 +40,12 @@ namespace Model.DataBase.Context
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Programs>()
-                .HasMany(e => e.Certifications)
+                .Property(e => e.clock)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Programs>()
+                .HasMany(e => e.Certificate)
                 .WithRequired(e => e.Programs)
                 .HasForeignKey(e => e.idProgramm)
                 .WillCascadeOnDelete(false);
@@ -75,13 +67,13 @@ namespace Model.DataBase.Context
                 .IsFixedLength();
 
             modelBuilder.Entity<Students>()
-                .HasMany(e => e.CertificateDGs)
+                .HasMany(e => e.Certificate)
                 .WithRequired(e => e.Students)
                 .HasForeignKey(e => e.idStudent)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Students>()
-                .HasMany(e => e.Certifications)
+                .HasMany(e => e.CertificateDGs)
                 .WithRequired(e => e.Students)
                 .HasForeignKey(e => e.idStudent)
                 .WillCascadeOnDelete(false);
