@@ -1,16 +1,12 @@
+using global::Model.Data;
+using global::Model.Data.SpecificationDataDocument;
+using global::Model.DataBase.Context;
+using global::Model.Write.Word.Document;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+
 namespace Model.DataBase.Model
 {
-    using global::Model.Data;
-    using global::Model.Data.SpecificationDataDocument;
-    using global::Model.DataBase.Context;
-    using global::Model.Write.Word.Document;
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-    using System.Linq;
-
     public partial class CertificateDGs
     {
         public int id { get; set; }
@@ -30,6 +26,23 @@ namespace Model.DataBase.Model
         public virtual ProgramDGs ProgramDGs { get; set; }
 
         public virtual Students Students { get; set; }
+
+        /// <summary>
+        /// Проверка на наличие сертификата по его номеру
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="group"></param>
+        /// <returns></returns>
+        private bool isSerificateDG(DataBaseContext context, string group)
+        {
+            var _certificate = context.CertificateDGs
+                    .Where(c => c.party == group);
+            if (_certificate.Count() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
         public void LoadCertification(CertificateDGs certification)
         {
@@ -81,6 +94,23 @@ namespace Model.DataBase.Model
                 }
                 context.SaveChanges();
             }
+        }
+
+        /// <summary>
+        /// Поиск сертификата по номеру
+        /// </summary>
+        /// <param name="context">доступ к базе данных</param>
+        /// <param name="group">номер</param>
+        /// <returns></returns>
+        public int FindIdCertificateByNumber(DataBaseContext context, string number)
+        {
+            int idCertificateDG = 0;
+            if (isSerificateDG(context, number))
+            {
+                idCertificateDG = context.CertificateDGs
+                        .Where(c => c.party == number).First().id;
+            }
+            return idCertificateDG;
         }
     }
 }

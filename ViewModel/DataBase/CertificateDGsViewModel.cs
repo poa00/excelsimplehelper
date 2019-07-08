@@ -111,7 +111,7 @@ namespace ViewModel.DataBase
         public void CertifictationFind()
         {
             Students student = new Students();
-            Certificate certificate = new Certificate();
+            CertificateDGs certificate = new CertificateDGs();
             using (DataBaseContext context = new DataBaseContext())
             {
                 if (findModel.Fio != "" && findModel.DataBirth != "")

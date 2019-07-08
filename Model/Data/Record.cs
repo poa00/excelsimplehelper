@@ -1,4 +1,5 @@
-﻿using Model.DataBase.Model;
+﻿using Model.Data.SpecificationDataDocument;
+using Model.DataBase.Model;
 using Model.Message;
 using System;
 using System.Collections.Generic;
@@ -78,10 +79,6 @@ namespace Model.Data
             {
                 return CheckDate(key.Trim(), value.Trim());
             }
-            if (key.Contains("ФИО") || key.Contains("фио"))
-            {
-                return CheckFIO(key.Trim(), value.Trim());
-            }
 
             return value.Trim();
         }
@@ -96,12 +93,6 @@ namespace Model.Data
             {
                 MessageBug.AddMessage("Даты нет");
             }
-            return date;
-        }
-
-        private string CheckFIO(string key, string date)
-        {
-            
             return date;
         }
 

@@ -147,7 +147,6 @@ namespace Model.DataBase.Model
         /// <returns></returns>
         public int FindIdCertificateByNumber(DataBaseContext context, string number)
         {
-            Certificate certificató = new Certificate();
             int idCertificate = 0;
             if (isSerificate(context, number))
             {

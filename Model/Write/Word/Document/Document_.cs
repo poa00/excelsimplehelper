@@ -92,7 +92,7 @@ namespace Model.Write.Word.Document
 
         public void CreatingFolderForDocuments()
         {
-            PathResult = Properties.Settings.Default.TextPathFolderResult + "\\" + TypeDocument + "_" + DataForDocuments[0].GetOneStudent()["Номер"];
+            PathResult = Properties.Settings.Default.TextPathFolderResult + "\\" + TypeDocument + "_" + Group;
             Directory.CreateDirectory(PathResult);
         }
 
