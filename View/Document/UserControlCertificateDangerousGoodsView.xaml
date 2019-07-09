@@ -10,23 +10,27 @@
     <Grid Background="#dad4da">
         <materialDesign:TransitioningContent x:Name="TransitionContentSlide" Margin="0,4,-0.2,-3.8" >
             <StackPanel Orientation="Horizontal">
-                <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0.2" Width="324">
-                    <StackPanel Height="85">
-                        <TextBlock Text="Номер сертификата" Height="47" Margin="0,0,74,0"/>
-                        <TextBox Text="{Binding CertificateDangerousGoods.Number, Mode=TwoWay}" Height="31" Margin="0,0,120,0"/>
+                <StackPanel HorizontalAlignment="Left" Margin="0,0,0,61.2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                        <TextBlock Text="Номер 1-го сертификата" Width="140"/>
+                        <TextBox Text="{Binding CertificateDangerousGoods.Number, Mode=TwoWay}" Height="30" Width="90"/>
                     </StackPanel>
-                    <StackPanel Height="178">
-                        <TextBlock Text="Дата выдачи" Height="47" Margin="0,0,92,0"/>
-                        <DatePicker Text="{Binding CertificateDangerousGoods.DateIssue, Mode=TwoWay}" Height="101" Margin="0,0,10,0"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                        <TextBlock Text="Группа" Width="140"/>
+                        <TextBox Text="{Binding CertificateDangerousGoods.Group, Mode=TwoWay}" Height="30" Width="90"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox Margin="0,0,92,0" IsChecked="{Binding Path=EvidenceAndUdostovereniye.IsSelectedStatement, Mode=TwoWay}"  Height="20" Content="Ведомость" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                        <TextBlock Width="140" Text="Дата выдачи"/>
+                        <DatePicker Text="{Binding CertificateDangerousGoods.DateIssue, Mode=TwoWay}" Height="30" Width="90"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                        <CheckBox Margin="40 40 0 0" IsChecked="{Binding Path=CertificateDangerousGoods.IsSelectedStatement, Mode=TwoWay}"  Height="20" Content="Ведомость" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel>
                     <StackPanel >
-                        <DataGrid AutoGenerateColumns="False" x:Name="DataGridPrograms"
-                                      ItemsSource="{Binding CertificateDangerousGoods.Programs}" Height="600" Width="800">
+                        <DataGrid AutoGenerateColumns="False" x:Name="DataGridPrograms"  Margin="40 40 0 0"
+                                      ItemsSource="{Binding CertificateDangerousGoods.Programs}" Height="566" Width="800">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding name}" Header="Название программы"   Width="400">
                                     <DataGridTextColumn.ElementStyle>

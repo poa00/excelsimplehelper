@@ -12,11 +12,21 @@ namespace Model.Data.SpecificationDataDocument
     {
         private Record[] StatementRecords;
         private string Group;
+        private int numberInt;
         private string ProgrammName;
         public StatementSpec(Record[] records, string group, string programmName)
+         {
+            StatementRecords = records;
+            Group = group;
+            numberInt = -1;
+            ProgrammName = programmName;
+        }
+        public StatementSpec(Record[] records, string group, string numberString, string programmName)
         {
             StatementRecords = records;
             Group = group;
+
+            numberInt = Int32.Parse(numberString);
             ProgrammName = programmName;
         }
 
@@ -30,7 +40,7 @@ namespace Model.Data.SpecificationDataDocument
             for (int i = 0; i < StatementRecords.Length; i++)
             {
                 StatementRecords[i] = CorrectMark(StatementRecords[i]);
-                StatementRecords[i] = CorrectIndexInDocument(StatementRecords[i], Group, i);
+                StatementRecords[i] = CorrectIndexInDocument(StatementRecords[i], i);
                 StatementRecords[i] = CorrectProgram(StatementRecords[i], ProgrammName);
             }
         }
@@ -47,16 +57,33 @@ namespace Model.Data.SpecificationDataDocument
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        private Record CorrectIndexInDocument(Record dataStudent, string group, int index)
+        private Record CorrectIndexInDocument(Record dataStudent, int index)
         {
-            if ((index + 1) < 10)
+            
+            if (numberInt == -1)
             {
-                dataStudent.AddPropertyRecord("группа", group + "-0" + (index + 1));
+                if ((index + 1) < 10)
+                {
+                    dataStudent.AddPropertyRecord("группа", Group + "-0" + (index + 1));
+                }
+                else
+                {
+                    dataStudent.AddPropertyRecord("группа", Group + "-" + (index + 1));
+                }
             }
             else
             {
-                dataStudent.AddPropertyRecord("группа", group + "-" + (index + 1));
-            }       
+                if (index == 0)
+                {
+                    dataStudent.AddPropertyRecord("группа", numberInt.ToString());
+                }
+                else
+                {
+                    numberInt++;
+                    dataStudent.AddPropertyRecord("группа", numberInt.ToString());
+                }
+             }
+              
             return dataStudent;
         }
 

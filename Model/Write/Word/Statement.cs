@@ -1,14 +1,8 @@
-﻿using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.parser;
-
-using Model.Data.PatternMVVM;
+﻿using Model.Data.PatternMVVM;
 using Model.Data.SpecificationDataDocument;
-using Model.DataBase.Model;
 using Model.File;
 using Model.Message;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Xceed.Words.NET;
 
 namespace Model.Write.Word
@@ -90,7 +84,15 @@ namespace Model.Write.Word
         public List<string> DocumentCreate()
         {
             DateFromFile.ReadFile();
-            statementSpec = new StatementSpec(DateFromFile.GetRecords(), StatementModel.Group, ProgramName);
+            if (StatementModel.Number == null)
+            {
+                statementSpec = new StatementSpec(DateFromFile.GetRecords(), StatementModel.Group, ProgramName);
+            }
+            else
+            {
+                statementSpec = new StatementSpec(DateFromFile.GetRecords(), StatementModel.Group, StatementModel.Number, ProgramName);
+            }
+
             statementSpec.Correction();
             using (var document = DocX.Load(Properties.Settings.Default.TextPathFileWordStatementTemplate))
             {
@@ -98,9 +100,9 @@ namespace Model.Write.Word
                 SettingStatement();
                 var NameProgrammBookmark = document.Bookmarks["НаименованиеПрограммыУтверждения"];
                 NameProgrammBookmark.SetText(statementSpec.GetRecords()[0].GetOneStudent()["НаименованиеПрограммыУтверждения"]);
-
+                
                 var IdGroupBookmark = document.Bookmarks["группа"];
-                IdGroupBookmark.SetText(statementSpec.GetRecords()[0].GetOneStudent()["группа"]);
+                IdGroupBookmark.SetText(StatementModel.Group);
 
                 document.InsertTable(CreateTable());
 

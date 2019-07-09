@@ -48,6 +48,9 @@ namespace Model.Data.PatternMVVM
             }
         }
 
+        /// <summary>
+        /// Номер сертификата
+        /// </summary>
         private string _Number;
         public string Number
         {
@@ -58,6 +61,23 @@ namespace Model.Data.PatternMVVM
                 {
                     _Number = value;
                     OnPropertyChanged("Number");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Группа обучения
+        /// </summary>
+        private string _Group;
+        public string Group
+        {
+            get { return _Group; }
+            set
+            {
+                if (_Group != value)
+                {
+                    _Group = value;
+                    OnPropertyChanged("Group");
                 }
             }
         }

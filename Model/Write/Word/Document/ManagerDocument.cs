@@ -46,8 +46,24 @@ namespace Model.Write.Word.Document
                 Statement statement = new Statement(Program.name, statementModel);
                 statement.DocumentCreate();
             }
-            
         }
+
+        /// <summary>
+        /// Создает ведомость, если пользователь захочет
+        /// </summary>
+        /// <param name="group">группа</param>
+        private void isStatement(string number, string group)
+        {
+            if (CertificateDangerousGoods != null)
+            {
+                StatementModel statementModel = new StatementModel();
+                statementModel.Group = group;
+                statementModel.Number = number;
+                Statement statement = new Statement(ProgramDG.name, statementModel);
+                statement.DocumentCreate();
+            }
+        }
+
         /// <summary>
         /// Создает сертификат
         /// </summary>
@@ -83,7 +99,7 @@ namespace Model.Write.Word.Document
             CertificateDangerousGoodsSpec dataSpec = new CertificateDangerousGoodsSpec(DateFromFile.GetRecords(), CertificateDangerousGoods.DateIssue, CertificateDangerousGoods.Number, ProgramDG);
             dataSpec.Correction();
 
-            isStatement(CertificateDangerousGoods.Number);
+            isStatement(CertificateDangerousGoods.Number, CertificateDangerousGoods.Group);
             
             Document_ CertificatDG = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.TextPathFileWordCertificateDGTemplate, CertificateDangerousGoods.Number);
             CertificatDG.AddBookmarksWord(bookmarkWord);

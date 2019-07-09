@@ -19,8 +19,8 @@ namespace ViewModel.Document
 
             EvidenceAndUdostovereniye = new DocumentEvidenceAndUdostovereniyeModel()
             {
-                DateStartEducation = "11.09.2001",
-                DateEndEducation = "11.03.2011",
+                DateStartEducation = "25.06.2019",
+                DateEndEducation = "25.06.2019",
                 DateIssueDocument = "25.06.2019",
                 IsSelectedStatement = true,
                 Group = "666",

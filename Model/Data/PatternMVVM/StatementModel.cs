@@ -16,6 +16,20 @@ namespace Model.Data.PatternMVVM
             }
         }
 
+        private string _Number;
+        public string Number
+        {
+            get { return _Number; }
+            set
+            {
+                if (_Number != value)
+                {
+                    _Number = value;
+                    OnPropertyChanged("Number");
+                }
+            }
+        }
+
         private string _Group;
         public string Group
         {
