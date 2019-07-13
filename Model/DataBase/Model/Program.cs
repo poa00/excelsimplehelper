@@ -6,6 +6,7 @@ namespace Model.DataBase.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("Programs")]
     public partial class Programs
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -18,15 +19,12 @@ namespace Model.DataBase.Model
         public int id { get; set; }
 
         [Required]
-        [StringLength(100)]
         public string training { get; set; }
 
         [Required]
-        [StringLength(1200)]
         public string name { get; set; }
 
         [Required]
-        [StringLength(200)]
         public string clock { get; set; }
 
         public int lessonId { get; set; }

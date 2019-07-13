@@ -14,23 +14,18 @@ namespace Model.DataBase.Model
         public int id { get; set; }
 
         [Required]
-        [StringLength(18)]
         public string startEducation { get; set; }
 
         [Required]
-        [StringLength(18)]
         public string endEducation { get; set; }
 
         [Required]
-        [StringLength(18)]
         public string issueDate { get; set; }
 
         [Required]
-        [StringLength(10)]
         public string party { get; set; }
 
         [Required]
-        [StringLength(7)]
         public string mark { get; set; }
 
         public int idStudent { get; set; }

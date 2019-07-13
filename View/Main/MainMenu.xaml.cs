@@ -40,17 +40,13 @@ namespace View.Main
                     break;
                 case 2:
                     GridPrincipial.Children.Clear();
-                    GridPrincipial.Children.Add(new UserControlStatementView());
+                    GridPrincipial.Children.Add(new UserControlCertificateDangerousGoodsView());
                     break;
                 case 3:
                     GridPrincipial.Children.Clear();
-                    GridPrincipial.Children.Add(new UserControlCertificateDangerousGoodsView());
-                    break;
-                case 4:
-                    GridPrincipial.Children.Clear();
                     GridPrincipial.Children.Add(new UserControlDataBase());
                     break;
-                case 5:
+                case 4:
                     GridPrincipial.Children.Clear();
                     GridPrincipial.Children.Add(new UserControlPathSettings());
                     break;

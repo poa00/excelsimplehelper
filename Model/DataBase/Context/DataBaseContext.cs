@@ -6,7 +6,7 @@ namespace Model.DataBase.Context
     public partial class DataBaseContext : DbContext
     {
         public DataBaseContext()
-            : base("name=DataBaseContext")
+            : base("name=DataBaseContextWizard")
         {
         }
 

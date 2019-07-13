@@ -107,15 +107,15 @@ namespace Model.Write.Word.Document
         private void InsertBookmarkCertification(Bookmark bookmark, DocX doc, string insertValue, int idBookmark)
         {
             //Проверка на наличие закладки в word документе
-            if (doc.Bookmarks[BookmarksWord[idBookmark]] != null)
-            {
+            //if (doc.Bookmarks[BookmarksWord[idBookmark]] != null)
+            //{
                 bookmark = doc.Bookmarks[BookmarksWord[idBookmark]];
                 bookmark.SetText(insertValue);
-            }
-            else
-            {
-                MessageBug.AddMessage("Что-то не так проверьте: Закладку " + BookmarksWord[idBookmark] + " (Она в Word)" + "\n");
-            }
+            //}
+            //else
+            //{
+            //    MessageBug.AddMessage("Что-то не так проверьте: Закладку " + BookmarksWord[idBookmark] + " (Она в Word)" + "\n");
+            //}
         }
 
         /// <summary>

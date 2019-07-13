@@ -59,7 +59,6 @@ namespace Model.Data.SpecificationDataDocument
         /// <returns></returns>
         private Record CorrectIndexInDocument(Record dataStudent, int index)
         {
-            
             if (numberInt == -1)
             {
                 if ((index + 1) < 10)

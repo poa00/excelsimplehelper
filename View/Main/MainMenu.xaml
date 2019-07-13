@@ -47,12 +47,6 @@
                 </ListViewItem>
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="B" FontSize="30"/>
-                        <TextBlock Text="Ведомость" Margin="40 10 10 10" FontSize="20"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="60">
-                    <StackPanel Orientation="Horizontal">
                         <TextBlock Text="S" FontSize="30"/>
                         <TextBlock Text="Сертификат" Margin="40 10 10 10" FontSize="20"/>
                     </StackPanel>
