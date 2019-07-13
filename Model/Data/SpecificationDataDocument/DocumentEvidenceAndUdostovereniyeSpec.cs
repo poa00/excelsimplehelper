@@ -139,29 +139,11 @@ namespace Model.Data.SpecificationDataDocument
                 dataStudent.AddPropertyRecord("Оценка", "пять");
                 return dataStudent;
             }
-            else
-            {
-                if (mark.Equals("пять"))
-                {
-                    dataStudent.RemoveRecord("Оценка");
-                    dataStudent.AddPropertyRecord("Оценка", mark);
-                    return dataStudent;
-                }                    
-            }
             if (mark.Equals("4"))
             {
                 dataStudent.RemoveRecord("Оценка");
                 dataStudent.AddPropertyRecord("Оценка", "четыре");
                 return dataStudent;
-            }
-            else
-            {
-                if (mark.Equals("четыре"))
-                {
-                    dataStudent.RemoveRecord("Оценка");
-                    dataStudent.AddPropertyRecord("Оценка", mark);
-                    return dataStudent;
-                }
             }
             if (mark.Equals("3"))
             {
@@ -169,44 +151,17 @@ namespace Model.Data.SpecificationDataDocument
                 dataStudent.AddPropertyRecord("Оценка", "три");
                 return dataStudent;
             }
-            else
-            {
-                if (mark.Equals("три"))
-                {
-                    dataStudent.RemoveRecord("Оценка");
-                    dataStudent.AddPropertyRecord("Оценка", mark);
-                    return dataStudent;
-                }
-            }
             if (mark.Equals("2"))
             {
                 dataStudent.RemoveRecord("Оценка");
                 dataStudent.AddPropertyRecord("Оценка", "два");
                 return dataStudent;
             }
-            else
-            {
-                if (mark.Equals("два"))
-                {
-                    dataStudent.RemoveRecord("Оценка");
-                    dataStudent.AddPropertyRecord("Оценка", mark);
-                    return dataStudent;
-                }
-            }
             if (mark.Equals("1"))
             {
                 dataStudent.RemoveRecord("Оценка");
                 dataStudent.AddPropertyRecord("Оценка", "единица");
                 return dataStudent;
-            }
-            else
-            {
-                if (mark.Equals("единица"))
-                {
-                    dataStudent.RemoveRecord("Оценка");
-                    dataStudent.AddPropertyRecord("Оценка", mark);
-                    return dataStudent;
-                }
             }
             
             MessageBug.AddMessage("Оценка неверно записана по индексу: " + (id + 1));

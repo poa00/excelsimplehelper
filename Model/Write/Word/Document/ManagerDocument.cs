@@ -15,7 +15,7 @@ namespace Model.Write.Word.Document
         private FileExcel DateFromFile;
         private DocumentEvidenceAndUdostovereniyeModel EvidenceAndUdostovereniye;
         private CertificateDangerousGoodsModel CertificateDangerousGoods;
-
+        private string PathTemplate;
         public ManagerDocument()
         {
         }
@@ -75,7 +75,7 @@ namespace Model.Write.Word.Document
             dataSpec.Correction();
 
             isStatement(EvidenceAndUdostovereniye.Group);
-            string PathTemplate;
+            
             if (IdDocument == 0)
             {
                 PathTemplate = Properties.Settings.Default.TextPathFileWordEvidenceTemplate;
@@ -100,15 +100,24 @@ namespace Model.Write.Word.Document
             dataSpec.Correction();
 
             isStatement(CertificateDangerousGoods.Number, CertificateDangerousGoods.Group);
-            
-            Document_ CertificatDG = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.TextPathFileWordCertificateDGTemplate, CertificateDangerousGoods.Number);
+            if (dataSpec.IsCertificate12Category == true)
+            {
+                PathTemplate = Properties.Settings.Default.TextPathFileWordCertificate12DGTemplate;
+            }
+            else
+            {
+                PathTemplate = Properties.Settings.Default.TextPathFileWordCertificateDGTemplate;
+            }
+
+
+            Document_ CertificatDG = new Document_(dataSpec.GetRecords(), PathTemplate, CertificateDangerousGoods.Number);
             CertificatDG.AddBookmarksWord(bookmarkWord);
             CertificatDG.CreateDocument();
         }
 
         public List<string> DocumentCreate()
         {
-            DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudentsUdostovereniye, 1);
+            DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudents, 1);
             DateFromFile.ReadFile();
             if (MessageBug.GetMessages().Count > 0)
             {

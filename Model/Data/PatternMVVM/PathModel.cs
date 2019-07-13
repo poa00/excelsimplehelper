@@ -20,10 +20,9 @@ namespace Model.Data.PatternMVVM
             TextPathFileWordEvidenceTemplate = Properties.Settings.Default.TextPathFileWordEvidenceTemplate;
             TextPathFileWordStatementTemplate = Properties.Settings.Default.TextPathFileWordStatementTemplate;
             TextPathFileWordCertificateDGTemplate = Properties.Settings.Default.TextPathFileWordCertificateDGTemplate;
+            TextPathFileWordCertificate12DGTemplate = Properties.Settings.Default.TextPathFileWordCertificate12DGTemplate;
 
-            TextPathFileExcelDataStudentsUdostovereniye = Properties.Settings.Default.TextPathFileExcelDataStudentsUdostovereniye;
-            TextPathFileExcelDataStudentsForStatement = Properties.Settings.Default.TextPathFileExcelDataStudentsForStatement;
-            TextPathFileExcelDataStudentsForCertificateDG = Properties.Settings.Default.TextPathFileExcelDataStudentsForCertificateDG;
+            TextPathFileExcelDataStudents = Properties.Settings.Default.TextPathFileExcelDataStudents;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -68,18 +67,18 @@ namespace Model.Data.PatternMVVM
             }
         }
         
-        private string _TextPathFileExcelDataStudentsUdostovereniye;
-        public string TextPathFileExcelDataStudentsUdostovereniye
+        private string _TextPathFileExcelDataStudents;
+        public string TextPathFileExcelDataStudents
         {
-            get { return _TextPathFileExcelDataStudentsUdostovereniye; }
+            get { return _TextPathFileExcelDataStudents; }
             set
             {
-                if (_TextPathFileExcelDataStudentsUdostovereniye != value)
+                if (_TextPathFileExcelDataStudents != value)
                 {
-                    _TextPathFileExcelDataStudentsUdostovereniye = value;
-                    Properties.Settings.Default.TextPathFileExcelDataStudentsUdostovereniye = TextPathFileExcelDataStudentsUdostovereniye;
+                    _TextPathFileExcelDataStudents = value;
+                    Properties.Settings.Default.TextPathFileExcelDataStudents = TextPathFileExcelDataStudents;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileDataStudentsUdostovereniyeTemplate");
+                    OnPropertyChanged("TextPathFileExcelDataStudents");
                 }
             }
         }
@@ -132,38 +131,22 @@ namespace Model.Data.PatternMVVM
             }
         }
         
-        private string _TextPathFileExcelDataStudentsForStatement;
-        public string TextPathFileExcelDataStudentsForStatement
+        private string _TextPathFileWordCertificate12DGTemplate;
+        public string TextPathFileWordCertificate12DGTemplate
         {
-            get { return _TextPathFileExcelDataStudentsForStatement; }
+            get { return _TextPathFileWordCertificate12DGTemplate; }
             set
             {
-                if (_TextPathFileExcelDataStudentsForStatement != value)
+                if (_TextPathFileWordCertificate12DGTemplate != value)
                 {
-                    _TextPathFileExcelDataStudentsForStatement = value;
-                    Properties.Settings.Default.TextPathFileExcelDataStudentsForStatement = _TextPathFileExcelDataStudentsForStatement;
+                    _TextPathFileWordCertificate12DGTemplate = value;
+                    Properties.Settings.Default.TextPathFileWordCertificate12DGTemplate = _TextPathFileWordCertificate12DGTemplate;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileExcelDataStudentsForStatement");
+                    OnPropertyChanged("TextPathFileWordCertificate12DGTemplate");
                 }
             }
         }
-        
-        private string _TextPathFileExcelDataStudentsForCertificateDG;
-        public string TextPathFileExcelDataStudentsForCertificateDG
-        {
-            get { return _TextPathFileExcelDataStudentsForCertificateDG; }
-            set
-            {
-                if (_TextPathFileExcelDataStudentsForCertificateDG != value)
-                {
-                    _TextPathFileExcelDataStudentsForCertificateDG = value;
-                    Properties.Settings.Default.TextPathFileExcelDataStudentsForCertificateDG = _TextPathFileExcelDataStudentsForCertificateDG;
-                    Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileExcelDataStudentsForCertificateDG");
-                }
-            }
-        }
-        
+
         private string _TextPathFileWordCertificateDGTemplate;
         public string TextPathFileWordCertificateDGTemplate
         {
@@ -179,7 +162,5 @@ namespace Model.Data.PatternMVVM
                 }
             }
         }
-        
-
     }
 }

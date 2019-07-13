@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Model.Data.SpecificationDataDocument
@@ -14,6 +15,7 @@ namespace Model.Data.SpecificationDataDocument
         private string Number;
         private string DateIssue;
         private ProgramDGs Programm;
+        public bool IsCertificate12Category;
 
         public CertificateDangerousGoodsSpec(Record[] records, string dateIssue, string number, ProgramDGs programm)
         {
@@ -21,6 +23,21 @@ namespace Model.Data.SpecificationDataDocument
             DateIssue = dateIssue;
             Number = number;
             Programm = programm;
+            IsCertificate12Category = false;
+        }
+
+        /// <summary>
+        /// Сертификат 12 категории
+        /// </summary>
+        /// <returns></returns>
+        private bool isCertificate12Category()
+        {
+            int[] teacher12Categories = Regex.Matches(Programm.name, "\\d+").Cast<Match>().Select(x => int.Parse(x.Value)).ToArray();
+            if (teacher12Categories[0] == 12)
+            {
+                return true;
+            }
+            return false;
         }
 
         public Record[] GetRecords()
@@ -30,6 +47,7 @@ namespace Model.Data.SpecificationDataDocument
 
         public void Correction()
         {
+            IsCertificate12Category = isCertificate12Category();
             for (int i = 0; i < CertificateDangerousGoodsRecords.Length; i++)
             {
                 CertificateDangerousGoodsRecords[i] = CorrectFIO(CertificateDangerousGoodsRecords[i]);
@@ -70,6 +88,8 @@ namespace Model.Data.SpecificationDataDocument
             dataStudent.AddPropertyRecord("Номер", (value + id).ToString());
             return dataStudent;
         }
+
+        
 
         public Record CorrectProgram(Record dataStudent)
         {

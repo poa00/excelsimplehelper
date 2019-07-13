@@ -1,4 +1,6 @@
-﻿using Model.Data.SpecificationDataDocument;
+﻿using Model.Message;
+using System;
+using Model.Data.SpecificationDataDocument;
 using Model.DataBase.Model;
 using Model.Message;
 using System;
@@ -77,13 +79,22 @@ namespace Model.Data
 
             if (key.Contains("Дата") || key.Contains("дата"))
             {
-                return CheckDate(key.Trim(), value.Trim());
+                return CheckDate(value.Trim());
+            }
+            if (key.Contains("Оценка") || key.Contains("оценка"))
+            {
+                return CheckMark(value.Trim());
             }
 
             return value.Trim();
         }
 
-        private string CheckDate(string key, string date)
+        /// <summary>
+        /// Поверяет наличие данных (даты)
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        private string CheckDate(string date)
         {
             if (date.Length > 10)
             {
@@ -92,6 +103,23 @@ namespace Model.Data
             if (date.Length < 10)
             {
                 MessageBug.AddMessage("Даты нет");
+                date = "01.01.0001";
+            }
+            return date;
+        }
+
+        /// <summary>
+        /// Поверяет наличие данных (Оценки)
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        private string CheckMark(string date)
+        {
+            if (date.Length > 1)
+            {
+                MessageBug.AddMessage("Оценку запишите цифрой (5)");
+                date = " ";
+                return date;
             }
             return date;
         }

@@ -20,13 +20,10 @@
     <Setting Name="TextPathFileWordCertificateDGTemplate" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\\</Value>
     </Setting>
-    <Setting Name="TextPathFileExcelDataStudentsUdostovereniye" Type="System.String" Scope="User">
+    <Setting Name="TextPathFileExcelDataStudents" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\\</Value>
     </Setting>
-    <Setting Name="TextPathFileExcelDataStudentsForStatement" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
-    </Setting>
-    <Setting Name="TextPathFileExcelDataStudentsForCertificateDG" Type="System.String" Scope="User">
+    <Setting Name="TextPathFileWordCertificate12DGTemplate" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\\</Value>
     </Setting>
   </Settings>

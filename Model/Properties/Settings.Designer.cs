@@ -98,36 +98,24 @@ namespace Model.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileExcelDataStudentsUdostovereniye {
+        public string TextPathFileExcelDataStudents {
             get {
-                return ((string)(this["TextPathFileExcelDataStudentsUdostovereniye"]));
+                return ((string)(this["TextPathFileExcelDataStudents"]));
             }
             set {
-                this["TextPathFileExcelDataStudentsUdostovereniye"] = value;
+                this["TextPathFileExcelDataStudents"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileExcelDataStudentsForStatement {
+        public string TextPathFileWordCertificate12DGTemplate {
             get {
-                return ((string)(this["TextPathFileExcelDataStudentsForStatement"]));
+                return ((string)(this["TextPathFileWordCertificate12DGTemplate"]));
             }
             set {
-                this["TextPathFileExcelDataStudentsForStatement"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileExcelDataStudentsForCertificateDG {
-            get {
-                return ((string)(this["TextPathFileExcelDataStudentsForCertificateDG"]));
-            }
-            set {
-                this["TextPathFileExcelDataStudentsForCertificateDG"] = value;
+                this["TextPathFileWordCertificate12DGTemplate"] = value;
             }
         }
     }

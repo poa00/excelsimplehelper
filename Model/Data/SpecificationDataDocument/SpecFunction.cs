@@ -9,6 +9,31 @@ namespace Model.Data.SpecificationDataDocument
 {
     public class SpecFunction
     {
+        private Dictionary<string, string> month;
+
+        public SpecFunction()
+        {
+            month = new Dictionary<string, string>
+            {
+                { "01", "января" },
+                { "02", "февраля" },
+                { "03", "марта" },
+                { "04", "апреля" },
+                { "05", "мая" },
+                { "06", "июня" },
+                { "07", "июля" },
+                { "08", "августа" },
+                { "09", "сентября" },
+                { "10", "октября" },
+                { "11", "ноября" },
+                { "12", "декабря" }
+            };
+        }
+
+        private string GetMonth(string key)
+        {
+            return month[key];
+        }
         /// <summary>
         /// Вырезает из строки значение по определенному признаку 12.25.45841 станет 12 25 45841
         /// </summary>
@@ -66,7 +91,7 @@ namespace Model.Data.SpecificationDataDocument
                 return month;
             }
 
-            return new Month().GetMonth(month);
+            return GetMonth(month);
         }
 
         /// <summary>

@@ -14,13 +14,12 @@ namespace ViewModel.Path
 
             SelectPathFolderResult = new RelayCommand(arg => СhoicePathFolderResult());
             SelectPathResulInputForParallelFolder = new RelayCommand(arg => СhoicePathResulInputForParallelFolder());
-            SelectPathFileExcelDataStudentsUdostovereniye = new RelayCommand(arg => СhoicePathFileExcelDataStudentsUdostovereniye());
+            SelectPathFileExcelDataStudents = new RelayCommand(arg => СhoicePathFileExcelDataStudents());
             SelectPathFileWordUdostovereniyeTemplate = new RelayCommand(arg => СhoicePathFileWordUdostovereniyeTemplate());
             SelectPathFileWordEvidenceTemplate = new RelayCommand(arg => СhoicePathFileWordEvidenceTemplate());
             SelectPathFileWordStatementTemplate = new RelayCommand(arg => СhoicePathFileWordStatementTemplate());
-            SelectPathFileExcelDataStudentsForStatement = new RelayCommand(arg => СhoicePathFileExcelDataStudentsForStatement());
-            SelectPathFileExcelDataStudentsForCertificateDG = new RelayCommand(arg => СhoicePathFileExcelDataStudentsForCertificateDG());
             SelectPathFileWordCertificateDGTemplate = new RelayCommand(arg => СhoicePathFileWordCertificateDGTemplate());
+            SelectPathFileWordCertificate12DGTemplate = new RelayCommand(arg => СhoicePathFileWordCertificate12DGTemplate());
         }
 
         public ICommand SelectPathFolderResult { get; set; }
@@ -47,14 +46,14 @@ namespace ViewModel.Path
             }
         }
                         
-        public ICommand SelectPathFileExcelDataStudentsUdostovereniye { get; set; }
-        public void СhoicePathFileExcelDataStudentsUdostovereniye()
+        public ICommand SelectPathFileExcelDataStudents { get; set; }
+        public void СhoicePathFileExcelDataStudents()
         {   
             OpenFileDialog openFileDialog = GetSettingFileExcelDialog();
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
-                Path.TextPathFileExcelDataStudentsUdostovereniye = openFileDialog.FileName;
+                Path.TextPathFileExcelDataStudents = openFileDialog.FileName;
             }
         }
                         
@@ -93,28 +92,6 @@ namespace ViewModel.Path
             }
         }
 
-        public ICommand SelectPathFileExcelDataStudentsForStatement { get; set; }
-        public void СhoicePathFileExcelDataStudentsForStatement()
-        {
-            OpenFileDialog openFileDialog = GetSettingFileExcelDialog();
-            openFileDialog.ShowDialog();
-            if (openFileDialog.SafeFileName.Length > 0)
-            {
-                Path.TextPathFileExcelDataStudentsForStatement = openFileDialog.FileName;
-            }
-        }
-
-        public ICommand SelectPathFileExcelDataStudentsForCertificateDG { get; set; }
-        public void СhoicePathFileExcelDataStudentsForCertificateDG()
-        {
-            OpenFileDialog openFileDialog = GetSettingFileExcelDialog();
-            openFileDialog.ShowDialog();
-            if (openFileDialog.SafeFileName.Length > 0)
-            {
-                Path.TextPathFileExcelDataStudentsForCertificateDG = openFileDialog.FileName;
-            }
-        }
-
         public ICommand SelectPathFileWordCertificateDGTemplate { get; set; }
         public void СhoicePathFileWordCertificateDGTemplate()
         {
@@ -123,6 +100,17 @@ namespace ViewModel.Path
             if (openFileDialog.SafeFileName.Length > 0)
             {
                 Path.TextPathFileWordCertificateDGTemplate = openFileDialog.FileName;
+            }
+        }
+
+        public ICommand SelectPathFileWordCertificate12DGTemplate { get; set; }
+        public void СhoicePathFileWordCertificate12DGTemplate()
+        {
+            OpenFileDialog openFileDialog = GetSettingFileWordDialog();
+            openFileDialog.ShowDialog();
+            if (openFileDialog.SafeFileName.Length > 0)
+            {
+                Path.TextPathFileWordCertificate12DGTemplate = openFileDialog.FileName;
             }
         }
 

@@ -28,7 +28,7 @@ namespace Model.Write.Word
             StatementModel = statementModel;
             BookamrkStatement = new string[2] { "группа", "НаименованиеПрограммыУтверждения" };
             SizeIndentationHanging = 300;
-            DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudentsUdostovereniye, 1);
+            DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudents, 1);
         }
 
         /// <summary>

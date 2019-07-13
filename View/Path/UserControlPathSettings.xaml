@@ -21,8 +21,8 @@
                         <Button x:Name="SelectPathResulInputForParallelFolder" Command="{Binding SelectPathResulInputForParallelFolder}" Content="Путь временной папки для паралелизма" Width="249" Height="30" Margin="80 0 0 0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox Text="{Binding Path=Path.TextPathFileExcelDataStudentsUdostovereniye , Mode=TwoWay}" HorizontalAlignment="Left" Height="30" Width="230" Margin="40 0 0 0"/>
-                        <Button Command="{Binding SelectPathFileExcelDataStudentsUdostovereniye}" Content="Файл с данными студентов" Margin="80 0 0 0" Width="250" Height="30"/>
+                        <TextBox Text="{Binding Path=Path.TextPathFileExcelDataStudents , Mode=TwoWay}" HorizontalAlignment="Left" Height="30" Width="230" Margin="40 0 0 0"/>
+                        <Button Command="{Binding SelectPathFileExcelDataStudents}" Content="Файл с данными студентов" Margin="80 0 0 0" Width="250" Height="30"/>
                     </StackPanel>
                     
                     <TextBlock Text="Удостоверение/Свидетельства" FontSize="30" Margin="200 20 0 20" Foreground="#90aacd" />
@@ -47,7 +47,10 @@
                         <TextBox x:Name="TextPathFileWordCertificateDGTemplate" Text="{Binding Path=Path.TextPathFileWordCertificateDGTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
                         <Button x:Name="SelectPathFileWordCertificateDGTemplate" Command="{Binding SelectPathFileWordCertificateDGTemplate}" Content="Шаблон сертификата" Margin="80 0 0 0" Width="250" Height="30"/>
                     </StackPanel>
-
+                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                        <TextBox x:Name="TextPathFileWordCertificate12DGTemplate" Text="{Binding Path=Path.TextPathFileWordCertificate12DGTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
+                        <Button x:Name="SelectPathFileWordCertificate12DGTemplate" Command="{Binding SelectPathFileWordCertificate12DGTemplate}" Content="Шаблон сертификата 12 категории" Margin="80 0 0 0" Width="250" Height="30"/>
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </materialDesign:TransitioningContent>

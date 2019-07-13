@@ -34,11 +34,11 @@ namespace Model.Write.Word.Document
         /// <param name="program">Программа(Модель)</param>
         /// <param name="evidenceAndUdostovereniyeSpec">Данные которые будут добавляться в файл</param>
         /// <param name="pathTemplateWord">Путь к шаблону ворда</param>
-        public Document_(Record[] evidenceAndUdostovereniyeSpec, string pathTemplateWord, string group)
+        public Document_(Record[] recordSpec, string pathTemplateWord, string group)
         {
             PathTemplateWord = pathTemplateWord;
-            DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudentsUdostovereniye, 1);
-            DataForDocuments = evidenceAndUdostovereniyeSpec;
+            DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudents, 1);
+            DataForDocuments = recordSpec;
             FileName = CreateVoidCertification();
             TypeDocument = DataForDocuments[0].GetOneStudent()["Тип"];
             Group = group;
@@ -107,15 +107,15 @@ namespace Model.Write.Word.Document
         private void InsertBookmarkCertification(Bookmark bookmark, DocX doc, string insertValue, int idBookmark)
         {
             //Проверка на наличие закладки в word документе
-            //if (doc.Bookmarks[BookmarksWord[idBookmark]] != null)
-            //{
+            if (doc.Bookmarks[BookmarksWord[idBookmark]] != null)
+            {
                 bookmark = doc.Bookmarks[BookmarksWord[idBookmark]];
                 bookmark.SetText(insertValue);
-            //}
-            //else
-            //{
-            //    MessageBug.AddMessage("Что-то не так проверьте: Закладку " + BookmarksWord[idBookmark] + " (Она в Word)" + "\n");
-            //}
+            }
+            else
+            {
+                MessageBug.AddMessage("Что-то не так проверьте: Закладку " + BookmarksWord[idBookmark] + " (Она в Word)" + "\n");
+            }
         }
 
         /// <summary>

@@ -24,7 +24,11 @@
                         <DatePicker Text="{Binding CertificateDangerousGoods.DateIssue, Mode=TwoWay}" Height="30" Width="90"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
-                        <CheckBox Margin="40 40 0 0" IsChecked="{Binding Path=CertificateDangerousGoods.IsSelectedStatement, Mode=TwoWay}"  Height="20" Content="Ведомость" />
+                        <CheckBox IsChecked="{Binding Path=CertificateDangerousGoods.IsSelectedStatement, Mode=TwoWay}"  Height="20" Content="Ведомость" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                        <TextBlock  Width="140" Text="Сообщение" />
+                        <TextBox Text="{Binding CertificateDangerousGoods.Message, Mode=TwoWay}" Height="223" Width="155"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel>
@@ -41,10 +45,6 @@
                                 </DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
-                    <StackPanel Height="87">
-                        <TextBlock Width="200" Margin="0 15 0 0" />
-                        <TextBox Text="{Binding CertificateDangerousGoods.Message, Mode=TwoWay}" Height="50" Width="400" Margin="70 0 80 0"/>
                     </StackPanel>
                     <Button Height="40" Width="200" Margin="160 10 0 0" Command="{Binding CreateDocument}" CommandParameter="{Binding SelectedItem, ElementName=DataGridPrograms}" Content="Создать сертификат"/>
                 </StackPanel>
