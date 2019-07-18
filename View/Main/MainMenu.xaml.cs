@@ -3,6 +3,7 @@ using System.Windows.Input;
 using View.DataBase;
 using View.Document;
 using View.Path;
+using View.SelectTrainingProgramm;
 
 namespace View.Main
 {
@@ -49,6 +50,10 @@ namespace View.Main
                 case 4:
                     GridPrincipial.Children.Clear();
                     GridPrincipial.Children.Add(new UserControlPathSettings());
+                    break;
+                case 5:
+                    GridPrincipial.Children.Clear();
+                    GridPrincipial.Children.Add(new UserControlSelectProgramm());
                     break;
 
                 default:

@@ -1,13 +1,7 @@
 ﻿using Model.Message;
 using System;
-using Model.Data.SpecificationDataDocument;
-using Model.DataBase.Model;
-using Model.Message;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.Data
 {
@@ -117,9 +111,16 @@ namespace Model.Data
         {
             if (date.Length > 1)
             {
-                MessageBug.AddMessage("Оценку запишите цифрой (5)");
-                date = " ";
-                return date;
+                if (date == "пять" || date == "четыре" || date == "три")
+                {
+                    
+                }
+                else
+                {
+                    MessageBug.AddMessage("Оценку запишите цифрой (5)");
+                    date = " ";
+                    return date;
+                }
             }
             return date;
         }

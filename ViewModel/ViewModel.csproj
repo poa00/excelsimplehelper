@@ -77,6 +77,8 @@
     <Compile Include="Document\CertificateDangerousGoodsViewModel.cs" />
     <Compile Include="Document\DocumentEvidenceAndUdostovereniyeViewModel.cs" />
     <Compile Include="Path\PathSettingsViewModel.cs" />
+    <Compile Include="Programs\Program012ViewModel.cs" />
+    <Compile Include="Programs\Program3ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RelayCommand.cs" />
   </ItemGroup>

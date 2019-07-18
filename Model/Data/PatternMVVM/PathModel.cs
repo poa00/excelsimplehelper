@@ -94,7 +94,7 @@ namespace Model.Data.PatternMVVM
                     _TextPathFileWordUdostovereniyeTemplate = value;
                     Properties.Settings.Default.TextPathFileWordUdostovereniyeTemplate = _TextPathFileWordUdostovereniyeTemplate;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileWordUdostovereniye");
+                    OnPropertyChanged("TextPathFileWordUdostovereniyeTemplate");
                 }
             }
         }

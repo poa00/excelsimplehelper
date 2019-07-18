@@ -27,5 +27,27 @@ namespace Model.DataBase.Model
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Programs> Programs { get; set; }
+
+        public int ConvertNameToId(string type)
+        {
+            int idType = -1;
+            if (type.Equals("Свидетельство"))
+            {
+                idType = 0;
+            }
+            if (type.Equals("Удостоверения (Лицензия)"))
+            {
+                idType = 1;
+            }
+            if (type.Equals("Удостоверение (Реквизит)"))
+            {
+                idType = 2;
+            }
+            if (type.Equals("Сертификат ОГ"))
+            {
+                idType = 3;
+            }
+            return idType;
+        }
     }
 }

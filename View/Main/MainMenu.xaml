@@ -32,7 +32,7 @@
             <materialDesign:TransitioningContent x:Name="TransitionContentSlide">
                 <Grid x:Name="GridCursor" Margin="0 100 0 0" Width="10" HorizontalAlignment="Left" Height="60" Background="#2288a8" VerticalAlignment="Top"/>
             </materialDesign:TransitioningContent>
-            <ListView x:Name="ListViewMenu" Margin="0 100" Foreground="#08051b" SelectionChanged="ListViewMenu_SelectionChanged">
+            <ListView x:Name="ListViewMenu" Margin="0,100,0,292" Foreground="#08051b" SelectionChanged="ListViewMenu_SelectionChanged">
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Margin="0 10"  Kind="Home" Width="30" Height="30"/>
@@ -61,6 +61,12 @@
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Margin="0 0"  Kind="Settings" Width="30" Height="30"/>
                         <TextBlock Text="Настройки" Margin="40 0 10 10" FontSize="20"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0 0"  Text="P" FontSize="30"/>
+                        <TextBlock Text="Программы" Margin="40 0 10 10" FontSize="20"/>
                     </StackPanel>
                 </ListViewItem>
             </ListView>

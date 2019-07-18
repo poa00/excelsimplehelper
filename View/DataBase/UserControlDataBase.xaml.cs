@@ -31,7 +31,6 @@ namespace View.DataBase
 
                 default:
                     break;
-
             }
         }
     }

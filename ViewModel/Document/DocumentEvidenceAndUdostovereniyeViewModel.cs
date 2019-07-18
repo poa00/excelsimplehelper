@@ -39,7 +39,7 @@ namespace ViewModel.Document
                     {
                         if (selectedItem == null) return;
                         // получаем выделенный объект
-                        Programs programs = selectedItem as Programs;
+                        Model.DataBase.Model.Programs programs = selectedItem as Model.DataBase.Model.Programs;
                         
                         ManagerDocument managerDocument = new ManagerDocument(programs, EvidenceAndUdostovereniye);
                         List<string> result = managerDocument.DocumentCreate();

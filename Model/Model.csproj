@@ -94,7 +94,7 @@
     <Compile Include="DataBase\Model\CertificateDGs.cs" />
     <Compile Include="DataBase\Context\DataBaseContext.cs" />
     <Compile Include="DataBase\Model\Lesson.cs" />
-    <Compile Include="DataBase\Model\Program.cs" />
+    <Compile Include="DataBase\Model\Programs.cs" />
     <Compile Include="DataBase\Model\ProgramDGs.cs" />
     <Compile Include="DataBase\Model\Students.cs" />
     <Compile Include="DataBase\Model\TypeDocument.cs" />
@@ -105,6 +105,8 @@
     <Compile Include="Data\PatternMVVM\FindCertificateModel.cs" />
     <Compile Include="Data\PatternMVVM\PathModel.cs" />
     <Compile Include="Data\PatternMVVM\StatementModel.cs" />
+    <Compile Include="Data\PatternMVVM\TrainingProgramm\Programm012Model.cs" />
+    <Compile Include="Data\PatternMVVM\TrainingProgramm\Programm3Model.cs" />
     <Compile Include="Data\Record.cs" />
     <Compile Include="Data\SpecificationDataDocument\CertificateDangerousGoodsSpec.cs" />
     <Compile Include="Data\SpecificationDataDocument\DocumentEvidenceAndUdostovereniyeSpec.cs" />
@@ -130,7 +132,9 @@
     <None Include="officeWizard.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

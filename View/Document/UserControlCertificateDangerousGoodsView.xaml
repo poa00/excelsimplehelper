@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:View.Document"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-        d:DesignHeight="751" d:DesignWidth="1175">
+        d:DesignHeight="751" d:DesignWidth="1100">
     <Grid Background="#dad4da">
         <materialDesign:TransitioningContent x:Name="TransitionContentSlide" Margin="0,4,-0.2,-3.8" >
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="0,0,-12.8,0" Height="751" VerticalAlignment="Top">
                 <StackPanel HorizontalAlignment="Left" Margin="0,0,0,61.2">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
                         <TextBlock Text="Номер 1-го сертификата" Width="140"/>
@@ -32,7 +32,7 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel>
-                    <StackPanel >
+                    <StackPanel Height="628" >
                         <DataGrid AutoGenerateColumns="False" x:Name="DataGridPrograms"  Margin="40 40 0 0"
                                       ItemsSource="{Binding CertificateDangerousGoods.Programs}" Height="620" Width="690">
                             <DataGrid.Columns>

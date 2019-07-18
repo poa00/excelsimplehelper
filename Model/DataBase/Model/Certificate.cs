@@ -2,8 +2,10 @@ using global::Model.Data;
 using global::Model.Data.SpecificationDataDocument;
 using global::Model.DataBase.Context;
 using global::Model.Write.Word.Document;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace Model.DataBase.Model
@@ -102,36 +104,45 @@ namespace Model.DataBase.Model
         /// <param name="DataForDocuments">данные для сохранения</param>
         public void SaveCertificate(Record DataForDocuments)
         {
-            using (DataBaseContext context = new DataBaseContext())
+            try
             {
-                Certificate certifications = new Certificate();
-                certifications.endEducation = DataForDocuments.GetOneStudent()["КД"] + "." + DataForDocuments.GetOneStudent()["КМ"] + "." + DataForDocuments.GetOneStudent()["КГ"];
-                certifications.startEducation = DataForDocuments.GetOneStudent()["НД"] + "." + DataForDocuments.GetOneStudent()["НМ"] + "." + DataForDocuments.GetOneStudent()["НГ"];
-                certifications.issueDate = DataForDocuments.GetOneStudent()["ПД"] + "." + DataForDocuments.GetOneStudent()["ПМ"] + "." + DataForDocuments.GetOneStudent()["ПГ"];
-                certifications.party = DataForDocuments.GetOneStudent()["Номер"];
-                certifications.mark = DataForDocuments.GetOneStudent()["Оценка"];
-
-                string name = DataForDocuments.GetOneStudent()["Имя"].Trim();
-                string surname = DataForDocuments.GetOneStudent()["Фамилия".Trim()];
-                string patronymic = DataForDocuments.GetOneStudent()["Отчество"].Trim();
-                string dateBirth = DataForDocuments.GetOneStudent()["ДатаРождения"].Trim();
-
-                Students student = new Students();
-                certifications.idStudent = student.SaveStudent(context, name, surname, patronymic, dateBirth);
-
-                string nameProgramm = DataForDocuments.GetOneStudent()["Программа"];
-                var programs1 = context.Programs
-                    .Where(c => c.name == nameProgramm);
-                certifications.idProgramm = programs1.First().id;
-
-                var certificat = context.Certificate.Where(c => c.party == certifications.party);
-                if (certificat.Count() < 1)
+                using (DataBaseContext context = new DataBaseContext())
                 {
-                    context.Certificate.Add(certifications);
-                }
+                    Certificate certifications = new Certificate();
+                    certifications.endEducation = DataForDocuments.GetOneStudent()["КД"] + "." + DataForDocuments.GetOneStudent()["КМ"] + "." + DataForDocuments.GetOneStudent()["КГ"];
+                    certifications.startEducation = DataForDocuments.GetOneStudent()["НД"] + "." + DataForDocuments.GetOneStudent()["НМ"] + "." + DataForDocuments.GetOneStudent()["НГ"];
+                    certifications.issueDate = DataForDocuments.GetOneStudent()["ПД"] + "." + DataForDocuments.GetOneStudent()["ПМ"] + "." + DataForDocuments.GetOneStudent()["ПГ"];
+                    certifications.party = DataForDocuments.GetOneStudent()["Номер"];
+                    certifications.mark = DataForDocuments.GetOneStudent()["Оценка"];
 
-                context.SaveChanges();
+                    string name = DataForDocuments.GetOneStudent()["Имя"].Trim();
+                    string surname = DataForDocuments.GetOneStudent()["Фамилия".Trim()];
+                    string patronymic = DataForDocuments.GetOneStudent()["Отчество"].Trim();
+                    string dateBirth = DataForDocuments.GetOneStudent()["ДатаРождения"].Trim();
+
+                    Students student = new Students();
+                    certifications.idStudent = student.SaveStudent(context, name, surname, patronymic, dateBirth);
+
+                    string nameProgramm = DataForDocuments.GetOneStudent()["Программа"];
+                    var programs1 = context.Programs
+                        .Where(c => c.name == nameProgramm);
+                    certifications.idProgramm = programs1.First().id;
+
+                    var certificat = context.Certificate.Where(c => c.party == certifications.party);
+                    if (certificat.Count() < 1)
+                    {
+                        context.Certificate.Add(certifications);
+                    }
+
+                    context.SaveChanges();
+                }
             }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.EntityValidationErrors);
+            }
+            
         }
 
         /// <summary>
