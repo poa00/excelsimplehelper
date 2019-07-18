@@ -38,8 +38,8 @@ namespace ViewModel.Programs
                   {
                       if (selectedItem == null) return;
                       // получаем выделенный объект
-                      Model.DataBase.Model.Programs programs = selectedItem as Model.DataBase.Model.Programs;
-                      dataBaseContext.Programs.Remove(programs);
+                      Model.DataBase.Model.ProgramDGs programs = selectedItem as Model.DataBase.Model.ProgramDGs;
+                      dataBaseContext.ProgramDGs.Remove(programs);
                       dataBaseContext.SaveChanges();
                   }));
             }

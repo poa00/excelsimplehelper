@@ -26,7 +26,7 @@
             </Grid>
         </StackPanel>
 
-        <Grid x:Name="GridPrincipial" Margin="355,41,0.4,-0.4" Background="#dad4da"/>
+        <Grid x:Name="GridPrincipial" Margin="350,41,0.4,-0.4" Background="#dad4da"/>
 
         <Grid  Width="350" HorizontalAlignment="Left" Background="#dad4da">
             <materialDesign:TransitioningContent x:Name="TransitionContentSlide">

@@ -33,10 +33,15 @@ namespace Model.Data.SpecificationDataDocument
         private bool isCertificate12Category()
         {
             int[] teacher12Categories = Regex.Matches(Programm.name, "\\d+").Cast<Match>().Select(x => int.Parse(x.Value)).ToArray();
+            if (teacher12Categories.Length <= 0)
+            {
+                return false;
+            }
             if (teacher12Categories[0] == 12)
             {
                 return true;
             }
+            
             return false;
         }
 
