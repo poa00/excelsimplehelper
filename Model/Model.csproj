@@ -107,12 +107,11 @@
     <Compile Include="Data\PatternMVVM\StatementModel.cs" />
     <Compile Include="Data\PatternMVVM\TrainingProgramm\Programm012Model.cs" />
     <Compile Include="Data\PatternMVVM\TrainingProgramm\Programm3Model.cs" />
-    <Compile Include="Data\Record.cs" />
     <Compile Include="Data\SpecificationDataDocument\CertificateDangerousGoodsSpec.cs" />
     <Compile Include="Data\SpecificationDataDocument\DocumentEvidenceAndUdostovereniyeSpec.cs" />
     <Compile Include="Data\SpecificationDataDocument\SpecFunction.cs" />
     <Compile Include="Data\SpecificationDataDocument\StatementSpec.cs" />
-    <Compile Include="Library\Excel\LibraryRead.cs" />
+    <Compile Include="Data\StudentRecord.cs" />
     <Compile Include="Message\MessageBug.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="File\FileExcel.cs" />

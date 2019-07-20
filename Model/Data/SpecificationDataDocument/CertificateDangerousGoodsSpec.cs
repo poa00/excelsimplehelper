@@ -1,23 +1,18 @@
 ﻿using Model.DataBase.Model;
-using Model.Message;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Model.Data.SpecificationDataDocument
 {
     public class CertificateDangerousGoodsSpec : SpecFunction
     {
-        private Record[] CertificateDangerousGoodsRecords;
+        private StudentRecord[] CertificateDangerousGoodsRecords;
         private string Number;
         private string DateIssue;
         private ProgramDGs Programm;
         public bool IsCertificate12Category;
 
-        public CertificateDangerousGoodsSpec(Record[] records, string dateIssue, string number, ProgramDGs programm)
+        public CertificateDangerousGoodsSpec(StudentRecord[] records, string dateIssue, string number, ProgramDGs programm)
         {
             CertificateDangerousGoodsRecords = records;
             DateIssue = dateIssue;
@@ -27,7 +22,7 @@ namespace Model.Data.SpecificationDataDocument
         }
 
         /// <summary>
-        /// Сертификат 12 категории
+        /// Проверка является ли сертификат 12 категории
         /// </summary>
         /// <returns></returns>
         private bool isCertificate12Category()
@@ -45,11 +40,14 @@ namespace Model.Data.SpecificationDataDocument
             return false;
         }
 
-        public Record[] GetRecords()
+        public StudentRecord[] GetRecords()
         {
             return CertificateDangerousGoodsRecords;
         }
 
+        /// <summary>
+        /// Корректирует данные для сертификата ОГ
+        /// </summary>
         public void Correction()
         {
             IsCertificate12Category = isCertificate12Category();
@@ -71,13 +69,24 @@ namespace Model.Data.SpecificationDataDocument
             }
         }
 
-        public Record CorrectData(Record dataStudent)
+        /// <summary>
+        /// Добавляет дату выдачи
+        /// </summary>
+        /// <param name="dataStudent"></param>
+        /// <returns></returns>
+        public StudentRecord CorrectData(StudentRecord dataStudent)
         {
             dataStudent.AddPropertyRecord("ДатаВыдачи", DateIssue);
             return dataStudent;
         }
 
-        public Record CorrectNumberDocument(Record dataStudent, int id)
+        /// <summary>
+        /// Добавляет нули к числу
+        /// </summary>
+        /// <param name="dataStudent"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public StudentRecord CorrectNumberDocument(StudentRecord dataStudent, int id)
         {
             int.TryParse(string.Join("", Number.Where(c => char.IsDigit(c))), out int value);
             if ((value + id) > 10 && (value + id) < 100)
@@ -95,8 +104,12 @@ namespace Model.Data.SpecificationDataDocument
         }
 
         
-
-        public Record CorrectProgram(Record dataStudent)
+        /// <summary>
+        /// Добавляет программу и данные о ней
+        /// </summary>
+        /// <param name="dataStudent"></param>
+        /// <returns></returns>
+        public StudentRecord CorrectProgram(StudentRecord dataStudent)
         {
             dataStudent.AddPropertyRecord("НазваниеПрограммы", Programm.name);
             dataStudent.AddPropertyRecord("КогдаКемУтверждена", Programm.dateNumberApproved);

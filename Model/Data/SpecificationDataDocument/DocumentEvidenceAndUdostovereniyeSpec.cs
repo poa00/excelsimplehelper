@@ -8,9 +8,8 @@ namespace Model.Data.SpecificationDataDocument
 {
     public class DocumentEvidenceAndUdostovereniyeSpec : SpecFunction
     {
-        private Record[] InlideRecords; // Массив записей с изначальным набором данных
-        private Record[] CorrectRecords;// Массив записей oткоректированый который возвращается
-        
+        private StudentRecord[] CorrectRecords;// Массив откоректированных записей который возвращается
+
         private Dictionary<int, string> date;
 
         private string NumberCard;
@@ -19,10 +18,9 @@ namespace Model.Data.SpecificationDataDocument
         private string IssueDocumentDate;
         private Programs Programm;
 
-        public DocumentEvidenceAndUdostovereniyeSpec(Record[] records, string startEducation, string endEducation, string issueDocumentDate, string numberCard, Programs programm)
+        public DocumentEvidenceAndUdostovereniyeSpec(StudentRecord[] records, string startEducation, string endEducation, string issueDocumentDate, string numberCard, Programs programm)
         {
-            InlideRecords = records;
-            CorrectRecords = new Record[InlideRecords.Length];
+            CorrectRecords = records;
 
             NumberCard = numberCard;
             StartEducation = startEducation;
@@ -32,13 +30,13 @@ namespace Model.Data.SpecificationDataDocument
             
             date = new Dictionary<int, string>
             { 
-                { 1, "Д" },
-                { 2, "М" },
-                { 3, "Г" }
+                { 1, "Д" },// день
+                { 2, "М" },// месяц
+                { 3, "Г" } // год
             };
         }
 
-        public Record[] GetRecords()
+        public StudentRecord[] GetRecords()
         {
             return CorrectRecords;
         }
@@ -48,28 +46,34 @@ namespace Model.Data.SpecificationDataDocument
         /// </summary>
         public void Correction()
         {
-            for (int i = 0; i < InlideRecords.Length; i++)
+            for (int i = 0; i < CorrectRecords.Length; i++)
             {
-                InlideRecords[i] = CorrectFIO(InlideRecords[i]);
-                InlideRecords[i] = CorrectNumberSertificate(InlideRecords[i], i);
-                InlideRecords[i] = CorrectDate(InlideRecords[i]);
-                InlideRecords[i] = CorrectMark(InlideRecords[i], i);
-                InlideRecords[i] = CorrectProgram(InlideRecords[i]);
-                CorrectRecords[i] = InlideRecords[i];
+                CorrectRecords[i] = CorrectFIO(CorrectRecords[i]);
+                CorrectRecords[i] = CorrectNumberSertificate(CorrectRecords[i], i);
+                CorrectRecords[i] = CorrectDate(CorrectRecords[i]);
+                CorrectRecords[i] = CorrectMark(CorrectRecords[i], i);
+                CorrectRecords[i] = CorrectProgram(CorrectRecords[i]);
             }            
         }
 
+        /// <summary>
+        /// Коррекитровка данных для загрузки сертификата данными из базы данных
+        /// </summary>
         public void CorrectionLoad()
         {
-            for (int i = 0; i < InlideRecords.Length; i++)
+            for (int i = 0; i < CorrectRecords.Length; i++)
             {
-                InlideRecords[i] = CorrectDate(InlideRecords[i]);
-                InlideRecords[i] = CorrectProgram(InlideRecords[i]);
-                CorrectRecords[i] = InlideRecords[i];
+                CorrectRecords[i] = CorrectDate(CorrectRecords[i]);
+                CorrectRecords[i] = CorrectProgram(CorrectRecords[i]);
             }
         }
 
-        private Record CorrectProgram(Record dataStudent)
+        /// <summary>
+        /// Добавляет программу и данные о ней
+        /// </summary>
+        /// <param name="dataStudent"></param>
+        /// <returns></returns>
+        private StudentRecord CorrectProgram(StudentRecord dataStudent)
         {
             dataStudent.AddPropertyRecord("Программа", Programm.name);
             dataStudent.AddPropertyRecord("Уроки", Programm.Lesson.Name.ToString());
@@ -86,7 +90,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="student"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        private Record CorrectNumberSertificate(Record dataStudent, int id)
+        private StudentRecord CorrectNumberSertificate(StudentRecord dataStudent, int id)
         {
             id = id + 1;
             if (id < 10)
@@ -101,10 +105,10 @@ namespace Model.Data.SpecificationDataDocument
         }
 
         /// <summary>
-        /// Корректировка дат под сертификат
+        /// Корректировка дат под сертификат (Н - начало обучения, К - конец обучения, П - Получение)
         /// </summary>
         /// <param name="idStudent"> Номер студента</param>
-        private Record CorrectDate(Record dataStudent)
+        private StudentRecord CorrectDate(StudentRecord dataStudent)
         {
             for (int i = 1; i < 4; i++)
             {
@@ -130,7 +134,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="student"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        private Record CorrectMark(Record dataStudent, int id)
+        private StudentRecord CorrectMark(StudentRecord dataStudent, int id)
         {
             string mark = dataStudent.GetOneStudent()["Оценка"];
             if (mark.Equals("5"))

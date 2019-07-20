@@ -100,7 +100,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="student"></param>
         /// <param name="InitialString"></param>
         /// <returns></returns>
-        protected Record CorrectFIO(Record dataStudent)
+        protected StudentRecord CorrectFIO(StudentRecord dataStudent)
         {
             string[] fio = CutFromStringElements(dataStudent.GetOneStudent()["ФИО"], ' ');
             if (fio.Length < 3)

@@ -1,28 +1,39 @@
 ﻿using System;
 using Model.Data;
-using Model.Library.Excel;
-using Model.Message;
+using OfficeOpenXml;
+using System.IO;
 
 namespace Model.File
 {
     /// <summary>
-    /// Файл эксель в ввиде массива 
+    /// Файл эксель
     /// </summary>
-    public class FileExcel : LibraryRead
+    public class FileExcel
     {
         /// <summary>
         /// Лист с записями студентов
         /// </summary>
-        private Record[] records;
-        private int Line;
-        public FileExcel(string path, int Sheet) : base(path, Sheet)
+        private StudentRecord[] studentRecords;
+        /// <summary>
+        /// Количество заполненых строк в файле
+        /// </summary>
+        private int filledString;
+        public FileInfo existingFile;
+        public ExcelPackage package;
+        public ExcelWorksheet worksheet;
+        const int LINE_NUMBER_FROM_WHICH_FILE_IS_FILED = 2;
+
+        public FileExcel(string path, int Sheet)
         {
+            existingFile = new FileInfo(path);
+            package = new ExcelPackage(existingFile);
+            worksheet = package.Workbook.Worksheets[Sheet];
             GetLineAndColumn();
         }
 
-        public Record[] GetRecords()
+        public StudentRecord[] GetRecords()
         {
-            return records;
+            return studentRecords;
         }
 
         /// <summary>
@@ -31,13 +42,14 @@ namespace Model.File
         /// <returns></returns>
         private void GetLineAndColumn()
         {
-            int line = 2;
-            while (worksheet.Cells[line, 1].Value != null)
+            // 1 строка в файле названия колонок, со 2 начинаются данные
+            int fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;
+            while (worksheet.Cells[fileLine, 1].Value != null)
             {
-                line++;
+                fileLine++;
             }
-            Line = line - 2;
-            records = new Record[Line];
+            filledString = fileLine - LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;
+            studentRecords = new StudentRecord[filledString];
         }
 
         /// <summary>
@@ -48,27 +60,27 @@ namespace Model.File
         {
             using (package)
             {
-                int line = 2;// строка в файле excel
+                int fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;// строка в файле excel
                 GetLineAndColumn();
-                while (worksheet.Cells[line, 1].Value != null)
+                while (worksheet.Cells[fileLine, 1].Value != null)
                 {
 
-                    int column = 1;// столбец      
-                    Record record = new Record();
-                    while (worksheet.Cells[1, column].Value != null)
+                    int fileСolumn = 1;// столбец      
+                    StudentRecord record = new StudentRecord();
+                    while (worksheet.Cells[1, fileСolumn].Value != null)
                     {
-                        if (worksheet.Cells[line, column].Value != null)
+                        if (worksheet.Cells[fileLine, fileСolumn].Value != null)
                         {
-                            record.AddPropertyRecord(Convert.ToString(worksheet.Cells[1, column].Value), Convert.ToString(worksheet.Cells[line, column].Value));
+                            record.AddPropertyRecord(Convert.ToString(worksheet.Cells[1, fileСolumn].Value), Convert.ToString(worksheet.Cells[fileLine, fileСolumn].Value));
                         }
                         else
                         {
-                            record.AddPropertyRecord(Convert.ToString(worksheet.Cells[1, column].Value), " ");
+                            record.AddPropertyRecord(Convert.ToString(worksheet.Cells[1, fileСolumn].Value), " ");
                         }
-                        column++;
+                        fileСolumn++;
                     }
-                    records[line - 2] = record;
-                    line++;
+                    studentRecords[fileLine - LINE_NUMBER_FROM_WHICH_FILE_IS_FILED] = record;
+                    fileLine++;
                 }
             }
         }

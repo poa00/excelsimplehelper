@@ -46,14 +46,14 @@ namespace ViewModel.Programs
             }
         }
 
-        RelayCommand certifictateProgrammDelete;
+        RelayCommand programmDeleteDelete;
         // команда удаления
-        public RelayCommand CertifictateProgrammDelete
+        public RelayCommand ProgrammDeleteDelete
         {
             get
             {
-                return certifictateProgrammDelete ??
-                  (certifictateProgrammDelete = new RelayCommand((selectedItem) =>
+                return programmDeleteDelete ??
+                  (programmDeleteDelete = new RelayCommand((selectedItem) =>
                   {
                       if (selectedItem == null) return;
                       // получаем выделенный объект

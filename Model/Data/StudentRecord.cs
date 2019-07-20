@@ -6,14 +6,14 @@ using System.Linq;
 namespace Model.Data
 {
     /// <summary>
-    /// Запись об одном человеке
+    /// Запись об одном студенте
     /// </summary>
-    public class Record
+    public class StudentRecord
     {
         private Dictionary<string, string> OneStudent;
         public Dictionary<string, string> GetOneStudent() => OneStudent;
 
-        public Record()
+        public StudentRecord()
         {
             OneStudent = new Dictionary<string, string>();
         }
@@ -46,7 +46,7 @@ namespace Model.Data
         /// Обединение записей
         /// </summary>
         /// <param name="record">Массив записей</param>
-        public void ConcatRecord(Record record)
+        public void ConcatRecord(StudentRecord record)
         {
             if (record == null)
             {
