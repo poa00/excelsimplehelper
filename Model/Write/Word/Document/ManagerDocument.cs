@@ -42,9 +42,7 @@ namespace Model.Write.Word.Document
         {
             if (EvidenceAndUdostovereniye != null && EvidenceAndUdostovereniye.IsSelectedStatement == true)
             {
-                StatementModel statementModel = new StatementModel();
-                statementModel.Group = group;
-                Statement statement = new Statement(studentRecord, Program.name, statementModel);
+                Statement statement = new Statement(studentRecord, Program.name, group);
                 statement.DocumentCreate();
             }
         }
@@ -57,10 +55,7 @@ namespace Model.Write.Word.Document
         {
             if (CertificateDangerousGoods != null && CertificateDangerousGoods.IsSelectedStatement == true)
             {
-                StatementModel statementModel = new StatementModel();
-                statementModel.Group = group;
-                statementModel.Number = number;
-                Statement statement = new Statement(studentRecord, ProgramDG.name, statementModel);
+                Statement statement = new Statement(studentRecord, ProgramDG.name, group, number);
                 statement.DocumentCreate();
             }
         }

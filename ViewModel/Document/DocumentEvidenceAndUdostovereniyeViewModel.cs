@@ -23,7 +23,7 @@ namespace ViewModel.Document
                 DateEndEducation = "25.06.2019",
                 DateIssueDocument = "25.06.2019",
                 IsSelectedStatement = true,
-                Group = "666",
+                Group = "777",
                 Programs = DataBaseContext.Programs.Local.ToBindingList()
             };
         }

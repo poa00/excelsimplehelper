@@ -104,7 +104,6 @@
     <Compile Include="Data\PatternMVVM\DocumentEvidenceAndUdostovereniyeModel.cs" />
     <Compile Include="Data\PatternMVVM\FindCertificateModel.cs" />
     <Compile Include="Data\PatternMVVM\PathModel.cs" />
-    <Compile Include="Data\PatternMVVM\StatementModel.cs" />
     <Compile Include="Data\PatternMVVM\TrainingProgramm\Programm012Model.cs" />
     <Compile Include="Data\PatternMVVM\TrainingProgramm\Programm3Model.cs" />
     <Compile Include="Data\SpecificationDataDocument\CertificateDangerousGoodsSpec.cs" />

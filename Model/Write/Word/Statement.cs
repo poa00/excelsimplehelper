@@ -8,6 +8,9 @@ using Xceed.Words.NET;
 
 namespace Model.Write.Word
 {
+    /// <summary>
+    /// Ведомость
+    /// </summary>
     public class Statement
     {
         //Количество колонок в таблице
@@ -19,14 +22,25 @@ namespace Model.Write.Word
         // Размер отступа в таблице
         private int SizeIndentationHanging;
         private string[] BookamrkStatement;
-        //private StatementSpec statementSpec;
-        private StatementModel StatementModel;
+        // Номер студента в ведомости
+        public string Number;
+        // Группа обучения
+        public string Group;
         private StudentRecord[] records;
 
-        public Statement(StudentRecord[] record, string programName, StatementModel statementModel)
+        public Statement(StudentRecord[] record, string programName, string group)
         {
             ProgramName = programName;
-            StatementModel = statementModel;
+            Group = group;
+            BookamrkStatement = new string[2] { "группа", "Программа" };
+            SizeIndentationHanging = 300;
+            records = record;
+        }
+        public Statement(StudentRecord[] record, string programName, string group, string number)
+        {
+            ProgramName = programName;
+            Number = number;
+            Group = group;
             BookamrkStatement = new string[2] { "группа", "Программа" };
             SizeIndentationHanging = 300;
             records = record;
@@ -91,12 +105,12 @@ namespace Model.Write.Word
                 NameProgrammBookmark.SetText(records[0].GetOneStudent()["Программа"]);
 
                 var IdGroupBookmark = document.Bookmarks["группа"];
-                IdGroupBookmark.SetText(StatementModel.Group);
+                IdGroupBookmark.SetText(Group);
 
                 document.InsertTable(CreateTable());
 
                 document.InsertParagraph("Методист АУЦ					Ю.А. Нестеренко ").FontSize(14).Bold();
-                document.SaveAs(Properties.Settings.Default.TextPathFolderResult + "\\Ведомость_" + StatementModel.Group + "-группы.doc");
+                document.SaveAs(Properties.Settings.Default.TextPathFolderResult + "\\Ведомость_" + Group + "-группы.doc");
             }
             return MessageBug.GetMessages();
         }
