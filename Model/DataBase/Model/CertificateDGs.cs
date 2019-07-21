@@ -46,9 +46,9 @@ namespace Model.DataBase.Model
 
         public void LoadCertification(CertificateDGs certification)
         {
-            string[] bookmarkWord = new string[7] { "КогдаКемУтверждена", "ДатаВыдачи", "Имя", "НазваниеПрограммы", "Номер", "Отчество", "Фамилия" };
-            Record[] DateFromFile = new Record[1];
-            DateFromFile[0] = new Record();
+            string[] bookmarkWord = new string[7] { "КогдаКемУтверждена", "ДатаВыдачи", "Имя", "Программа", "Номер", "Отчество", "Фамилия" };
+            StudentRecord[] DateFromFile = new StudentRecord[1];
+            DateFromFile[0] = new StudentRecord();
             DateFromFile[0].AddPropertyRecord("Фамилия", certification.Students.surname);
             DateFromFile[0].AddPropertyRecord("Имя", certification.Students.name);
             DateFromFile[0].AddPropertyRecord("Отчество", certification.Students.patronymic);
@@ -66,7 +66,7 @@ namespace Model.DataBase.Model
         /// также сохраняет студента если его нет в базе
         /// </summary>
         /// <param name="DataForDocuments">данные для сохранения</param>
-        public void SaveSertification(Record DataForDocuments)
+        public void SaveSertification(StudentRecord DataForDocuments)
         {
             using (DataBaseContext context = new DataBaseContext())
             {
@@ -82,7 +82,7 @@ namespace Model.DataBase.Model
                 certifications.idStudent = student.SaveStudent(context, name, surname, patronymic, dateBirth);
 
 
-                string nameProgramm = DataForDocuments.GetOneStudent()["НазваниеПрограммы"].Trim();
+                string nameProgramm = DataForDocuments.GetOneStudent()["Программа"].Trim();
                 var programs1 = context.ProgramDGs
                     .Where(c => c.name == nameProgramm);
                 certifications.idProgramDG = programs1.First().id;

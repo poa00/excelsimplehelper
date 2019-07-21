@@ -24,7 +24,7 @@ namespace Model.Write.Word.Document
         private FileExcel DateFromFile;
         private string PathResult;
         private string PathTemplateWord;
-        private Record[] DataForDocuments;
+        private StudentRecord[] DataForDocuments;
         private string TypeDocument;
         private string Group;
 
@@ -34,7 +34,7 @@ namespace Model.Write.Word.Document
         /// <param name="program">Программа(Модель)</param>
         /// <param name="evidenceAndUdostovereniyeSpec">Данные которые будут добавляться в файл</param>
         /// <param name="pathTemplateWord">Путь к шаблону ворда</param>
-        public Document_(Record[] recordSpec, string pathTemplateWord, string group)
+        public Document_(StudentRecord[] recordSpec, string pathTemplateWord, string group)
         {
             PathTemplateWord = pathTemplateWord;
             DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudents, 1);
@@ -80,7 +80,7 @@ namespace Model.Write.Word.Document
         public void CreateDocument()
         {
             CreatingFolderForDocuments();
-            if (DataForDocuments.Length > 10)
+            if (DataForDocuments.Length > 3)
             {
                 CreateDocParallel();
             }
@@ -172,7 +172,7 @@ namespace Model.Write.Word.Document
             }
         }
 
-        private void SaveDocument(Record DataForDocuments)
+        private void SaveDocument(StudentRecord DataForDocuments)
         {
             if (DataForDocuments.GetOneStudent()["Тип"] == "Сертификат ОГ")
             {

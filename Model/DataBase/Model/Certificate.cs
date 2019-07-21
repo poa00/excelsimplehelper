@@ -63,8 +63,8 @@ namespace Model.DataBase.Model
         /// <param name="bookmarkWord"></param>
         private void loadCertificate(Certificate certification, string[] bookmarkWord)
         {
-            Record[] DateFromFile = new Record[1];
-            DateFromFile[0] = new Record();
+            StudentRecord[] DateFromFile = new StudentRecord[1];
+            DateFromFile[0] = new StudentRecord();
             DateFromFile[0].AddPropertyRecord("Фамилия", certification.Students.surname);
             DateFromFile[0].AddPropertyRecord("Имя", certification.Students.name);
             DateFromFile[0].AddPropertyRecord("Отчество", certification.Students.patronymic);
@@ -102,7 +102,7 @@ namespace Model.DataBase.Model
         /// также сохраняет студента если его нет в базе
         /// </summary>
         /// <param name="DataForDocuments">данные для сохранения</param>
-        public void SaveCertificate(Record DataForDocuments)
+        public void SaveCertificate(StudentRecord DataForDocuments)
         {
             try
             {

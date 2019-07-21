@@ -11,6 +11,7 @@ namespace UnitTest.Excel
         public void TestMethod1()
         {
             FileExcel reader = new FileExcel(@"C:\Users\NikitaK\Documents\Создание ведомостей\Группы\634.xlsx", 1);
+            reader.ReadFile();
             string ExpectedBookmarkFio_Min = "ФИО";
             string ExpectedValueFio_Min = "Бакиров Даурен Зиннурович";
 
@@ -19,7 +20,7 @@ namespace UnitTest.Excel
 
             string ExpectedBookmarkMark_Min = "Оценка";
             string ExpectedValueMark_Min = "4";
-               
+
             string ExpectedBookmarkFio = "ФИО";
             string ExpectedValueFio = "Глушко Семен Эдуардович";
 

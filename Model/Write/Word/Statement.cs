@@ -1,4 +1,5 @@
-﻿using Model.Data.PatternMVVM;
+﻿using Model.Data;
+using Model.Data.PatternMVVM;
 using Model.Data.SpecificationDataDocument;
 using Model.File;
 using Model.Message;
@@ -18,17 +19,17 @@ namespace Model.Write.Word
         // Размер отступа в таблице
         private int SizeIndentationHanging;
         private string[] BookamrkStatement;
-        private StatementSpec statementSpec;
+        //private StatementSpec statementSpec;
         private StatementModel StatementModel;
-        private FileExcel DateFromFile;
+        private StudentRecord[] records;
 
-        public Statement(string programName, StatementModel statementModel)
+        public Statement(StudentRecord[] record, string programName, StatementModel statementModel)
         {
             ProgramName = programName;
             StatementModel = statementModel;
-            BookamrkStatement = new string[2] { "группа", "НаименованиеПрограммыУтверждения" };
+            BookamrkStatement = new string[2] { "группа", "Программа" };
             SizeIndentationHanging = 300;
-            DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudents, 1);
+            records = record;
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Model.Write.Word
         /// <returns></returns>
         public Table CreateTable()
         {
-            for (int row = 1; row <= statementSpec.GetRecords().Length; row++)
+            for (int row = 1; row <= records.Length; row++)
             {
                 TableRegister.Rows[row].Cells[0].Paragraphs[0].IndentationHanging = SizeIndentationHanging;
                 TableRegister.Rows[row].Cells[0].Width = 25;
@@ -62,14 +63,13 @@ namespace Model.Write.Word
                 TableRegister.Rows[row].Cells[1].Paragraphs[0].IndentationHanging = SizeIndentationHanging;
                 TableRegister.Rows[row].Cells[1].Width = 220;
 
-
-                TableRegister.Rows[row].Cells[1].Paragraphs[0].Append(statementSpec.GetRecords()[row - 1].GetOneStudent()["ФИО"]).FontSize(11);
+                TableRegister.Rows[row].Cells[1].Paragraphs[0].Append(records[row - 1].GetOneStudent()["Фамилия"] + " " + " " + records[row - 1].GetOneStudent()["Имя"] + " " + records[row - 1].GetOneStudent()["Отчество"]).FontSize(11);
 
                 TableRegister.Rows[row].Cells[2].Paragraphs[0].IndentationHanging = SizeIndentationHanging;
-                TableRegister.Rows[row].Cells[2].Paragraphs[0].Append(statementSpec.GetRecords()[row - 1].GetOneStudent()["ДатаРождения"]).FontSize(11);
+                TableRegister.Rows[row].Cells[2].Paragraphs[0].Append(records[row - 1].GetOneStudent()["ДатаРождения"]).FontSize(11);
 
                 TableRegister.Rows[row].Cells[3].Paragraphs[0].IndentationHanging = SizeIndentationHanging;
-                TableRegister.Rows[row].Cells[3].Paragraphs[0].Append(statementSpec.GetRecords()[row - 1].GetOneStudent()["группа"]).FontSize(11);
+                TableRegister.Rows[row].Cells[3].Paragraphs[0].Append(records[row - 1].GetOneStudent()["Номер"]).FontSize(11);
 
                 TableRegister.Rows[row].Cells[4].Paragraphs[0].Append(" ").FontSize(11);
             }
@@ -83,24 +83,13 @@ namespace Model.Write.Word
         /// <param name="records"></param>
         public List<string> DocumentCreate()
         {
-            DateFromFile.ReadFile();
-            if (StatementModel.Number == null)
-            {
-                statementSpec = new StatementSpec(DateFromFile.GetRecords(), StatementModel.Group, ProgramName);
-            }
-            else
-            {
-                statementSpec = new StatementSpec(DateFromFile.GetRecords(), StatementModel.Group, StatementModel.Number, ProgramName);
-            }
-
-            statementSpec.Correction();
             using (var document = DocX.Load(Properties.Settings.Default.TextPathFileWordStatementTemplate))
             {
-                TableRegister = document.AddTable(statementSpec.GetRecords().Length + 1, COLUMN_REGISTER);
+                TableRegister = document.AddTable(records.Length + 1, COLUMN_REGISTER);
                 SettingStatement();
-                var NameProgrammBookmark = document.Bookmarks["НаименованиеПрограммыУтверждения"];
-                NameProgrammBookmark.SetText(statementSpec.GetRecords()[0].GetOneStudent()["НаименованиеПрограммыУтверждения"]);
-                
+                var NameProgrammBookmark = document.Bookmarks["Программа"];
+                NameProgrammBookmark.SetText(records[0].GetOneStudent()["Программа"]);
+
                 var IdGroupBookmark = document.Bookmarks["группа"];
                 IdGroupBookmark.SetText(StatementModel.Group);
 

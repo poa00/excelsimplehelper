@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Model.Data.SpecificationDataDocument
 {
+    /// <summary>
+    /// Данные в форме для свидетельства и удостоверений
+    /// </summary>
     public class DocumentEvidenceAndUdostovereniyeSpec : SpecFunction
     {
         private StudentRecord[] CorrectRecords;// Массив откоректированных записей который возвращается

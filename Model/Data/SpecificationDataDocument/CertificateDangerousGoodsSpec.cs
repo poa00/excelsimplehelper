@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace Model.Data.SpecificationDataDocument
 {
+    /// <summary>
+    /// Данные в форме для сертификата ОГ
+    /// </summary>
     public class CertificateDangerousGoodsSpec : SpecFunction
     {
         private StudentRecord[] CertificateDangerousGoodsRecords;
@@ -89,7 +92,7 @@ namespace Model.Data.SpecificationDataDocument
         public StudentRecord CorrectNumberDocument(StudentRecord dataStudent, int id)
         {
             int.TryParse(string.Join("", Number.Where(c => char.IsDigit(c))), out int value);
-            if ((value + id) > 10 && (value + id) < 100)
+            if ((value + id) >=  10 && (value + id) < 100)
             {
                 dataStudent.AddPropertyRecord("Номер", "0" + (value + id).ToString());
                 return dataStudent;
@@ -111,7 +114,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <returns></returns>
         public StudentRecord CorrectProgram(StudentRecord dataStudent)
         {
-            dataStudent.AddPropertyRecord("НазваниеПрограммы", Programm.name);
+            dataStudent.AddPropertyRecord("Программа", Programm.name);
             dataStudent.AddPropertyRecord("КогдаКемУтверждена", Programm.dateNumberApproved);
             dataStudent.AddPropertyRecord("Тип", Programm.TypeDocument.Name);
             return dataStudent;

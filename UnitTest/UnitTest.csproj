@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Excel\UnitTestFileExcel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecificationData\UnitCertificateDangerousGoodsSpec.cs" />
     <Compile Include="SpecificationData\UnitUdostovereniyeSpec.cs" />
   </ItemGroup>
   <ItemGroup>

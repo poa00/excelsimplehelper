@@ -1,4 +1,5 @@
-﻿using Model.Data.PatternMVVM;
+﻿using Model.Data;
+using Model.Data.PatternMVVM;
 using Model.Data.SpecificationDataDocument;
 using Model.DataBase.Model;
 using Model.File;
@@ -37,13 +38,13 @@ namespace Model.Write.Word.Document
         /// Создает ведомость, если пользователь захочет
         /// </summary>
         /// <param name="group">группа</param>
-        private void isStatement(string group)
+        private void isStatement(StudentRecord[] studentRecord, string group)
         {
-            if (EvidenceAndUdostovereniye != null)
+            if (EvidenceAndUdostovereniye != null && EvidenceAndUdostovereniye.IsSelectedStatement == true)
             {
                 StatementModel statementModel = new StatementModel();
                 statementModel.Group = group;
-                Statement statement = new Statement(Program.name, statementModel);
+                Statement statement = new Statement(studentRecord, Program.name, statementModel);
                 statement.DocumentCreate();
             }
         }
@@ -52,14 +53,14 @@ namespace Model.Write.Word.Document
         /// Создает ведомость, если пользователь захочет
         /// </summary>
         /// <param name="group">группа</param>
-        private void isStatement(string number, string group)
+        private void isStatement(StudentRecord[] studentRecord, string number, string group)
         {
-            if (CertificateDangerousGoods != null)
+            if (CertificateDangerousGoods != null && CertificateDangerousGoods.IsSelectedStatement == true)
             {
                 StatementModel statementModel = new StatementModel();
                 statementModel.Group = group;
                 statementModel.Number = number;
-                Statement statement = new Statement(ProgramDG.name, statementModel);
+                Statement statement = new Statement(studentRecord, ProgramDG.name, statementModel);
                 statement.DocumentCreate();
             }
         }
@@ -74,7 +75,7 @@ namespace Model.Write.Word.Document
                                                                         EvidenceAndUdostovereniye.DateIssueDocument, EvidenceAndUdostovereniye.Group, Program);
             dataSpec.Correction();
 
-            isStatement(EvidenceAndUdostovereniye.Group);
+            isStatement(dataSpec.GetRecords(), EvidenceAndUdostovereniye.Group);
             
             if (IdDocument == 0)
             {
@@ -99,7 +100,7 @@ namespace Model.Write.Word.Document
             CertificateDangerousGoodsSpec dataSpec = new CertificateDangerousGoodsSpec(DateFromFile.GetRecords(), CertificateDangerousGoods.DateIssue, CertificateDangerousGoods.Number, ProgramDG);
             dataSpec.Correction();
 
-            isStatement(CertificateDangerousGoods.Number, CertificateDangerousGoods.Group);
+            isStatement(dataSpec.GetRecords(), CertificateDangerousGoods.Number, CertificateDangerousGoods.Group);
             if (dataSpec.IsCertificate12Category == true)
             {
                 PathTemplate = Properties.Settings.Default.TextPathFileWordCertificate12DGTemplate;
@@ -137,7 +138,7 @@ namespace Model.Write.Word.Document
                 }
                 if (IdDocument == 3)
                 {
-                    string[] bookmarkWord = new string[7] { "КогдаКемУтверждена", "ДатаВыдачи", "Имя", "НазваниеПрограммы", "Номер", "Отчество", "Фамилия" };
+                    string[] bookmarkWord = new string[7] { "КогдаКемУтверждена", "ДатаВыдачи", "Имя", "Программа", "Номер", "Отчество", "Фамилия" };
                     createCertificateDG(bookmarkWord);
                 }
                 return MessageBug.GetMessages();

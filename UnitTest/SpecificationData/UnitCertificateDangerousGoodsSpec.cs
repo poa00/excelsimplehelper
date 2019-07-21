@@ -1,29 +1,29 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model.Data;
 using Model.Data.SpecificationDataDocument;
-using Model.DataBase.Context;
 using Model.DataBase.Model;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace UnitTest.SpecificationData
 {
     [TestClass]
-    public class UnitUdostovereniyeSpec
+    public class UnitCertificateDangerousGoodsSpec
     {
         StudentRecord[] Records;
-        Programs Program;
+        ProgramDGs Program;
 
-        public UnitUdostovereniyeSpec()
+        public UnitCertificateDangerousGoodsSpec()
         {
-            Program = new Programs();
-            Program.Lesson = new Lesson();
-            Program.Lesson.Name = "teste";
+            Program = new ProgramDGs();
+            Program.dateNumberApproved = "sad";
+            Program.name = "tests";
             Program.TypeDocument = new TypeDocument();
-            Program.TypeDocument.Name = "sss";
-            Program.name = "teset";
-            Program.training = "не важно";
+            Program.TypeDocument.Name = "te";
+
             Records = new StudentRecord[12];
             StudentRecord record0 = new StudentRecord();
             record0.AddPropertyRecord("ФИО", "Бакиров Даурен Зиннурович");
@@ -97,32 +97,18 @@ namespace UnitTest.SpecificationData
             record11.AddPropertyRecord("ДатаРождения", "29.01.1987 00:00:00");
             Records[11] = record11;
         }
-        
+
         [TestMethod]
-        public void TestMethodCorrection()
+        public void TestMethod()
         {
-            DocumentEvidenceAndUdostovereniyeSpec certificationSpec = new DocumentEvidenceAndUdostovereniyeSpec(Records, "01.01.2018", "02.01.2019",
-                                                                        "03.02.2020", "666", Program);
+            CertificateDangerousGoodsSpec certificationSpec = new CertificateDangerousGoodsSpec(Records, "01.01.2018", "2", Program);
             certificationSpec.Correction();
             Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Отчество"], "Зиннурович");
             Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Фамилия"], "Бакиров");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Оценка"], "четыре");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Номер"], "666-01");
             Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Имя"], "Даурен");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["НД"], "01");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["НМ"], "января");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["НГ"], "18");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["КД"], "02");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["КМ"], "января");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["КГ"], "19");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["ПД"], "03");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["ПМ"], "февраля");
-            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["ПГ"], "20");
+            Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Номер"], "002");
 
-            Assert.AreEqual(certificationSpec.GetRecords()[9].GetOneStudent()["Номер"], "666-10");
-            Assert.AreEqual(certificationSpec.GetRecords()[8].GetOneStudent()["Номер"], "666-09");
-
-            Assert.AreEqual(certificationSpec.GetRecords()[11].GetOneStudent()["Оценка"], "пять");
+            Assert.AreEqual(certificationSpec.GetRecords()[10].GetOneStudent()["Номер"], "012");
         }
     }
 }
