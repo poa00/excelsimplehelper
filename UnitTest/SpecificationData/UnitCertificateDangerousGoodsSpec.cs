@@ -99,7 +99,7 @@ namespace UnitTest.SpecificationData
         }
 
         [TestMethod]
-        public void TestMethod()
+        public void TestMethodCorrection()
         {
             CertificateDangerousGoodsSpec certificationSpec = new CertificateDangerousGoodsSpec(Records, "01.01.2018", "2", Program);
             certificationSpec.Correction();
