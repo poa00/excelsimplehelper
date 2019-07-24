@@ -141,8 +141,8 @@ namespace Model.Write.Word.Document
                             }
                         }
                     }
-                    SaveDocument(DataForDocuments[j]);
                     document.SaveAs(PathResult + "\\" + DataForDocuments[j].GetOneStudent()["Фамилия"] + "_" + DataForDocuments[j].GetOneStudent()["Имя"] + "_" + DataForDocuments[j].GetOneStudent()["Отчество"] + "_" + DataForDocuments[j].GetOneStudent()["Номер"] + ".doc");
+                    SaveDocument(DataForDocuments[j]);
                 }
             }
         }

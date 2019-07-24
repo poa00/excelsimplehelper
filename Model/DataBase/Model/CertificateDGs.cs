@@ -82,7 +82,7 @@ namespace Model.DataBase.Model
                 certifications.idStudent = student.SaveStudent(context, name, surname, patronymic, dateBirth);
 
 
-                string nameProgramm = DataForDocuments.GetOneStudent()["Программа"].Trim();
+                string nameProgramm = DataForDocuments.GetOneStudent()["Программа"];
                 var programs1 = context.ProgramDGs
                     .Where(c => c.name == nameProgramm);
                 certifications.idProgramDG = programs1.First().id;

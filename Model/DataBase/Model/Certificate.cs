@@ -104,9 +104,7 @@ namespace Model.DataBase.Model
         /// <param name="DataForDocuments">данные для сохранения</param>
         public void SaveCertificate(StudentRecord DataForDocuments)
         {
-            try
-            {
-                using (DataBaseContext context = new DataBaseContext())
+             using (DataBaseContext context = new DataBaseContext())
                 {
                     Certificate certifications = new Certificate();
                     certifications.endEducation = DataForDocuments.GetOneStudent()["КД"] + "." + DataForDocuments.GetOneStudent()["КМ"] + "." + DataForDocuments.GetOneStudent()["КГ"];
@@ -136,12 +134,6 @@ namespace Model.DataBase.Model
 
                     context.SaveChanges();
                 }
-            }
-            catch (DbEntityValidationException e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.EntityValidationErrors);
-            }
             
         }
 

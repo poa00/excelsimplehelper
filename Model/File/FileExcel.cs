@@ -60,7 +60,7 @@ namespace Model.File
         {
             using (package)
             {
-                int fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;// строка в файле excel
+                int fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;// текущая строка в файле excel
                 GetLineAndColumn();
                 while (worksheet.Cells[fileLine, 1].Value != null)
                 {

@@ -79,6 +79,10 @@ namespace Model.Data
             {
                 return CheckMark(value.Trim());
             }
+            if (key.Contains("Программа"))
+            {
+                return value;
+            }
 
             return value.Trim();
         }
@@ -98,6 +102,7 @@ namespace Model.Data
             {
                 MessageBug.AddMessage("Даты нет");
                 date = "01.01.0001";
+                return date;
             }
             return date;
         }
@@ -111,11 +116,7 @@ namespace Model.Data
         {
             if (date.Length > 1)
             {
-                if (date == "пять" || date == "четыре" || date == "три")
-                {
-                    
-                }
-                else
+                if (!(date == "пять") && !(date == "четыре") && !(date == "три"))
                 {
                     MessageBug.AddMessage("Оценку запишите цифрой (5)");
                     date = " ";
