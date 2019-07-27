@@ -111,32 +111,24 @@ namespace Model.Write.Word.Document
             CertificatDG.CreateDocument();
         }
 
-        public List<string> DocumentCreate()
+        public void DocumentCreate()
         {
             DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudents, 1);
             DateFromFile.ReadFile();
-            if (MessageBug.GetMessages().Count > 0)
+            if (IdDocument == 0)
             {
-                return MessageBug.GetMessages();
+                string[] bookmarkWord = new string[19] { "Фамилия", "Имя", "Отчество", "ДатаРождения", "Номер", "Оценка", "Программа", "Уроки", "ПовышенияКвалификации", "Часы", "НД", "НМ", "НГ", "КД", "КМ", "КГ", "ПД", "ПМ", "ПГ" };
+                createCertificate(bookmarkWord);
             }
-            else
+            if (IdDocument == 1 || IdDocument == 2)
             {
-                if (IdDocument == 0)
-                {
-                    string[] bookmarkWord = new string[19] { "Фамилия", "Имя", "Отчество", "ДатаРождения", "Номер", "Оценка", "Программа", "Уроки", "ПовышенияКвалификации", "Часы", "НД", "НМ", "НГ", "КД", "КМ", "КГ", "ПД", "ПМ", "ПГ" };
-                    createCertificate(bookmarkWord);
-                }
-                if (IdDocument == 1 || IdDocument == 2)
-                {
-                    string[] bookmarkWord = new string[18] { "Фамилия", "Имя", "Отчество", "ДатаРождения", "Номер", "Оценка", "Программа", "Уроки", "Часы", "НД", "НМ", "НГ", "КД", "КМ", "КГ", "ПД", "ПМ", "ПГ" };
-                    createCertificate(bookmarkWord);
-                }
-                if (IdDocument == 3)
-                {
-                    string[] bookmarkWord = new string[7] { "КогдаКемУтверждена", "ДатаВыдачи", "Имя", "Программа", "Номер", "Отчество", "Фамилия" };
-                    createCertificateDG(bookmarkWord);
-                }
-                return MessageBug.GetMessages();
+                string[] bookmarkWord = new string[18] { "Фамилия", "Имя", "Отчество", "ДатаРождения", "Номер", "Оценка", "Программа", "Уроки", "Часы", "НД", "НМ", "НГ", "КД", "КМ", "КГ", "ПД", "ПМ", "ПГ" };
+                createCertificate(bookmarkWord);
+            }
+            if (IdDocument == 3)
+            {
+                string[] bookmarkWord = new string[7] { "КогдаКемУтверждена", "ДатаВыдачи", "Имя", "Программа", "Номер", "Отчество", "Фамилия" };
+                createCertificateDG(bookmarkWord);
             }
         }
     }

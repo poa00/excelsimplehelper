@@ -28,7 +28,21 @@ namespace Model.Data
         {
             if (bookmark == null || value == null)
                 return;
-            OneStudent.Add(bookmark.Trim(), Check(bookmark, value));
+            OneStudent.Add(bookmark, value);
+        }
+
+        /// <summary>
+        /// Добавить новую запись
+        /// Если ее нет вставить пробел
+        /// </summary>
+        /// <param name="bookmark"></param>
+        /// <param name="value"></param>
+        /// <param name="indexLine">номер строки в файле</param>
+        public void AddPropertyRecord(string bookmark, string value, int indexLine)
+        {
+            if (bookmark == null || value == null)
+                return;
+            OneStudent.Add(bookmark.Trim(), Check(bookmark, value, indexLine));
         }
 
         /// <summary>
@@ -57,6 +71,36 @@ namespace Model.Data
                                                 .OrderBy(c => c.Value)
                                                 .ToDictionary(c => c.Key, c => c.Value);           
         }
+        /// <summary>
+        /// Проверяет данные
+        /// </summary>
+        /// <param name="key">Ключ</param>
+        /// <param name="value">значение</param>
+        /// <returns></returns>
+        private string Check(string key, string value, int indexLine)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                value = " ";
+                return value;
+            }
+
+            if (key.Contains("Дата") || key.Contains("дата"))
+            {
+                return CheckDate(value.Trim(), indexLine);
+            }
+            if (key.Contains("Оценка") || key.Contains("оценка"))
+            {
+                return CheckMark(value.Trim(), indexLine);
+            }
+            if (key.Contains("Программа"))
+            {
+                return value;
+            }
+
+            return value.Trim();
+        }
+
         /// <summary>
         /// Проверяет данные
         /// </summary>
@@ -92,6 +136,27 @@ namespace Model.Data
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
+        private string CheckDate(string date, int indexLine)
+        {
+            if (date.Length > 10)
+            {
+                return date.Substring(0, 10);
+            }
+            if (date.Length < 10)
+            {
+                string bug = (MessageBug.message.Не_правильно_заполнены_данные_дата_в_файле_excel).ToString() + " в строке " + indexLine;
+                MessageBug.AddMessage(bug);
+                date = "01.01.0001";
+                return date;
+            }
+            return date;
+        }
+
+        /// <summary>
+        /// Поверяет наличие данных (даты)
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         private string CheckDate(string date)
         {
             if (date.Length > 10)
@@ -100,9 +165,27 @@ namespace Model.Data
             }
             if (date.Length < 10)
             {
-                MessageBug.AddMessage("Даты нет");
                 date = "01.01.0001";
                 return date;
+            }
+            return date;
+        }
+
+        /// <summary>
+        /// Поверяет наличие данных (Оценки)
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        private string CheckMark(string date, int indexLine)
+        {
+            if (date != " ")
+            {
+                if (date != "5" && date != "4" && date != "3")
+                {
+                    string bug = (MessageBug.message.Не_правильно_заполнены_данные_оценка_в_файле_excel).ToString() + " в строке " + indexLine;
+                    MessageBug.AddMessage(bug);
+                    return date;
+                }
             }
             return date;
         }
@@ -118,7 +201,6 @@ namespace Model.Data
             {
                 if (!(date == "пять") && !(date == "четыре") && !(date == "три"))
                 {
-                    MessageBug.AddMessage("Оценку запишите цифрой (5)");
                     date = " ";
                     return date;
                 }

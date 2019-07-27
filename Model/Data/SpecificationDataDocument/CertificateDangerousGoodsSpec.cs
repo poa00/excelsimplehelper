@@ -56,7 +56,7 @@ namespace Model.Data.SpecificationDataDocument
             IsCertificate12Category = isCertificate12Category();
             for (int i = 0; i < CertificateDangerousGoodsRecords.Length; i++)
             {
-                CertificateDangerousGoodsRecords[i] = CorrectFIO(CertificateDangerousGoodsRecords[i]);
+                CertificateDangerousGoodsRecords[i] = CorrectFIO(CertificateDangerousGoodsRecords[i], i);
                 CertificateDangerousGoodsRecords[i] = CorrectData(CertificateDangerousGoodsRecords[i]);
                 CertificateDangerousGoodsRecords[i] = CorrectNumberDocument(CertificateDangerousGoodsRecords[i], i);
                 CertificateDangerousGoodsRecords[i] = CorrectProgram(CertificateDangerousGoodsRecords[i]);

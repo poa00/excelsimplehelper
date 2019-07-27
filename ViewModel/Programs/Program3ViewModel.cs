@@ -1,5 +1,6 @@
 ﻿using Model.Data.PatternMVVM.TrainingProgramm;
 using Model.DataBase.Context;
+using Model.Message;
 using System.Data.Entity;
 using System.Windows.Input;
 
@@ -23,8 +24,16 @@ namespace ViewModel.Programs
         public ICommand AddProgramm { get; set; }
         public void addProgramm()
         {
+            MessageBug.ClearMessages();
             Model.DataBase.Model.ProgramDGs programs = new Model.DataBase.Model.ProgramDGs();
             programs.AddProgramm(Program3);
+
+            string message = " ";
+            foreach (string itr in MessageBug.GetMessages())
+            {
+                message += itr + "\n";
+            }
+            Program3.Message = message;
         }
 
         RelayCommand certifictateProgrammDelete;

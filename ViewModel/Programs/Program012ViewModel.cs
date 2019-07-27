@@ -1,5 +1,6 @@
 ﻿using Model.Data.PatternMVVM.TrainingProgramm;
 using Model.DataBase.Context;
+using Model.Message;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -37,12 +38,20 @@ namespace ViewModel.Programs
                 return addProgramm ??
                   (addProgramm = new RelayCommand((selectedItem) =>
                   {
+                      MessageBug.ClearMessages();
                       if (selectedItem == null) return;
                       // получаем выделенный объект
                       string type = selectedItem as string;
                       Model.DataBase.Model.Programs programs = new Model.DataBase.Model.Programs();
                       programs.AddProgramm(Program012, type);
-                    }));
+
+                      string message = " ";
+                      foreach (string itr in MessageBug.GetMessages())
+                      {
+                          message += itr + "\n";
+                      }
+                      Program012.Message = message;
+                  }));
             }
         }
 

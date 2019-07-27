@@ -70,5 +70,19 @@ namespace Model.Data.PatternMVVM.TrainingProgramm
                 }
             }
         }
+
+        private string _Message;
+        public string Message
+        {
+            get { return _Message; }
+            set
+            {
+                if (_Message != value)
+                {
+                    _Message = value;
+                    OnPropertyChanged("Message");
+                }
+            }
+        }
     }
 }

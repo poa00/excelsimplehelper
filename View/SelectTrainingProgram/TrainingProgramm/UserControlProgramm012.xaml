@@ -6,25 +6,25 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-            d:DesignHeight="720" d:DesignWidth="1100">
+            d:DesignHeight="720" d:DesignWidth="1200">
     <Grid>
         <StackPanel Orientation="Horizontal">
             <StackPanel HorizontalAlignment="Left" Margin="0,0,0,61" Width="520">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 20 0 0">
                     <TextBlock Text="Название программы" Width="192"/>
                     <TextBox Text="{Binding Program012.Name, Mode=TwoWay}" Height="59" Width="270"
                              AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="ru"
                              Background="white"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 20 0 0">
                     <TextBlock Text="Часы" Width="196"/>
                     <TextBox Text="{Binding Program012.Clock, Mode=TwoWay}" Height="42" Width="266"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
-                    <TextBlock Text="Повышение квалификации(Для свидетельств) ?" Width="263"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 20 0 0">
+                    <TextBlock Text="Повышение квалификации(Для свидетельств) ?" Width="266"/>
                     <TextBox Text="{Binding Program012.Training, Mode=TwoWay}" Height="21" Width="199"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 20 0 0">
                     <TextBlock Text="Тип" Width="195"/>
                     <ComboBox x:Name="Type" ItemsSource="{Binding Program012.Type}" Height="30" Width="265">
                         <ComboBox.ItemsPanel>
@@ -34,18 +34,22 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 20 0 0">
                     <TextBlock Text="Уроки" Width="100"/>
                     <TextBox Text="{Binding Program012.Lesson, Mode=TwoWay}" Height="231" Width="284" 
                              AcceptsReturn="True" TextWrapping="Wrap" SpellCheck.IsEnabled="True" Language="ru"
                              Background="white"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="40 20 0 0">
+                    <TextBlock  Width="435" Text="Сообщение" Height="16" />
+                    <TextBox Text="{Binding Program012.Message, Mode=TwoWay}" Height="86" Width="444" Margin="18,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 20 0 0">
                     <Button Content="Добавить" Command="{Binding AddProgramm}" 
                             CommandParameter="{Binding SelectedItem, ElementName=Type}"
                             Height="33" Width="100" />
                 </StackPanel>
-                
+
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right" Margin="0,0,0,61.2">

@@ -80,7 +80,7 @@ namespace Model.Write.Word.Document
         public void CreateDocument()
         {
             CreatingFolderForDocuments();
-            if (DataForDocuments.Length > 3)
+            if (DataForDocuments.Length > 8)
             {
                 CreateDocParallel();
             }
@@ -114,7 +114,8 @@ namespace Model.Write.Word.Document
             }
             else
             {
-                MessageBug.AddMessage("Что-то не так проверьте: Закладку " + BookmarksWord[idBookmark] + " (Она в Word)" + "\n");
+                string bug = (MessageBug.message.Нет_закладки_в_word).ToString() + " " + BookmarksWord[idBookmark];
+                MessageBug.AddMessage(bug);
             }
         }
 
@@ -132,14 +133,7 @@ namespace Model.Write.Word.Document
                     Bookmark bookmark = null;
                     for (int idBookmarkWord = 0; idBookmarkWord < BookmarksWord.Length; idBookmarkWord++)
                     {
-                        foreach (KeyValuePair<string, string> keyValue in DataForDocuments[j].GetOneStudent())
-                        {
-                            if (keyValue.Key.Equals(BookmarksWord[idBookmarkWord]))
-                            {
-                                InsertBookmarkCertification(bookmark, document, DataForDocuments[j].GetOneStudent()[BookmarksWord[idBookmarkWord]], idBookmarkWord);
-                                break;
-                            }
-                        }
+                       InsertBookmarkCertification(bookmark, document, DataForDocuments[j].GetOneStudent()[BookmarksWord[idBookmarkWord]], idBookmarkWord);
                     }
                     document.SaveAs(PathResult + "\\" + DataForDocuments[j].GetOneStudent()["Фамилия"] + "_" + DataForDocuments[j].GetOneStudent()["Имя"] + "_" + DataForDocuments[j].GetOneStudent()["Отчество"] + "_" + DataForDocuments[j].GetOneStudent()["Номер"] + ".doc");
                     SaveDocument(DataForDocuments[j]);
@@ -159,13 +153,7 @@ namespace Model.Write.Word.Document
                 Bookmark bookmark = null;
                 for (int idBookmarkWord = 0; idBookmarkWord < BookmarksWord.Length; idBookmarkWord++)
                 {
-                    foreach (KeyValuePair<string, string> keyValue in DataForDocuments[j].GetOneStudent())
-                    {
-                        if (keyValue.Key == BookmarksWord[idBookmarkWord])
-                        {
-                            InsertBookmarkCertification(bookmark, document, DataForDocuments[j].GetOneStudent()[BookmarksWord[idBookmarkWord]], idBookmarkWord);
-                        }
-                    }
+                    InsertBookmarkCertification(bookmark, document, DataForDocuments[j].GetOneStudent()[BookmarksWord[idBookmarkWord]], idBookmarkWord);
                 }
                 SaveDocument(DataForDocuments[j]);
                 document.SaveAs(PathResult + "\\" + DataForDocuments[j].GetOneStudent()["Фамилия"] + "_" + DataForDocuments[j].GetOneStudent()["Имя"] + "_" + DataForDocuments[j].GetOneStudent()["Отчество"] + "_" + DataForDocuments[j].GetOneStudent()["Номер"] + ".doc");

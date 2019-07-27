@@ -36,14 +36,18 @@ namespace ViewModel.Document
                     (createDocument = new RelayCommand((selectedItem) =>
                     {
                         if (selectedItem == null) return;
+                        MessageBug.ClearMessages();
                         // получаем выделенный объект
                         ProgramDGs programs = selectedItem as ProgramDGs;
                         ManagerDocument managerDocument = new ManagerDocument(programs, CertificateDangerousGoods);
-                        List<string> result = managerDocument.DocumentCreate();
-                        foreach (string itr in result)
+                        managerDocument.DocumentCreate();
+
+                        string message = " ";
+                        foreach (string itr in MessageBug.GetMessages())
                         {
-                            CertificateDangerousGoods.Message += itr + "\n";
+                            message += itr + "\n";
                         }
+                        CertificateDangerousGoods.Message = message;
                     }));
             }
         }

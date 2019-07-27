@@ -38,17 +38,20 @@ namespace Model.DataBase.Model
         {
             if (programm3Model == null)
             {
-                MessageBug.AddMessage("Модель не заполнена");
+                string bug = (MessageBug.message.Модель_не_заполнена).ToString() + " для сертификата ОГ";
+                MessageBug.AddMessage(bug);
                 return;
             }
-            if (programm3Model.Name == null)
+            if (programm3Model.Name == null || programm3Model.Name == " " || programm3Model.Name == "")
             {
-                MessageBug.AddMessage("Название программы не заполнено");
+                string bug = (MessageBug.message.Название_программы_не_заполнено).ToString() + " для сертификата ОГ";
+                MessageBug.AddMessage(bug);
                 return;
             }
-            if (programm3Model.DateNumberApproved == null)
+            if (programm3Model.DateNumberApproved == null || programm3Model.DateNumberApproved == " " || programm3Model.DateNumberApproved == "")
             {
-                MessageBug.AddMessage("Кем и когда одобрена не заполнены");
+                string bug = (MessageBug.message.Кем_и_когда_одобрена_не_заполнены).ToString() + " для сертификата ОГ";
+                MessageBug.AddMessage(bug);
                 return;
             }
             

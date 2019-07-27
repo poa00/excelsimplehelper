@@ -51,7 +51,7 @@ namespace Model.Data.SpecificationDataDocument
         {
             for (int i = 0; i < CorrectRecords.Length; i++)
             {
-                CorrectRecords[i] = CorrectFIO(CorrectRecords[i]);
+                CorrectRecords[i] = CorrectFIO(CorrectRecords[i], i);
                 CorrectRecords[i] = CorrectNumberSertificate(CorrectRecords[i], i);
                 CorrectRecords[i] = CorrectDate(CorrectRecords[i]);
                 CorrectRecords[i] = CorrectMark(CorrectRecords[i], i);
@@ -95,7 +95,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <returns></returns>
         private StudentRecord CorrectNumberSertificate(StudentRecord dataStudent, int id)
         {
-            id = id + 1;
+            id = id + DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE;
             if (id < 10)
             {
                 dataStudent.AddPropertyRecord("Номер", (NumberCard + "-0" + id).Trim());
@@ -158,20 +158,7 @@ namespace Model.Data.SpecificationDataDocument
                 dataStudent.AddPropertyRecord("Оценка", "три");
                 return dataStudent;
             }
-            if (mark.Equals("2"))
-            {
-                dataStudent.RemoveRecord("Оценка");
-                dataStudent.AddPropertyRecord("Оценка", "два");
-                return dataStudent;
-            }
-            if (mark.Equals("1"))
-            {
-                dataStudent.RemoveRecord("Оценка");
-                dataStudent.AddPropertyRecord("Оценка", "единица");
-                return dataStudent;
-            }
             
-            MessageBug.AddMessage("Оценка неверно записана по индексу: " + (id + 1));
             return dataStudent;
         }
         

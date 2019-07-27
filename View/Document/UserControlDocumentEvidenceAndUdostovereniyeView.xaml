@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View.Document"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="751" d:DesignWidth="1055">
+             d:DesignHeight="751" d:DesignWidth="1200">
     <Grid Background="#dad4da">
         <materialDesign:TransitioningContent x:Name="TransitionContentSlide" >
             <StackPanel Orientation="Horizontal">
@@ -31,12 +31,12 @@
                         <CheckBox Margin="40 40 0 0" IsChecked="{Binding Path=EvidenceAndUdostovereniye.IsSelectedStatement, Mode=TwoWay}" Height="20" Content="Ведомость" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Margin="40 40 0 0" Height="278" Width="203" Text="{Binding EvidenceAndUdostovereniye.Message}"/>
+                        <TextBox Margin="20 40 0 0" Height="280" Width="444" Text="{Binding EvidenceAndUdostovereniye.Message}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right">
                     <DataGrid AutoGenerateColumns="False" Name="DataGridPrograms" Margin="40 40 0 0"
-                            ItemsSource="{Binding Path=EvidenceAndUdostovereniye.Programs}" Height="620" Width="690">
+                            ItemsSource="{Binding Path=EvidenceAndUdostovereniye.Programs}" Height="620" Width="630">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding name}" Header="Название программы" Width="400">
                                 <DataGridTextColumn.ElementStyle>
@@ -45,7 +45,7 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding training}" Header="Квалификация" Width="100">
+                            <DataGridTextColumn Binding="{Binding training}" Header="Квалификация" Width="125">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style>
                                         <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

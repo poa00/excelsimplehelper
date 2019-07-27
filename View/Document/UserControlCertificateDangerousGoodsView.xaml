@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View.Document"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
-        d:DesignHeight="751" d:DesignWidth="1100">
+        d:DesignHeight="751" d:DesignWidth="1200">
     <Grid Background="#dad4da">
         <materialDesign:TransitioningContent x:Name="TransitionContentSlide" Margin="0,4,-0.2,-3.8" >
             <StackPanel Orientation="Horizontal" Margin="0,0,-12.8,0" Height="751" VerticalAlignment="Top">
@@ -26,15 +26,15 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
                         <CheckBox IsChecked="{Binding Path=CertificateDangerousGoods.IsSelectedStatement, Mode=TwoWay}"  Height="20" Content="Ведомость" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="40 40 0 0">
-                        <TextBlock  Width="140" Text="Сообщение" />
-                        <TextBox Text="{Binding CertificateDangerousGoods.Message, Mode=TwoWay}" Height="223" Width="155"/>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" Margin="40 40 0 0">
+                        <TextBlock  Width="435" Text="Сообщение" Height="16" />
+                        <TextBox Text="{Binding CertificateDangerousGoods.Message, Mode=TwoWay}" Height="223" Width="444"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel>
                     <StackPanel Height="628" >
                         <DataGrid AutoGenerateColumns="False" x:Name="DataGridPrograms"  Margin="40 40 0 0"
-                                      ItemsSource="{Binding CertificateDangerousGoods.Programs}" Height="620" Width="690">
+                                      ItemsSource="{Binding CertificateDangerousGoods.Programs}" Height="620" Width="550">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding name}" Header="Название программы"   Width="400">
                                     <DataGridTextColumn.ElementStyle>

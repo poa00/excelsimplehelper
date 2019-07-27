@@ -45,36 +45,42 @@ namespace Model.DataBase.Model
         {
             if (programm012Model == null)
             {
-                MessageBug.AddMessage("Модель не заполнена");
+                string bug = (MessageBug.message.Модель_не_заполнена).ToString() + " для Свидетельства/Удостоверения";
+                MessageBug.AddMessage(bug);
                 return;
             }
-            if (programm012Model.Name == null)
+            if (programm012Model.Name == null || programm012Model.Name == " " || programm012Model.Name == "")
             {
-                MessageBug.AddMessage("Название программы не заполнено");
+                string bug = (MessageBug.message.Название_программы_не_заполнено).ToString() + " для Свидетельства/Удостоверения";
+                MessageBug.AddMessage(bug);
                 return;
             }
-            if (programm012Model.Lesson == null)
+            if (programm012Model.Lesson == null || programm012Model.Lesson == " " || programm012Model.Lesson == "")
             {
-                MessageBug.AddMessage("Уроки не заполнены");
+                string bug = (MessageBug.message.Уроки_не_заполнены).ToString() + " для Свидетельства/Удостоверения";
+                MessageBug.AddMessage(bug);
                 return;
             }
             if (programm012Model.Type == null)
             {
-                MessageBug.AddMessage("Тип не выбран");
+                string bug = (MessageBug.message.Тип_не_выбран).ToString() + " для Свидетельства/Удостоверения";
+                MessageBug.AddMessage(bug);
                 return;
             }
-            if (type.Equals("Свидетельство") && programm012Model.Training == null)
+            if (type.Equals("Свидетельство") && programm012Model.Training == null || programm012Model.Training == " " || programm012Model.Training == "")
             {
-                MessageBug.AddMessage("Повышение квалификации не заполнено");
+                string bug = (MessageBug.message.Повышение_квалификации_не_заполнено).ToString() + " для Свидетельства";
+                MessageBug.AddMessage(bug);
                 return;
             }
             if(!type.Equals("Свидетельство"))
             {
                 programm012Model.Training = "Тут ничего нет";
             }
-            if (programm012Model.Clock == null)
+            if (programm012Model.Clock == null || programm012Model.Clock == " " || programm012Model.Clock == "")
             {
-                MessageBug.AddMessage("Часы не заполнены");
+                string bug = (MessageBug.message.Часы_не_заполнены).ToString() + " для Свидетельства/Удостоверения";
+                MessageBug.AddMessage(bug);
                 return;
             }
 

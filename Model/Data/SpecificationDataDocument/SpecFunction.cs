@@ -10,7 +10,7 @@ namespace Model.Data.SpecificationDataDocument
     public class SpecFunction
     {
         private Dictionary<string, string> month;
-
+        protected const int DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE = 1;
         public SpecFunction()
         {
             month = new Dictionary<string, string>
@@ -100,12 +100,14 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="student"></param>
         /// <param name="InitialString"></param>
         /// <returns></returns>
-        protected StudentRecord CorrectFIO(StudentRecord dataStudent)
+        protected StudentRecord CorrectFIO(StudentRecord dataStudent, int idRecord)
         {
+            idRecord = idRecord + DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE;// Строки в массиве начинаются с 0, а в файле с 1
             string[] fio = CutFromStringElements(dataStudent.GetOneStudent()["ФИО"], ' ');
             if (fio.Length < 3)
             {
-                MessageBug.AddMessage("ФИО не полное");
+                string bug = (MessageBug.message.Не_хватает_данных_в_файле_excel).ToString() + " в строке "+ idRecord;
+                MessageBug.AddMessage(bug);
             }
             if (fio.Length == 2)
             {

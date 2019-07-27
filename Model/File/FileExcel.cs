@@ -71,11 +71,11 @@ namespace Model.File
                     {
                         if (worksheet.Cells[fileLine, fileСolumn].Value != null)
                         {
-                            record.AddPropertyRecord(Convert.ToString(worksheet.Cells[1, fileСolumn].Value), Convert.ToString(worksheet.Cells[fileLine, fileСolumn].Value));
+                            record.AddPropertyRecord(Convert.ToString(worksheet.Cells[1, fileСolumn].Value), Convert.ToString(worksheet.Cells[fileLine, fileСolumn].Value), fileLine);
                         }
                         else
                         {
-                            record.AddPropertyRecord(Convert.ToString(worksheet.Cells[1, fileСolumn].Value), " ");
+                            record.AddPropertyRecord(Convert.ToString(worksheet.Cells[1, fileСolumn].Value), " ", fileLine);
                         }
                         fileСolumn++;
                     }
