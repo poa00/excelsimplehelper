@@ -37,7 +37,8 @@ namespace Model.Write.Word.Document
         public Document_(StudentRecord[] recordSpec, string pathTemplateWord, string group)
         {
             PathTemplateWord = pathTemplateWord;
-            DateFromFile = new FileExcel(Properties.Settings.Default.TextPathFileExcelDataStudents, 1);
+            DateFromFile = new FileExcel(Properties.Settings.Default.PathFileExcelDataStudents, 1);
+
             DataForDocuments = recordSpec;
             FileName = CreateVoidCertification();
             TypeDocument = DataForDocuments[0].GetOneStudent()["Тип"];
@@ -63,7 +64,7 @@ namespace Model.Write.Word.Document
         /// <returns></returns>
         public string[] CreateVoidDocumentWord(int CountDocument)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.TextPathResulInputForParallelFolder);
+            DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.PathResulInputForParallelFolder);
             foreach (FileInfo file in dirInfo.GetFiles())
             {
                 file.Delete();
@@ -71,7 +72,7 @@ namespace Model.Write.Word.Document
             string[] files = new string[CountDocument];
             for (int i = 0; i < CountDocument; i++)
             {
-                files[i] = Properties.Settings.Default.TextPathResulInputForParallelFolder + "\\" + i + ".docx";
+                files[i] = Properties.Settings.Default.PathResulInputForParallelFolder + "\\" + i + ".docx";
                 System.IO.File.Copy(PathTemplateWord, files[i]);
             }
             return files;
@@ -92,7 +93,7 @@ namespace Model.Write.Word.Document
 
         public void CreatingFolderForDocuments()
         {
-            PathResult = Properties.Settings.Default.TextPathFolderResult + "\\" + TypeDocument + "_" + Group;
+            PathResult = Properties.Settings.Default.PathFolderResult + "\\" + TypeDocument + "_" + Group;
             Directory.CreateDirectory(PathResult);
         }
 
@@ -106,7 +107,7 @@ namespace Model.Write.Word.Document
         /// <param name="messageError">сообщение об ошибке</param>
         private void InsertBookmarkCertification(Bookmark bookmark, DocX doc, string insertValue, int idBookmark)
         {
-            //Проверка на наличие закладки в word документе
+            //Проверка на наличие закладки в word документе, занимает 1.5 секунды
             if (doc.Bookmarks[BookmarksWord[idBookmark]] != null)
             {
                 bookmark = doc.Bookmarks[BookmarksWord[idBookmark]];
@@ -114,8 +115,7 @@ namespace Model.Write.Word.Document
             }
             else
             {
-                string bug = (MessageBug.message.Нет_закладки_в_word).ToString() + " " + BookmarksWord[idBookmark];
-                MessageBug.AddMessage(bug);
+                MessageBug.AddMessage(MessageBug.message.Нет_закладки_в_word, BookmarksWord[idBookmark]);
             }
         }
 
@@ -204,7 +204,8 @@ namespace Model.Write.Word.Document
 
         public void CreateDocParallel()
         {
-            DirectoryInfo di = new DirectoryInfo(Properties.Settings.Default.TextPathResulInputForParallelFolder);
+            string PathTmpParallel = Properties.Settings.Default.PathResulInputForParallelFolder;
+            DirectoryInfo di = new DirectoryInfo(PathTmpParallel);
             Parallel_ReplaceText(di);
         }
     }

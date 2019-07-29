@@ -2,29 +2,29 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Model.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="TextPathFolderResult" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+    <Setting Name="PathFolderResult" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Выбери свой путь</Value>
     </Setting>
-    <Setting Name="TextPathFileWordUdostovereniyeTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+    <Setting Name="PathFileWordUdostovereniyeTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Выбери свой путь</Value>
     </Setting>
-    <Setting Name="TextPathFileWordEvidenceTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+    <Setting Name="PathFileWordEvidenceTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Выбери свой путь</Value>
     </Setting>
-    <Setting Name="TextPathFileWordStatementTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+    <Setting Name="PathFileWordStatementTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Выбери свой путь</Value>
     </Setting>
-    <Setting Name="TextPathResulInputForParallelFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+    <Setting Name="PathResulInputForParallelFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Выбери свой путь</Value>
     </Setting>
-    <Setting Name="TextPathFileWordCertificateDGTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+    <Setting Name="PathFileWordCertificateDGTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Выбери свой путь</Value>
     </Setting>
-    <Setting Name="TextPathFileExcelDataStudents" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+    <Setting Name="PathFileExcelDataStudents" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Выбери свой путь</Value>
     </Setting>
-    <Setting Name="TextPathFileWordCertificate12DGTemplate" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\\</Value>
+    <Setting Name="PathFileWordCertificate12DGTemplate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Выбери свой путь</Value>
     </Setting>
   </Settings>
 </SettingsFile>

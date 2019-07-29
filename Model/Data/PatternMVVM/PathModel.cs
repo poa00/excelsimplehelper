@@ -13,16 +13,16 @@ namespace Model.Data.PatternMVVM
 
         public PathModel()
         {
-            TextPathFolderResult = Properties.Settings.Default.TextPathFolderResult;
-            TextPathResulInputForParallelFolder = Properties.Settings.Default.TextPathResulInputForParallelFolder;
+            PathFolderResult = Properties.Settings.Default.PathFolderResult;
+            PathResulInputForParallelFolder = Properties.Settings.Default.PathResulInputForParallelFolder;
 
-            TextPathFileWordUdostovereniyeTemplate = Properties.Settings.Default.TextPathFileWordUdostovereniyeTemplate;
-            TextPathFileWordEvidenceTemplate = Properties.Settings.Default.TextPathFileWordEvidenceTemplate;
-            TextPathFileWordStatementTemplate = Properties.Settings.Default.TextPathFileWordStatementTemplate;
-            TextPathFileWordCertificateDGTemplate = Properties.Settings.Default.TextPathFileWordCertificateDGTemplate;
-            TextPathFileWordCertificate12DGTemplate = Properties.Settings.Default.TextPathFileWordCertificate12DGTemplate;
+            PathFileWordUdostovereniyeTemplate = Properties.Settings.Default.PathFileWordUdostovereniyeTemplate;
+            PathFileWordEvidenceTemplate = Properties.Settings.Default.PathFileWordEvidenceTemplate;
+            PathFileWordStatementTemplate = Properties.Settings.Default.PathFileWordStatementTemplate;
+            PathFileWordCertificateDGTemplate = Properties.Settings.Default.PathFileWordCertificateDGTemplate;
+            PathFileWordCertificate12DGTemplate = Properties.Settings.Default.PathFileWordCertificate12DGTemplate;
 
-            TextPathFileExcelDataStudents = Properties.Settings.Default.TextPathFileExcelDataStudents;
+            PathFileExcelDataStudents = Properties.Settings.Default.PathFileExcelDataStudents;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -35,130 +35,130 @@ namespace Model.Data.PatternMVVM
             }
         }
         
-        private string _TextPathFolderResult;
-        public string TextPathFolderResult
+        private string _PathFolderResult;
+        public string PathFolderResult
         {
-            get { return _TextPathFolderResult; }
+            get { return _PathFolderResult; }
             set
             {
-                if (_TextPathFolderResult != value)
+                if (_PathFolderResult != value)
                 {
-                    _TextPathFolderResult = value;
-                    Properties.Settings.Default.TextPathFolderResult = _TextPathFolderResult;
+                    _PathFolderResult = value;
+                    Properties.Settings.Default.PathFolderResult = _PathFolderResult;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFolderResult");
+                    OnPropertyChanged("PathFolderResult");
                 }
             }
         }
 
-        private string _TextPathResulInputForParallelFolder;
-        public string TextPathResulInputForParallelFolder
+        private string _PathResulInputForParallelFolder;
+        public string PathResulInputForParallelFolder
         {
-            get { return _TextPathResulInputForParallelFolder; }
+            get { return _PathResulInputForParallelFolder; }
             set
             {
-                if (_TextPathResulInputForParallelFolder != value)
+                if (_PathResulInputForParallelFolder != value)
                 {
-                    _TextPathResulInputForParallelFolder = value;
-                    Properties.Settings.Default.TextPathResulInputForParallelFolder = _TextPathResulInputForParallelFolder;
+                    _PathResulInputForParallelFolder = value;
+                    Properties.Settings.Default.PathResulInputForParallelFolder = _PathResulInputForParallelFolder;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathResulInputForParallelFolder");
+                    OnPropertyChanged("PathResulInputForParallelFolder");
                 }
             }
         }
         
-        private string _TextPathFileExcelDataStudents;
-        public string TextPathFileExcelDataStudents
+        private string _PathFileExcelDataStudents;
+        public string PathFileExcelDataStudents
         {
-            get { return _TextPathFileExcelDataStudents; }
+            get { return _PathFileExcelDataStudents; }
             set
             {
-                if (_TextPathFileExcelDataStudents != value)
+                if (_PathFileExcelDataStudents != value)
                 {
-                    _TextPathFileExcelDataStudents = value;
-                    Properties.Settings.Default.TextPathFileExcelDataStudents = TextPathFileExcelDataStudents;
+                    _PathFileExcelDataStudents = value;
+                    Properties.Settings.Default.PathFileExcelDataStudents = PathFileExcelDataStudents;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileExcelDataStudents");
+                    OnPropertyChanged("PathFileExcelDataStudents");
                 }
             }
         }
         
-        private string _TextPathFileWordUdostovereniyeTemplate;
-        public string TextPathFileWordUdostovereniyeTemplate
+        private string _PathFileWordUdostovereniyeTemplate;
+        public string PathFileWordUdostovereniyeTemplate
         {
-            get { return _TextPathFileWordUdostovereniyeTemplate; }
+            get { return _PathFileWordUdostovereniyeTemplate; }
             set
             {
-                if (_TextPathFileWordUdostovereniyeTemplate != value)
+                if (_PathFileWordUdostovereniyeTemplate != value)
                 {
-                    _TextPathFileWordUdostovereniyeTemplate = value;
-                    Properties.Settings.Default.TextPathFileWordUdostovereniyeTemplate = _TextPathFileWordUdostovereniyeTemplate;
+                    _PathFileWordUdostovereniyeTemplate = value;
+                    Properties.Settings.Default.PathFileWordUdostovereniyeTemplate = _PathFileWordUdostovereniyeTemplate;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileWordUdostovereniyeTemplate");
+                    OnPropertyChanged("PathFileWordUdostovereniyeTemplate");
                 }
             }
         }
         
-        private string _TextPathFileWordEvidenceTemplate;
-        public string TextPathFileWordEvidenceTemplate
+        private string _PathFileWordEvidenceTemplate;
+        public string PathFileWordEvidenceTemplate
         {
-            get { return _TextPathFileWordEvidenceTemplate; }
+            get { return _PathFileWordEvidenceTemplate; }
             set
             {
-                if (_TextPathFileWordEvidenceTemplate != value)
+                if (_PathFileWordEvidenceTemplate != value)
                 {
-                    _TextPathFileWordEvidenceTemplate = value;
-                    Properties.Settings.Default.TextPathFileWordEvidenceTemplate = _TextPathFileWordEvidenceTemplate;
+                    _PathFileWordEvidenceTemplate = value;
+                    Properties.Settings.Default.PathFileWordEvidenceTemplate = _PathFileWordEvidenceTemplate;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileWordEvidenceTemplate");
+                    OnPropertyChanged("PathFileWordEvidenceTemplate");
                 }
             }
         }
         
-        private string _TextPathFileWordStatementTemplate;
-        public string TextPathFileWordStatementTemplate
+        private string _PathFileWordStatementTemplate;
+        public string PathFileWordStatementTemplate
         {
-            get { return _TextPathFileWordStatementTemplate; }
+            get { return _PathFileWordStatementTemplate; }
             set
             {
-                if (_TextPathFileWordStatementTemplate != value)
+                if (_PathFileWordStatementTemplate != value)
                 {
-                    _TextPathFileWordStatementTemplate = value;
-                    Properties.Settings.Default.TextPathFileWordStatementTemplate = _TextPathFileWordStatementTemplate;
+                    _PathFileWordStatementTemplate = value;
+                    Properties.Settings.Default.PathFileWordStatementTemplate = _PathFileWordStatementTemplate;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileWordStatementTemplate");
+                    OnPropertyChanged("PathFileWordStatementTemplate");
                 }
             }
         }
         
-        private string _TextPathFileWordCertificate12DGTemplate;
-        public string TextPathFileWordCertificate12DGTemplate
+        private string _PathFileWordCertificate12DGTemplate;
+        public string PathFileWordCertificate12DGTemplate
         {
-            get { return _TextPathFileWordCertificate12DGTemplate; }
+            get { return _PathFileWordCertificate12DGTemplate; }
             set
             {
-                if (_TextPathFileWordCertificate12DGTemplate != value)
+                if (_PathFileWordCertificate12DGTemplate != value)
                 {
-                    _TextPathFileWordCertificate12DGTemplate = value;
-                    Properties.Settings.Default.TextPathFileWordCertificate12DGTemplate = _TextPathFileWordCertificate12DGTemplate;
+                    _PathFileWordCertificate12DGTemplate = value;
+                    Properties.Settings.Default.PathFileWordCertificate12DGTemplate = _PathFileWordCertificate12DGTemplate;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileWordCertificate12DGTemplate");
+                    OnPropertyChanged("PathFileWordCertificate12DGTemplate");
                 }
             }
         }
 
-        private string _TextPathFileWordCertificateDGTemplate;
-        public string TextPathFileWordCertificateDGTemplate
+        private string _PathFileWordCertificateDGTemplate;
+        public string PathFileWordCertificateDGTemplate
         {
-            get { return _TextPathFileWordCertificateDGTemplate; }
+            get { return _PathFileWordCertificateDGTemplate; }
             set
             {
-                if (_TextPathFileWordCertificateDGTemplate != value)
+                if (_PathFileWordCertificateDGTemplate != value)
                 {
-                    _TextPathFileWordCertificateDGTemplate = value;
-                    Properties.Settings.Default.TextPathFileWordCertificateDGTemplate = _TextPathFileWordCertificateDGTemplate;
+                    _PathFileWordCertificateDGTemplate = value;
+                    Properties.Settings.Default.PathFileWordCertificateDGTemplate = _PathFileWordCertificateDGTemplate;
                     Properties.Settings.Default.Save();
-                    OnPropertyChanged("TextPathFileWordCertificateDGTemplate");
+                    OnPropertyChanged("PathFileWordCertificateDGTemplate");
                 }
             }
         }

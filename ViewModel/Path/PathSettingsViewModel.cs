@@ -30,7 +30,7 @@ namespace ViewModel.Path
 
             if (!string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
             {
-                Path.TextPathFolderResult = folderBrowser.SelectedPath;
+                Path.PathFolderResult = folderBrowser.SelectedPath;
             }
         }
 
@@ -42,7 +42,7 @@ namespace ViewModel.Path
 
             if (!string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
             {
-                Path.TextPathResulInputForParallelFolder = folderBrowser.SelectedPath;
+                Path.PathResulInputForParallelFolder = folderBrowser.SelectedPath;
             }
         }
                         
@@ -53,7 +53,7 @@ namespace ViewModel.Path
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
-                Path.TextPathFileExcelDataStudents = openFileDialog.FileName;
+                Path.PathFileExcelDataStudents = openFileDialog.FileName;
             }
         }
                         
@@ -64,7 +64,7 @@ namespace ViewModel.Path
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
-                Path.TextPathFileWordUdostovereniyeTemplate = openFileDialog.FileName;
+                Path.PathFileWordUdostovereniyeTemplate = openFileDialog.FileName;
             }
         }
 
@@ -76,7 +76,7 @@ namespace ViewModel.Path
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
-                Path.TextPathFileWordEvidenceTemplate = openFileDialog.FileName;
+                Path.PathFileWordEvidenceTemplate = openFileDialog.FileName;
             }
         }
 
@@ -88,7 +88,7 @@ namespace ViewModel.Path
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
-                Path.TextPathFileWordStatementTemplate = openFileDialog.FileName;
+                Path.PathFileWordStatementTemplate = openFileDialog.FileName;
             }
         }
 
@@ -99,7 +99,7 @@ namespace ViewModel.Path
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
-                Path.TextPathFileWordCertificateDGTemplate = openFileDialog.FileName;
+                Path.PathFileWordCertificateDGTemplate = openFileDialog.FileName;
             }
         }
 
@@ -110,7 +110,7 @@ namespace ViewModel.Path
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
-                Path.TextPathFileWordCertificate12DGTemplate = openFileDialog.FileName;
+                Path.PathFileWordCertificate12DGTemplate = openFileDialog.FileName;
             }
         }
 

@@ -106,8 +106,7 @@ namespace Model.Data.SpecificationDataDocument
             string[] fio = CutFromStringElements(dataStudent.GetOneStudent()["ФИО"], ' ');
             if (fio.Length < 3)
             {
-                string bug = (MessageBug.message.Не_хватает_данных_в_файле_excel).ToString() + " в строке "+ idRecord;
-                MessageBug.AddMessage(bug);
+                MessageBug.AddMessage(MessageBug.message.Не_хватает_данных_в_файле_excel, "в строке " + idRecord);
             }
             if (fio.Length == 2)
             {

@@ -36,22 +36,20 @@ namespace Model.DataBase.Model
 
         public void AddProgramm(Programm3Model programm3Model)
         {
+            string tmp = "для сертификата ОГ";
             if (programm3Model == null)
             {
-                string bug = (MessageBug.message.Модель_не_заполнена).ToString() + " для сертификата ОГ";
-                MessageBug.AddMessage(bug);
+                MessageBug.AddMessage(MessageBug.message.Модель_не_заполнена, tmp);
                 return;
             }
             if (programm3Model.Name == null || programm3Model.Name == " " || programm3Model.Name == "")
             {
-                string bug = (MessageBug.message.Название_программы_не_заполнено).ToString() + " для сертификата ОГ";
-                MessageBug.AddMessage(bug);
+                MessageBug.AddMessage(MessageBug.message.Название_программы_не_заполнено, tmp);
                 return;
             }
             if (programm3Model.DateNumberApproved == null || programm3Model.DateNumberApproved == " " || programm3Model.DateNumberApproved == "")
             {
-                string bug = (MessageBug.message.Кем_и_когда_одобрена_не_заполнены).ToString() + " для сертификата ОГ";
-                MessageBug.AddMessage(bug);
+                MessageBug.AddMessage(MessageBug.message.Кем_и_когда_одобрена_не_заполнены, tmp);
                 return;
             }
             

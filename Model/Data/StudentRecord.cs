@@ -144,8 +144,7 @@ namespace Model.Data
             }
             if (date.Length < 10)
             {
-                string bug = (MessageBug.message.Не_правильно_заполнены_данные_дата_в_файле_excel).ToString() + " в строке " + indexLine;
-                MessageBug.AddMessage(bug);
+                MessageBug.AddMessage(MessageBug.message.Не_правильно_заполнены_данные_дата_в_файле_excel, "в строке " + indexLine);
                 date = "01.01.0001";
                 return date;
             }
@@ -182,8 +181,7 @@ namespace Model.Data
             {
                 if (date != "5" && date != "4" && date != "3")
                 {
-                    string bug = (MessageBug.message.Не_правильно_заполнены_данные_оценка_в_файле_excel).ToString() + " в строке " + indexLine;
-                    MessageBug.AddMessage(bug);
+                    MessageBug.AddMessage(MessageBug.message.Не_правильно_заполнены_данные_оценка_в_файле_excel, " в строке " + indexLine);
                     return date;
                 }
             }

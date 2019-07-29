@@ -25,97 +25,97 @@ namespace Model.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFolderResult {
+        [global::System.Configuration.DefaultSettingValueAttribute("Выбери свой путь")]
+        public string PathFolderResult {
             get {
-                return ((string)(this["TextPathFolderResult"]));
+                return ((string)(this["PathFolderResult"]));
             }
             set {
-                this["TextPathFolderResult"] = value;
+                this["PathFolderResult"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileWordUdostovereniyeTemplate {
+        [global::System.Configuration.DefaultSettingValueAttribute("Выбери свой путь")]
+        public string PathFileWordUdostovereniyeTemplate {
             get {
-                return ((string)(this["TextPathFileWordUdostovereniyeTemplate"]));
+                return ((string)(this["PathFileWordUdostovereniyeTemplate"]));
             }
             set {
-                this["TextPathFileWordUdostovereniyeTemplate"] = value;
+                this["PathFileWordUdostovereniyeTemplate"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileWordEvidenceTemplate {
+        [global::System.Configuration.DefaultSettingValueAttribute("Выбери свой путь")]
+        public string PathFileWordEvidenceTemplate {
             get {
-                return ((string)(this["TextPathFileWordEvidenceTemplate"]));
+                return ((string)(this["PathFileWordEvidenceTemplate"]));
             }
             set {
-                this["TextPathFileWordEvidenceTemplate"] = value;
+                this["PathFileWordEvidenceTemplate"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileWordStatementTemplate {
+        [global::System.Configuration.DefaultSettingValueAttribute("Выбери свой путь")]
+        public string PathFileWordStatementTemplate {
             get {
-                return ((string)(this["TextPathFileWordStatementTemplate"]));
+                return ((string)(this["PathFileWordStatementTemplate"]));
             }
             set {
-                this["TextPathFileWordStatementTemplate"] = value;
+                this["PathFileWordStatementTemplate"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathResulInputForParallelFolder {
+        [global::System.Configuration.DefaultSettingValueAttribute("Выбери свой путь")]
+        public string PathResulInputForParallelFolder {
             get {
-                return ((string)(this["TextPathResulInputForParallelFolder"]));
+                return ((string)(this["PathResulInputForParallelFolder"]));
             }
             set {
-                this["TextPathResulInputForParallelFolder"] = value;
+                this["PathResulInputForParallelFolder"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileWordCertificateDGTemplate {
+        [global::System.Configuration.DefaultSettingValueAttribute("Выбери свой путь")]
+        public string PathFileWordCertificateDGTemplate {
             get {
-                return ((string)(this["TextPathFileWordCertificateDGTemplate"]));
+                return ((string)(this["PathFileWordCertificateDGTemplate"]));
             }
             set {
-                this["TextPathFileWordCertificateDGTemplate"] = value;
+                this["PathFileWordCertificateDGTemplate"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileExcelDataStudents {
+        [global::System.Configuration.DefaultSettingValueAttribute("Выбери свой путь")]
+        public string PathFileExcelDataStudents {
             get {
-                return ((string)(this["TextPathFileExcelDataStudents"]));
+                return ((string)(this["PathFileExcelDataStudents"]));
             }
             set {
-                this["TextPathFileExcelDataStudents"] = value;
+                this["PathFileExcelDataStudents"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\")]
-        public string TextPathFileWordCertificate12DGTemplate {
+        [global::System.Configuration.DefaultSettingValueAttribute("Выбери свой путь")]
+        public string PathFileWordCertificate12DGTemplate {
             get {
-                return ((string)(this["TextPathFileWordCertificate12DGTemplate"]));
+                return ((string)(this["PathFileWordCertificate12DGTemplate"]));
             }
             set {
-                this["TextPathFileWordCertificate12DGTemplate"] = value;
+                this["PathFileWordCertificate12DGTemplate"] = value;
             }
         }
     }

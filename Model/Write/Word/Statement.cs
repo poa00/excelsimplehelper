@@ -97,7 +97,7 @@ namespace Model.Write.Word
         /// <param name="records"></param>
         public List<string> DocumentCreate()
         {
-            using (var document = DocX.Load(Properties.Settings.Default.TextPathFileWordStatementTemplate))
+            using (var document = DocX.Load(Properties.Settings.Default.PathFileWordStatementTemplate))
             {
                 TableRegister = document.AddTable(records.Length + 1, COLUMN_REGISTER);
                 SettingStatement();
@@ -110,7 +110,7 @@ namespace Model.Write.Word
                 document.InsertTable(CreateTable());
 
                 document.InsertParagraph("Методист АУЦ					Ю.А. Нестеренко ").FontSize(14).Bold();
-                document.SaveAs(Properties.Settings.Default.TextPathFolderResult + "\\Ведомость_" + Group + "-группы.doc");
+                document.SaveAs(Properties.Settings.Default.PathFolderResult + "\\Ведомость_" + Group + "-группы.doc");
             }
             return MessageBug.GetMessages();
         }

@@ -13,42 +13,42 @@
                 <StackPanel>
                     <TextBlock Text="Общие" FontSize="30" Margin="200 0 0 0" Foreground="#90aacd"/>
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox x:Name="TextPathFolderResult" Text="{Binding Path=Path.TextPathFolderResult , Mode=TwoWay}" Height="30" TextWrapping="Wrap" Width="230" Margin="40 0 0 0"/>
+                        <TextBox x:Name="TextPathFolderResult" Text="{Binding Path=Path.PathFolderResult , Mode=TwoWay}" Height="30" TextWrapping="Wrap" Width="230" Margin="40 0 0 0"/>
                         <Button x:Name="SelectPathFolderResult" Command="{Binding SelectPathFolderResult}" Content="Путь результата работы" Width="250" Height="30" Margin="80 0 0 0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox x:Name="TextPathResulInputForParallelFolder" Text="{Binding Path=Path.TextPathResulInputForParallelFolder , Mode=TwoWay}" Height="30" Width="230"  Margin="40 0 0 0" TextWrapping="Wrap"  />
+                        <TextBox x:Name="PathResulInputForParallelFolder" Text="{Binding Path=Path.PathResulInputForParallelFolder , Mode=TwoWay}" Height="30" Width="230"  Margin="40 0 0 0" TextWrapping="Wrap"  />
                         <Button x:Name="SelectPathResulInputForParallelFolder" Command="{Binding SelectPathResulInputForParallelFolder}" Content="Путь временной папки для паралелизма" Width="249" Height="30" Margin="80 0 0 0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox Text="{Binding Path=Path.TextPathFileExcelDataStudents , Mode=TwoWay}" HorizontalAlignment="Left" Height="30" Width="230" Margin="40 0 0 0"/>
+                        <TextBox Text="{Binding Path=Path.PathFileExcelDataStudents , Mode=TwoWay}" HorizontalAlignment="Left" Height="30" Width="230" Margin="40 0 0 0"/>
                         <Button Command="{Binding SelectPathFileExcelDataStudents}" Content="Файл с данными студентов" Margin="80 0 0 0" Width="250" Height="30"/>
                     </StackPanel>
                     
                     <TextBlock Text="Удостоверение/Свидетельства" FontSize="30" Margin="200 20 0 20" Foreground="#90aacd" />
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox Text="{Binding Path=Path.TextPathFileWordUdostovereniyeTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
+                        <TextBox Text="{Binding Path=Path.PathFileWordUdostovereniyeTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
                         <Button Command="{Binding SelectPathFileWordUdostovereniyeTemplate}" Content="Шаблон удостоверения" Margin="80 0 0 0" Width="250" Height="30"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox Text="{Binding Path=Path.TextPathFileWordEvidenceTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
+                        <TextBox Text="{Binding Path=Path.PathFileWordEvidenceTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
                         <Button Command="{Binding SelectPathFileWordEvidenceTemplate}" Content="Шаблон свидетельства" Margin="80 0 0 0" Width="250" Height="30"/>
                     </StackPanel>                    
 
                     <TextBlock Text="Ведомость" FontSize="30" Margin="200 20 0 20" Foreground="#90aacd" />
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox Text="{Binding Path=Path.TextPathFileWordStatementTemplate , Mode=TwoWay}" Height="30" Margin="40 0 0 0" TextWrapping="Wrap" Width="230"/>
+                        <TextBox Text="{Binding Path=Path.PathFileWordStatementTemplate , Mode=TwoWay}" Height="30" Margin="40 0 0 0" TextWrapping="Wrap" Width="230"/>
                         <Button Command="{Binding SelectPathFileWordStatementTemplate}" Content="Шаблон ведомости" Margin="80 0 0 0" Width="250" Height="30"/>
                     </StackPanel>
 
                     <TextBlock Text="Сертификат - опасные грузы" FontSize="30" Margin="200 20 0 20" Foreground="#90aacd" />
                     
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox x:Name="TextPathFileWordCertificateDGTemplate" Text="{Binding Path=Path.TextPathFileWordCertificateDGTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
+                        <TextBox x:Name="PathFileWordCertificateDGTemplate" Text="{Binding Path=Path.PathFileWordCertificateDGTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
                         <Button x:Name="SelectPathFileWordCertificateDGTemplate" Command="{Binding SelectPathFileWordCertificateDGTemplate}" Content="Шаблон сертификата" Margin="80 0 0 0" Width="250" Height="30"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                        <TextBox x:Name="TextPathFileWordCertificate12DGTemplate" Text="{Binding Path=Path.TextPathFileWordCertificate12DGTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
+                        <TextBox x:Name="PathFileWordCertificate12DGTemplate" Text="{Binding Path=Path.PathFileWordCertificate12DGTemplate , Mode=TwoWay}" Height="30" Width="230" Margin="40 0 0 0"/>
                         <Button x:Name="SelectPathFileWordCertificate12DGTemplate" Command="{Binding SelectPathFileWordCertificate12DGTemplate}" Content="Шаблон сертификата 12 категории" Margin="80 0 0 0" Width="250" Height="30"/>
                     </StackPanel>
                 </StackPanel>

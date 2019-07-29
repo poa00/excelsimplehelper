@@ -74,7 +74,7 @@ namespace Model.DataBase.Model
             DocumentEvidenceAndUdostovereniyeSpec dataSpec = new DocumentEvidenceAndUdostovereniyeSpec(DateFromFile, certification.startEducation, certification.endEducation,
                                                                 certification.issueDate, certification.party, certification.Programs);
             dataSpec.CorrectionLoad();
-            Document_ Evidence = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.TextPathFileWordEvidenceTemplate, certification.party);
+            Document_ Evidence = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.PathFileWordEvidenceTemplate, certification.party);
             Evidence.AddBookmarksWord(bookmarkWord);
             Evidence.CreateDocument();
         }

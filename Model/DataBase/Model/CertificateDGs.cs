@@ -56,7 +56,7 @@ namespace Model.DataBase.Model
             DateFromFile[0].AddPropertyRecord("Номер", certification.party);
             CertificateDangerousGoodsSpec dataSpec = new CertificateDangerousGoodsSpec(DateFromFile, certification.issueDate, certification.party, certification.ProgramDGs);
             dataSpec.CorrectionLoad();
-            Document_ document = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.TextPathFileWordCertificateDGTemplate, certification.party);
+            Document_ document = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.PathFileWordCertificateDGTemplate, certification.party);
             document.AddBookmarksWord(bookmarkWord);
             document.CreateDocument();
         }
