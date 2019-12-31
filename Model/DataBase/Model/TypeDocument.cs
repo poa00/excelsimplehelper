@@ -47,6 +47,10 @@ namespace Model.DataBase.Model
             {
                 idType = 3;
             }
+            if (type.Equals("Ведомость"))
+            {
+                idType = 4;
+            }
             return idType;
         }
     }

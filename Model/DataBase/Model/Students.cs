@@ -169,8 +169,7 @@ namespace Model.DataBase.Model
         /// <returns></returns>
         public int FindIdStudentByFio(DataBaseContext context, string fio)
         {
-            SpecFunction specFunction = new SpecFunction();
-            string[] fioArray = specFunction.CutFromStringElements(fio, ' ');
+            string[] fioArray = SpecFunction.CutFromStringElements(fio, ' ');
             Students students = new Students();
             int idStudent = 0; ;
 
@@ -231,8 +230,7 @@ namespace Model.DataBase.Model
         /// <returns></returns>
         public int FindIdStudentByFioAndDateBirth(DataBaseContext context, string fio, string dateBirth)
         {
-            SpecFunction specFunction = new SpecFunction();
-            string[] fioArray = specFunction.CutFromStringElements(fio, ' ');
+            string[] fioArray = SpecFunction.CutFromStringElements(fio, ' ');
             Students students = new Students();
             int idStudent = 0;
 

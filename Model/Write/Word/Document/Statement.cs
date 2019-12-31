@@ -1,16 +1,15 @@
 ﻿using Model.Data;
-using Model.Data.PatternMVVM;
-using Model.Data.SpecificationDataDocument;
-using Model.File;
 using Model.Message;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xceed.Document.NET;
 using Xceed.Words.NET;
 
-namespace Model.Write.Word
+namespace Model.Write.Word.Document
 {
-    /// <summary>
-    /// Ведомость
-    /// </summary>
     public class Statement
     {
         //Количество колонок в таблице

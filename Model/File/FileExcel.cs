@@ -3,7 +3,7 @@ using Model.Data;
 using OfficeOpenXml;
 using System.IO;
 
-namespace Model.File
+namespace Model.FileExcel_
 {
     /// <summary>
     /// Файл эксель
@@ -21,9 +21,9 @@ namespace Model.File
         public FileInfo existingFile;
         public ExcelPackage package;
         public ExcelWorksheet worksheet;
-        const int LINE_NUMBER_FROM_WHICH_FILE_IS_FILED = 2;
+        const sbyte LINE_NUMBER_FROM_WHICH_FILE_IS_FILED = 2;
 
-        public FileExcel(string path, int Sheet)
+        public FileExcel(string path, sbyte Sheet)
         {
             existingFile = new FileInfo(path);
             package = new ExcelPackage(existingFile);
@@ -43,7 +43,7 @@ namespace Model.File
         private void GetLineAndColumn()
         {
             // 1 строка в файле названия колонок, со 2 начинаются данные
-            int fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;
+            sbyte fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;
             while (worksheet.Cells[fileLine, 1].Value != null)
             {
                 fileLine++;
@@ -60,12 +60,12 @@ namespace Model.File
         {
             using (package)
             {
-                int fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;// текущая строка в файле excel
+                sbyte fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;// текущая строка в файле excel
                 GetLineAndColumn();
                 while (worksheet.Cells[fileLine, 1].Value != null)
                 {
 
-                    int fileСolumn = 1;// столбец      
+                    sbyte fileСolumn = 1;// столбец      
                     StudentRecord record = new StudentRecord();
                     while (worksheet.Cells[1, fileСolumn].Value != null)
                     {

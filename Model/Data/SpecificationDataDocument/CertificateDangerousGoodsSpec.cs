@@ -106,7 +106,18 @@ namespace Model.Data.SpecificationDataDocument
             return dataStudent;
         }
 
-        
+        /// <summary>
+        /// Добавляет название группы
+        /// </summary>
+        /// <param name="dataStudent"></param>
+        /// <returns></returns>
+        private StudentRecord CorrectGroup(StudentRecord dataStudent)
+        {
+            dataStudent.AddPropertyRecord("Группа", Number.Trim());
+
+            return dataStudent;
+        }
+
         /// <summary>
         /// Добавляет программу и данные о ней
         /// </summary>

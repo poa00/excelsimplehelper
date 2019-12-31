@@ -8,7 +8,7 @@ namespace Model.Data
     /// <summary>
     /// Запись об одном студенте
     /// </summary>
-    public class StudentRecord
+    public class StudentRecord : IStudentRecord
     {
         private Dictionary<string, string> OneStudent;
         public Dictionary<string, string> GetOneStudent() => OneStudent;
@@ -77,7 +77,7 @@ namespace Model.Data
         /// <param name="key">Ключ</param>
         /// <param name="value">значение</param>
         /// <returns></returns>
-        private string Check(string key, string value, int indexLine)
+        public string Check(string key, string value, int indexLine)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -101,42 +101,13 @@ namespace Model.Data
             return value.Trim();
         }
 
-        /// <summary>
-        /// Проверяет данные
-        /// </summary>
-        /// <param name="key">Ключ</param>
-        /// <param name="value">значение</param>
-        /// <returns></returns>
-        private string Check(string key, string value)
-        {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                value = " ";
-                return value;
-            }
-
-            if (key.Contains("Дата") || key.Contains("дата"))
-            {
-                return CheckDate(value.Trim());
-            }
-            if (key.Contains("Оценка") || key.Contains("оценка"))
-            {
-                return CheckMark(value.Trim());
-            }
-            if (key.Contains("Программа"))
-            {
-                return value;
-            }
-
-            return value.Trim();
-        }
-
+        
         /// <summary>
         /// Поверяет наличие данных (даты)
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        private string CheckDate(string date, int indexLine)
+        public string CheckDate(string date, int indexLine)
         {
             if (date.Length > 10)
             {
@@ -152,30 +123,11 @@ namespace Model.Data
         }
 
         /// <summary>
-        /// Поверяет наличие данных (даты)
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        private string CheckDate(string date)
-        {
-            if (date.Length > 10)
-            {
-                return date.Substring(0, 10);
-            }
-            if (date.Length < 10)
-            {
-                date = "01.01.0001";
-                return date;
-            }
-            return date;
-        }
-
-        /// <summary>
         /// Поверяет наличие данных (Оценки)
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        private string CheckMark(string date, int indexLine)
+        public string CheckMark(string date, int indexLine)
         {
             if (date != " ")
             {
@@ -187,24 +139,5 @@ namespace Model.Data
             }
             return date;
         }
-
-        /// <summary>
-        /// Поверяет наличие данных (Оценки)
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        private string CheckMark(string date)
-        {
-            if (date.Length > 1)
-            {
-                if (!(date == "пять") && !(date == "четыре") && !(date == "три"))
-                {
-                    date = " ";
-                    return date;
-                }
-            }
-            return date;
-        }
-
     }
 }

@@ -61,7 +61,7 @@ namespace Model.DataBase.Model
         /// </summary>
         /// <param name="certification"></param>
         /// <param name="bookmarkWord"></param>
-        private void loadCertificate(Certificate certification, string[] bookmarkWord)
+        private void loadCertificate(Certificate certification)
         {
             StudentRecord[] DateFromFile = new StudentRecord[1];
             DateFromFile[0] = new StudentRecord();
@@ -75,8 +75,7 @@ namespace Model.DataBase.Model
                                                                 certification.issueDate, certification.party, certification.Programs);
             dataSpec.CorrectionLoad();
             Document_ Evidence = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.PathFileWordEvidenceTemplate, certification.party);
-            Evidence.AddBookmarksWord(bookmarkWord);
-            Evidence.CreateDocument();
+            Evidence.CreateDocument("");
         }
 
         /// <summary>
@@ -87,13 +86,11 @@ namespace Model.DataBase.Model
         {
             if (certification.Programs.TypeDocument.Id == 0)
             {
-                string[] bookmarkWord = new string[19] { "Фамилия", "Имя", "Отчество", "ДатаРождения", "Номер", "Оценка", "Программа", "Уроки", "ПовышенияКвалификации", "Часы", "НД", "НМ", "НГ", "КД", "КМ", "КГ", "ПД", "ПМ", "ПГ" };
-                loadCertificate(certification, bookmarkWord);
+                loadCertificate(certification);
             }
             if (certification.Programs.TypeDocument.Id == 1 || certification.Programs.TypeDocument.Id == 2)
             {
-                string[] bookmarkWord = new string[18] { "Фамилия", "Имя", "Отчество", "ДатаРождения", "Номер", "Оценка", "Программа", "Уроки", "Часы", "НД", "НМ", "НГ", "КД", "КМ", "КГ", "ПД", "ПМ", "ПГ" };
-                loadCertificate(certification, bookmarkWord);
+                loadCertificate(certification);
             }
         }
 

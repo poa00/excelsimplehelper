@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.DataBase.Document"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="760" d:DesignWidth="1100">
+             mc:Ignorable="d" d:DesignWidth="1100" Height="806.4">
     <Grid Background="#dad4da">
         <materialDesign:TransitioningContent x:Name="TransitionContentSlide">
             <StackPanel HorizontalAlignment="Left" Width="1100" >
@@ -27,15 +26,15 @@
                 <StackPanel x:Name="Find" Orientation="Horizontal">
                     <StackPanel Margin="20 0 0 0">
                         <TextBlock Width="140">Фамилия Имя Отчество</TextBlock>
-                        <TextBox Text="{Binding Path=findModel.Fio, Mode=TwoWay}" Height="20" Width="140" />
+                        <TextBox Text="{Binding Path=findModel.Fio, Mode=TwoWay}" Height="30" Width="140" />
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0">
                         <TextBlock Width="100">Дата рождения</TextBlock>
-                        <TextBox Text="{Binding Path=findModel.DataBirth, Mode=TwoWay}" Height="20" Width="100" />
+                        <TextBox Text="{Binding Path=findModel.DataBirth, Mode=TwoWay}" Height="30" Width="100" />
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0">
                         <TextBlock Width="100">Номер документа</TextBlock>
-                        <TextBox Text="{Binding Path=findModel.Group, Mode=TwoWay}" Height="20" Width="100" />
+                        <TextBox Text="{Binding Path=findModel.Group, Mode=TwoWay}" Height="30" Width="100" />
                     </StackPanel>
                     <StackPanel Margin="20 15 0 0">
                         <Button Content="Найти" Command="{Binding certifictationFind}"/>

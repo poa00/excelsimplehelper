@@ -1,32 +1,26 @@
-﻿using Model.Data;
-using Model.Data.PatternMVVM;
-using Model.Data.SpecificationDataDocument;
-using Model.DataBase.Context;
+﻿using System.IO;
+using Model.Data;
 using Model.DataBase.Model;
-using Model.File;
-using Model.Message;
-using System;
+using Model.FileExcel_;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Xceed.Words.NET;
+using Run = DocumentFormat.OpenXml.Wordprocessing.Run;
+using Model.Data.SpecificationDataDocument;
 
 namespace Model.Write.Word.Document
 {
     public class Document_
     {
         private string[] BookmarksWord;
-        private string[] FileName;
         private FileExcel DateFromFile;
         private string PathResult;
         private string PathTemplateWord;
         private StudentRecord[] DataForDocuments;
         private string TypeDocument;
         private string Group;
+        private PropertiesDocument propertiesDocument;
 
         /// <summary>
         /// 
@@ -38,9 +32,9 @@ namespace Model.Write.Word.Document
         {
             PathTemplateWord = pathTemplateWord;
             DateFromFile = new FileExcel(Properties.Settings.Default.PathFileExcelDataStudents, 1);
+            propertiesDocument = new PropertiesDocument();
 
             DataForDocuments = recordSpec;
-            FileName = CreateVoidCertification();
             TypeDocument = DataForDocuments[0].GetOneStudent()["Тип"];
             Group = group;
         }
@@ -50,45 +44,10 @@ namespace Model.Write.Word.Document
             BookmarksWord = bookmarksWord;
         }
 
-        int countDocuments;
-        public string[] CreateVoidCertification()
-        {
-            countDocuments = DataForDocuments.Length;
-            return CreateVoidDocumentWord(countDocuments);
-        }
-
-        /// <summary>
-        /// Создает документы для функции распаралеливания
-        /// </summary>
-        /// <param name="CountDocument">Количество документов</param>
-        /// <returns></returns>
-        public string[] CreateVoidDocumentWord(int CountDocument)
-        {
-            DirectoryInfo dirInfo = new DirectoryInfo(Properties.Settings.Default.PathResulInputForParallelFolder);
-            foreach (FileInfo file in dirInfo.GetFiles())
-            {
-                file.Delete();
-            }
-            string[] files = new string[CountDocument];
-            for (int i = 0; i < CountDocument; i++)
-            {
-                files[i] = Properties.Settings.Default.PathResulInputForParallelFolder + "\\" + i + ".docx";
-                System.IO.File.Copy(PathTemplateWord, files[i]);
-            }
-            return files;
-        }
-
-        public void CreateDocument()
+        public void CreateDocument(string typeDocument)
         {
             CreatingFolderForDocuments();
-            if (DataForDocuments.Length > 8)
-            {
-                CreateDocParallel();
-            }
-            else
-            {
-                CreateDoc();
-            }
+            CreateDoc(typeDocument);
         }
 
         public void CreatingFolderForDocuments()
@@ -96,68 +55,121 @@ namespace Model.Write.Word.Document
             PathResult = Properties.Settings.Default.PathFolderResult + "\\" + TypeDocument + "_" + Group;
             Directory.CreateDirectory(PathResult);
         }
-
-        /// <summary>
-        /// Заменяет по закладкам текст
-        /// </summary>
-        /// <param name="bookmark">закладка</param>
-        /// <param name="doc"></param>
-        /// <param name="insertValue">строка для замены закладки(вместо закладки ставиться текст)</param>
-        /// <param name="idBookmark">номер закладки</param>
-        /// <param name="messageError">сообщение об ошибке</param>
-        private void InsertBookmarkCertification(Bookmark bookmark, DocX doc, string insertValue, int idBookmark)
-        {
-            //Проверка на наличие закладки в word документе, занимает 1.5 секунды
-            if (doc.Bookmarks[BookmarksWord[idBookmark]] != null)
-            {
-                bookmark = doc.Bookmarks[BookmarksWord[idBookmark]];
-                bookmark.SetText(insertValue);
-            }
-            else
-            {
-                MessageBug.AddMessage(MessageBug.message.Нет_закладки_в_word, BookmarksWord[idBookmark]);
-            }
-        }
-
+        
         /// <summary>
         /// Создание документа(Word)
         /// </summary>
-        private void CreateDoc()
+        private void CreateDoc(string typeDocument)
         {
-            FileName = CreateVoidCertification();
+            byte[] textByteArray = File.ReadAllBytes(PathTemplateWord);
 
             for (int j = 0; j < DataForDocuments.Length; j++)
             {
-                using (var document = DocX.Load(FileName[0]))
+                using (MemoryStream stream = new MemoryStream())
                 {
-                    Bookmark bookmark = null;
-                    for (int idBookmarkWord = 0; idBookmarkWord < BookmarksWord.Length; idBookmarkWord++)
+                    stream.Write(textByteArray, 0, textByteArray.Length);
+                    using (WordprocessingDocument doc = WordprocessingDocument.Open(stream, true))
                     {
-                       InsertBookmarkCertification(bookmark, document, DataForDocuments[j].GetOneStudent()[BookmarksWord[idBookmarkWord]], idBookmarkWord);
+                        var bookMarks = FindBookmarks(doc.MainDocumentPart.Document);// Ищем все закладки в документе
+                        foreach (var current in bookMarks)
+                        {
+                            var run = new Run();
+                            if (current.Key == "_GoBack")
+                            {
+                                continue;
+                            }
+
+                            if (current.Key == "ПовышенияКвалификации" &&(typeDocument == "Удостоверения (Лицензия)" || typeDocument == "Удостоверение (Реквизит)"))
+                            {
+                                continue;
+                            }
+
+                            if (current.Key == "Уроки")
+                            {
+                                string[] lesson = SpecFunction.CutFromStringElements(DataForDocuments[j].GetOneStudent()[current.Key], '\r');
+                                for (int i = lesson.Length - 1; i > -1; i--)
+                                {
+                                    var text = new Text(lesson[i]);
+                                    run = propertiesDocument.GetProperties(typeDocument, current.Key, text);
+                                    current.Value.InsertAfterSelf(run);
+
+                                    var run2 = new Run(new Break());
+                                    current.Value.InsertAfterSelf(run2);
+                                }
+                                continue;
+                            }
+
+                            var textElement = new Text(DataForDocuments[j].GetOneStudent()[current.Key]);
+                            
+                            run = propertiesDocument.GetProperties(typeDocument, current.Key, textElement);
+
+                            current.Value.InsertAfterSelf(run);
+                        }
                     }
-                    document.SaveAs(PathResult + "\\" + DataForDocuments[j].GetOneStudent()["Фамилия"] + "_" + DataForDocuments[j].GetOneStudent()["Имя"] + "_" + DataForDocuments[j].GetOneStudent()["Отчество"] + "_" + DataForDocuments[j].GetOneStudent()["Номер"] + ".doc");
-                    SaveDocument(DataForDocuments[j]);
+
+                    if(typeDocument == "Ведомость"){
+                        File.WriteAllBytes(PathResult +
+                                                    "\\" + DataForDocuments[j].GetOneStudent()["Группа"] +
+                                                    "_" + typeDocument + ".docx",
+                                                    stream.ToArray());
+                    }
+                    else
+                    {
+                        // Записываем всё в наш файл
+                        File.WriteAllBytes(PathResult +
+                                "\\" + DataForDocuments[j].GetOneStudent()["Фамилия"] +
+                                "_" + DataForDocuments[j].GetOneStudent()["Имя"] +
+                                "_" + DataForDocuments[j].GetOneStudent()["Отчество"] +
+                                "_" + DataForDocuments[j].GetOneStudent()["Номер"] +
+                                "_" + typeDocument + ".docx",
+                                stream.ToArray());
+                        SaveDocument(DataForDocuments[j]);
+                    }
                 }
             }
         }
 
-        /// <summary>
-        /// Создание документа(Word) параллельно
-        /// </summary>
-        public void CreateDocParallel(string fileName)
+        // Получаем все закладки в документе
+        // bStartWithNoEnds - словарь, который будет содержать только начало закладок,
+        // чтобы потом по ним находить соответствующие им концы закладок
+        // documentPart - элемент Word-документа
+        // outs - конечный результат
+        private static Dictionary<string, BookmarkEnd> FindBookmarks(OpenXmlElement documentPart, Dictionary<string, BookmarkEnd> outs = null, Dictionary<string, string> bStartWithNoEnds = null)
         {
-            using (var document = DocX.Load(fileName))
-            {
-                int j = Convert.ToInt32(Regex.Replace(fileName, @"[^\d]+", ""));
+            if (outs == null) { outs = new Dictionary<string, BookmarkEnd>(); }
+            if (bStartWithNoEnds == null) { bStartWithNoEnds = new Dictionary<string, string>(); }
 
-                Bookmark bookmark = null;
-                for (int idBookmarkWord = 0; idBookmarkWord < BookmarksWord.Length; idBookmarkWord++)
+            // Проходимся по всем элементам на странице Word-документа
+            foreach (var docElement in documentPart.Elements())
+            {
+                // BookmarkStart определяет начало закладки в рамках документа
+                // маркер начала связан с маркером конца закладки
+                if (docElement is BookmarkStart)
                 {
-                    InsertBookmarkCertification(bookmark, document, DataForDocuments[j].GetOneStudent()[BookmarksWord[idBookmarkWord]], idBookmarkWord);
+                    var bookmarkStart = docElement as BookmarkStart;
+                    // Записываем id и имя закладки
+                    bStartWithNoEnds.Add(bookmarkStart.Id, bookmarkStart.Name);
                 }
-                SaveDocument(DataForDocuments[j]);
-                document.SaveAs(PathResult + "\\" + DataForDocuments[j].GetOneStudent()["Фамилия"] + "_" + DataForDocuments[j].GetOneStudent()["Имя"] + "_" + DataForDocuments[j].GetOneStudent()["Отчество"] + "_" + DataForDocuments[j].GetOneStudent()["Номер"] + ".doc");
+
+                // BookmarkEnd определяет конец закладки в рамках документа
+                if (docElement is BookmarkEnd)
+                {
+                    var bookmarkEnd = docElement as BookmarkEnd;
+                    foreach (var startName in bStartWithNoEnds)
+                    {
+                        // startName.Key как раз и содержит id закладки
+                        // здесь проверяем, что есть связь между началом и концом закладки
+                        if (bookmarkEnd.Id == startName.Key)
+                            // В конечный массив добавляем то, что нам и нужно получить
+                            outs.Add(startName.Value, bookmarkEnd);
+                    }
+                }
+                // Рекурсивно вызываем данный метод, чтобы пройтись по всем элементам
+                // word-документа
+                FindBookmarks(docElement, outs, bStartWithNoEnds);
             }
+
+            return outs;
         }
 
         private void SaveDocument(StudentRecord DataForDocuments)
@@ -167,46 +179,11 @@ namespace Model.Write.Word.Document
                 CertificateDGs certifications = new CertificateDGs();
                 certifications.SaveSertification(DataForDocuments);
             }
-            else
+            if (DataForDocuments.GetOneStudent()["Тип"] == "Удостоверение (Реквизит)" || DataForDocuments.GetOneStudent()["Тип"] == "Удостоверения (Лицензия)" || DataForDocuments.GetOneStudent()["Тип"] == "Свидетельство")
             {
                 Certificate certifications = new Certificate();
                 certifications.SaveCertificate(DataForDocuments);
             }    
-        }
-
-        /// <summary>
-        /// Для паралельности 
-        /// </summary>
-        /// <param name="di"></param>
-        /// <returns></returns>
-        private long Parallel_ReplaceText(DirectoryInfo di)
-        {
-            // Create a new Stopwatch, we will use this to time execution.
-            Stopwatch sw = new Stopwatch();
-
-            sw.Start(); // Start the stop watch.
-
-            // Loop through each document in this specified direction.
-            System.Threading.Tasks.Parallel.ForEach
-            (
-                di.GetFiles(),
-                currentFile =>
-                {
-                    CreateDocParallel(currentFile.FullName);
-                }
-            );
-
-            sw.Stop(); // Stop the stop watch.
-
-            // Return the time taken in miliseconds.
-            return sw.ElapsedMilliseconds;
-        }
-
-        public void CreateDocParallel()
-        {
-            string PathTmpParallel = Properties.Settings.Default.PathResulInputForParallelFolder;
-            DirectoryInfo di = new DirectoryInfo(PathTmpParallel);
-            Parallel_ReplaceText(di);
         }
     }
 }

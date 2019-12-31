@@ -3,7 +3,6 @@ using Model.DataBase.Context;
 using Model.DataBase.Model;
 using Model.Message;
 using Model.Write.Word.Document;
-using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace ViewModel.Document
@@ -39,8 +38,11 @@ namespace ViewModel.Document
                         MessageBug.ClearMessages();
                         // получаем выделенный объект
                         ProgramDGs programs = selectedItem as ProgramDGs;
-                        ManagerDocument managerDocument = new ManagerDocument(programs, CertificateDangerousGoods);
-                        managerDocument.DocumentCreate();
+                        ManagerDocument certificateDangerousGoods = new ManagerDocument(programs, CertificateDangerousGoods);
+                        certificateDangerousGoods.DocumentCreate();
+
+                        ManagerDocument statement = new ManagerDocument(programs, CertificateDangerousGoods, 4);
+                        statement.DocumentCreate();
 
                         string message = " ";
                         foreach (string itr in MessageBug.GetMessages())

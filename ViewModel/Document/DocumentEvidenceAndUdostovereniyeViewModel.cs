@@ -1,9 +1,7 @@
 ﻿using Model.Data.PatternMVVM;
 using Model.DataBase.Context;
-using Model.DataBase.Model;
 using Model.Message;
 using Model.Write.Word.Document;
-using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace ViewModel.Document
@@ -29,7 +27,6 @@ namespace ViewModel.Document
             };
         }
 
-        
         RelayCommand createDocument;
         public RelayCommand CreateDocument
         {
@@ -43,8 +40,11 @@ namespace ViewModel.Document
                         // получаем выделенный объект
                         Model.DataBase.Model.Programs programs = selectedItem as Model.DataBase.Model.Programs;
                         
-                        ManagerDocument managerDocument = new ManagerDocument(programs, EvidenceAndUdostovereniye);
-                        managerDocument.DocumentCreate();
+                        ManagerDocument evidenceAndUdostovereniye = new ManagerDocument(programs, EvidenceAndUdostovereniye);
+                        evidenceAndUdostovereniye.DocumentCreate();
+
+                        ManagerDocument statement = new ManagerDocument(programs, EvidenceAndUdostovereniye, 4);
+                        statement.DocumentCreate();
 
                         string message = " ";
                         foreach (string itr in MessageBug.GetMessages())

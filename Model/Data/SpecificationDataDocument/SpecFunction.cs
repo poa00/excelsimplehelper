@@ -39,7 +39,7 @@ namespace Model.Data.SpecificationDataDocument
         /// </summary>
         /// <param name="initialString">изначальная строка</param>
         /// <param name="elementCut">элемент по которрому произойдет разделения</param>
-        public string[] CutFromStringElements(string initialString, char elementCut)
+        public static string[] CutFromStringElements(string initialString, char elementCut)
         {
             string[] array_full_name = initialString.Split(new char[] { elementCut }, StringSplitOptions.RemoveEmptyEntries);
 

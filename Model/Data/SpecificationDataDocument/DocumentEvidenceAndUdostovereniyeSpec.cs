@@ -56,6 +56,7 @@ namespace Model.Data.SpecificationDataDocument
                 CorrectRecords[i] = CorrectDate(CorrectRecords[i]);
                 CorrectRecords[i] = CorrectMark(CorrectRecords[i], i);
                 CorrectRecords[i] = CorrectProgram(CorrectRecords[i]);
+                CorrectRecords[i] = CorrectGroup(CorrectRecords[i]);
             }            
         }
 
@@ -106,6 +107,19 @@ namespace Model.Data.SpecificationDataDocument
             }
             return dataStudent;
         }
+
+        /// <summary>
+        /// Добавляет название группы
+        /// </summary>
+        /// <param name="dataStudent"></param>
+        /// <returns></returns>
+        private StudentRecord CorrectGroup(StudentRecord dataStudent)
+        {
+            dataStudent.AddPropertyRecord("Группа", NumberCard.Trim());
+            
+            return dataStudent;
+        }
+
 
         /// <summary>
         /// Корректировка дат под сертификат (Н - начало обучения, К - конец обучения, П - Получение)

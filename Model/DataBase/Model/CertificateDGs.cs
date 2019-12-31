@@ -58,7 +58,7 @@ namespace Model.DataBase.Model
             dataSpec.CorrectionLoad();
             Document_ document = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.PathFileWordCertificateDGTemplate, certification.party);
             document.AddBookmarksWord(bookmarkWord);
-            document.CreateDocument();
+            document.CreateDocument("СертификатОГ");
         }
 
         /// <summary>

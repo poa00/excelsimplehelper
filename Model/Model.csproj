@@ -53,6 +53,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.9.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -77,6 +80,12 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.111.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.5.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -85,8 +94,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xceed.Words.NET, Version=1.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\DocX.1.3.0\lib\net40\Xceed.Words.NET.dll</HintPath>
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Document.NET, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.5.0\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=1.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.5.0\lib\net40\Xceed.Words.NET.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +111,7 @@
     <Compile Include="DataBase\Model\ProgramDGs.cs" />
     <Compile Include="DataBase\Model\Students.cs" />
     <Compile Include="DataBase\Model\TypeDocument.cs" />
+    <Compile Include="Data\IStudentRecord.cs" />
     <Compile Include="Data\PatternMVVM\CertificateDangerousGoodsModel.cs" />
     <Compile Include="Data\PatternMVVM\DataBase\CertificateDGsModel.cs" />
     <Compile Include="Data\PatternMVVM\DataBase\CertificateModel.cs" />
@@ -119,13 +133,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Write\Word\Document\Document_.cs" />
+    <Compile Include="Write\Word\Document\IPropertiesDocument.cs" />
     <Compile Include="Write\Word\Document\ManagerDocument.cs" />
-    <Compile Include="Write\Word\Statement.cs" />
+    <Compile Include="Write\Word\Document\PropertiesDocument.cs" />
+    <Compile Include="Write\Word\Document\Statement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ExternalFiles\Ведомость выдачи документа3.docx" />
+    <None Include="ExternalFiles\Образец ОГ.docx" />
+    <None Include="ExternalFiles\Образец ОГ12.docx" />
+    <None Include="ExternalFiles\Свидетельство2.docx" />
+    <None Include="ExternalFiles\Удостоверение2.docx" />
+    <None Include="ExternalFiles\Файл с данными студентов.xlsx" />
     <None Include="officeWizard.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -149,9 +171,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Write\Excel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

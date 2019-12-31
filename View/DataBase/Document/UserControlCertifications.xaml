@@ -34,15 +34,15 @@
                 <StackPanel x:Name="Find" Orientation="Horizontal">
                     <StackPanel Margin="20 0 0 0">
                         <TextBlock Width="140">Фамилия Имя Отчество</TextBlock>
-                        <TextBox Text="{Binding Path=findModel.Fio, Mode=TwoWay}" Height="20" Width="140" />
+                        <TextBox Text="{Binding Path=findModel.Fio, Mode=TwoWay}" Height="30" Width="140" />
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0">
                         <TextBlock Width="100">Дата рождения</TextBlock>
-                        <TextBox Text="{Binding Path=findModel.DataBirth, Mode=TwoWay}" Height="20" Width="100" />
+                        <TextBox Text="{Binding Path=findModel.DataBirth, Mode=TwoWay}" Height="30" Width="100" />
                     </StackPanel>
                     <StackPanel Margin="20 0 0 0">
                         <TextBlock Width="100">Номер документа</TextBlock>
-                        <TextBox Text="{Binding Path=findModel.Group, Mode=TwoWay}" Height="20" Width="100" />
+                        <TextBox Text="{Binding Path=findModel.Group, Mode=TwoWay}" Height="30" Width="100" />
                     </StackPanel>
                     <StackPanel Margin="20 15 0 0">
                         <Button Content="Найти" Command="{Binding certifictationFind}"/>
