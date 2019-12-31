@@ -14,7 +14,7 @@ namespace Model.Data.PatternMVVM
         public PathModel()
         {
             PathFolderResult = Properties.Settings.Default.PathFolderResult;
-            PathResulInputForParallelFolder = Properties.Settings.Default.PathResulInputForParallelFolder;
+            //PathResulInputForParallelFolder = Properties.Settings.Default.PathResulInputForParallelFolder;
 
             PathFileWordUdostovereniyeTemplate = Properties.Settings.Default.PathFileWordUdostovereniyeTemplate;
             PathFileWordEvidenceTemplate = Properties.Settings.Default.PathFileWordEvidenceTemplate;
@@ -51,21 +51,21 @@ namespace Model.Data.PatternMVVM
             }
         }
 
-        private string _PathResulInputForParallelFolder;
-        public string PathResulInputForParallelFolder
-        {
-            get { return _PathResulInputForParallelFolder; }
-            set
-            {
-                if (_PathResulInputForParallelFolder != value)
-                {
-                    _PathResulInputForParallelFolder = value;
-                    Properties.Settings.Default.PathResulInputForParallelFolder = _PathResulInputForParallelFolder;
-                    Properties.Settings.Default.Save();
-                    OnPropertyChanged("PathResulInputForParallelFolder");
-                }
-            }
-        }
+        //private string _PathResulInputForParallelFolder;
+        //public string PathResulInputForParallelFolder
+        //{
+        //    get { return _PathResulInputForParallelFolder; }
+        //    set
+        //    {
+        //        if (_PathResulInputForParallelFolder != value)
+        //        {
+        //            _PathResulInputForParallelFolder = value;
+        //            Properties.Settings.Default.PathResulInputForParallelFolder = _PathResulInputForParallelFolder;
+        //            Properties.Settings.Default.Save();
+        //            OnPropertyChanged("PathResulInputForParallelFolder");
+        //        }
+        //    }
+        //}
         
         private string _PathFileExcelDataStudents;
         public string PathFileExcelDataStudents

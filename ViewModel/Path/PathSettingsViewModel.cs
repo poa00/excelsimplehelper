@@ -13,7 +13,7 @@ namespace ViewModel.Path
             Path = new PathModel();
 
             SelectPathFolderResult = new RelayCommand(arg => СhoicePathFolderResult());
-            SelectPathResulInputForParallelFolder = new RelayCommand(arg => СhoicePathResulInputForParallelFolder());
+            //SelectPathResulInputForParallelFolder = new RelayCommand(arg => СhoicePathResulInputForParallelFolder());
             SelectPathFileExcelDataStudents = new RelayCommand(arg => СhoicePathFileExcelDataStudents());
             SelectPathFileWordUdostovereniyeTemplate = new RelayCommand(arg => СhoicePathFileWordUdostovereniyeTemplate());
             SelectPathFileWordEvidenceTemplate = new RelayCommand(arg => СhoicePathFileWordEvidenceTemplate());
@@ -34,22 +34,22 @@ namespace ViewModel.Path
             }
         }
 
-        public ICommand SelectPathResulInputForParallelFolder { get; set; }
-        public void СhoicePathResulInputForParallelFolder()
-        {
-            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            DialogResult result = folderBrowser.ShowDialog();
+        //public ICommand SelectPathResulInputForParallelFolder { get; set; }
+        //public void СhoicePathResulInputForParallelFolder()
+        //{
+        //    FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+        //    DialogResult result = folderBrowser.ShowDialog();
 
-            if (!string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
-            {
-                Path.PathResulInputForParallelFolder = folderBrowser.SelectedPath;
-            }
-        }
+        //    if (!string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
+        //    {
+        //        Path.PathResulInputForParallelFolder = folderBrowser.SelectedPath;
+        //    }
+        //}
                         
         public ICommand SelectPathFileExcelDataStudents { get; set; }
         public void СhoicePathFileExcelDataStudents()
         {   
-            OpenFileDialog openFileDialog = GetSettingFileExcelDialog();
+            OpenFileDialog openFileDialog = GetSettingFileExcelDialog("Выберете файл с данными студентов");
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
@@ -60,7 +60,7 @@ namespace ViewModel.Path
         public ICommand SelectPathFileWordUdostovereniyeTemplate { get; set; }
         public void СhoicePathFileWordUdostovereniyeTemplate()
         {
-            OpenFileDialog openFileDialog = GetSettingFileWordDialog();
+            OpenFileDialog openFileDialog = GetSettingFileWordDialog("Выберете шаблон для удостоверения");
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
@@ -71,7 +71,7 @@ namespace ViewModel.Path
         public ICommand SelectPathFileWordEvidenceTemplate { get; set; }
         public void СhoicePathFileWordEvidenceTemplate()
         {
-            OpenFileDialog openFileDialog = GetSettingFileWordDialog();
+            OpenFileDialog openFileDialog = GetSettingFileWordDialog("Выберете шаблон для свидетельства");
 
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
@@ -83,7 +83,7 @@ namespace ViewModel.Path
         public ICommand SelectPathFileWordStatementTemplate { get; set; }
         public void СhoicePathFileWordStatementTemplate()
         {
-            OpenFileDialog openFileDialog = GetSettingFileWordDialog();
+            OpenFileDialog openFileDialog = GetSettingFileWordDialog("Выберете шаблон для ведомости");
 
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
@@ -95,7 +95,7 @@ namespace ViewModel.Path
         public ICommand SelectPathFileWordCertificateDGTemplate { get; set; }
         public void СhoicePathFileWordCertificateDGTemplate()
         {
-            OpenFileDialog openFileDialog = GetSettingFileWordDialog();
+            OpenFileDialog openFileDialog = GetSettingFileWordDialog("Выберете шаблон для сертификата");
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
@@ -106,7 +106,7 @@ namespace ViewModel.Path
         public ICommand SelectPathFileWordCertificate12DGTemplate { get; set; }
         public void СhoicePathFileWordCertificate12DGTemplate()
         {
-            OpenFileDialog openFileDialog = GetSettingFileWordDialog();
+            OpenFileDialog openFileDialog = GetSettingFileWordDialog("Выберете шаблон для сертификата 12 категории");
             openFileDialog.ShowDialog();
             if (openFileDialog.SafeFileName.Length > 0)
             {
@@ -118,11 +118,12 @@ namespace ViewModel.Path
         /// Настройка диалогового окна для выбора word файла
         /// </summary>
         /// <returns>Объект с настройками</returns>
-        private OpenFileDialog GetSettingFileWordDialog(){
+        private OpenFileDialog GetSettingFileWordDialog(string windowDescription)
+        {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.DefaultExt = "*.doc;*.docx";
             openFileDialog.Filter = "Microsoft Word (*.doc*)|*.docx*";
-            openFileDialog.Title = "Выберите шаблон";
+            openFileDialog.Title = windowDescription;
             return openFileDialog;
         }
 
@@ -130,12 +131,12 @@ namespace ViewModel.Path
         /// Настройка диалогового окна для выбора excel файла
         /// </summary>
         /// <returns>Объект с настройками</returns>
-        private OpenFileDialog GetSettingFileExcelDialog()
+        private OpenFileDialog GetSettingFileExcelDialog(string windowDescription)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.DefaultExt = "*.xls;*.xlsx";
             openFileDialog.Filter = "Microsoft Excel (*.xls*)|*.xls*";
-            openFileDialog.Title = "Выберите файл excel";
+            openFileDialog.Title = windowDescription;
             return openFileDialog;
         }
     }
