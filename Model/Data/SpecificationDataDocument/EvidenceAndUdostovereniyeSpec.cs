@@ -9,7 +9,7 @@ namespace Model.Data.SpecificationDataDocument
     /// <summary>
     /// Данные в форме для свидетельства и удостоверений
     /// </summary>
-    public class DocumentEvidenceAndUdostovereniyeSpec : SpecFunction
+    public class EvidenceAndUdostovereniyeSpec : SpecFunction
     {
         private StudentRecord[] CorrectRecords;// Массив откоректированных записей который возвращается
 
@@ -21,7 +21,7 @@ namespace Model.Data.SpecificationDataDocument
         private string IssueDocumentDate;
         private Programs Programm;
 
-        public DocumentEvidenceAndUdostovereniyeSpec(StudentRecord[] records, string startEducation, string endEducation, string issueDocumentDate, string numberCard, Programs programm)
+        public EvidenceAndUdostovereniyeSpec(StudentRecord[] records, string startEducation, string endEducation, string issueDocumentDate, string numberCard, Programs programm)
         {
             CorrectRecords = records;
 
@@ -49,7 +49,7 @@ namespace Model.Data.SpecificationDataDocument
         /// </summary>
         public void Correction()
         {
-            for (int i = 0; i < CorrectRecords.Length; i++)
+            for (byte i = 0; i < CorrectRecords.Length; i++)
             {
                 CorrectRecords[i] = CorrectFIO(CorrectRecords[i], i);
                 CorrectRecords[i] = CorrectNumberSertificate(CorrectRecords[i], i);
@@ -127,7 +127,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="idStudent"> Номер студента</param>
         private StudentRecord CorrectDate(StudentRecord dataStudent)
         {
-            for (int i = 1; i < 4; i++)
+            for (byte i = 1; i < 4; i++)
             {
                 if (i == 2)
                 {

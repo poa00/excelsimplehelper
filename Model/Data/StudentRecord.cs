@@ -38,7 +38,7 @@ namespace Model.Data
         /// <param name="bookmark"></param>
         /// <param name="value"></param>
         /// <param name="indexLine">номер строки в файле</param>
-        public void AddPropertyRecord(string bookmark, string value, int indexLine)
+        public void AddPropertyRecord(string bookmark, string value, byte indexLine)
         {
             if (bookmark == null || value == null)
                 return;
@@ -77,7 +77,7 @@ namespace Model.Data
         /// <param name="key">Ключ</param>
         /// <param name="value">значение</param>
         /// <returns></returns>
-        public string Check(string key, string value, int indexLine)
+        public string Check(string key, string value, byte indexLine)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -107,7 +107,7 @@ namespace Model.Data
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public string CheckDate(string date, int indexLine)
+        public string CheckDate(string date, byte indexLine)
         {
             if (date.Length > 10)
             {
@@ -127,7 +127,7 @@ namespace Model.Data
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public string CheckMark(string date, int indexLine)
+        public string CheckMark(string date, byte indexLine)
         {
             if (date != " ")
             {

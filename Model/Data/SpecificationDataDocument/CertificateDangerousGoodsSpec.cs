@@ -54,7 +54,7 @@ namespace Model.Data.SpecificationDataDocument
         public void Correction()
         {
             IsCertificate12Category = isCertificate12Category();
-            for (int i = 0; i < CertificateDangerousGoodsRecords.Length; i++)
+            for (byte i = 0; i < CertificateDangerousGoodsRecords.Length; i++)
             {
                 CertificateDangerousGoodsRecords[i] = CorrectFIO(CertificateDangerousGoodsRecords[i], i);
                 CertificateDangerousGoodsRecords[i] = CorrectData(CertificateDangerousGoodsRecords[i]);
@@ -89,7 +89,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="dataStudent"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public StudentRecord CorrectNumberDocument(StudentRecord dataStudent, int id)
+        public StudentRecord CorrectNumberDocument(StudentRecord dataStudent, byte id)
         {
             int.TryParse(string.Join("", Number.Where(c => char.IsDigit(c))), out int value);
             if ((value + id) >=  10 && (value + id) < 100)

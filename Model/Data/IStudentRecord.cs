@@ -8,11 +8,11 @@ namespace Model.Data
 {
     interface IStudentRecord
     {
-        string Check(string key, string value, int indexLine);
-        string CheckMark(string date, int indexLine);
-        string CheckDate(string date, int indexLine);
+        string Check(string key, string value, byte indexLine);
+        string CheckMark(string date, byte indexLine);
+        string CheckDate(string date, byte indexLine);
 
-        void AddPropertyRecord(string bookmark, string value, int indexLine);
+        void AddPropertyRecord(string bookmark, string value, byte indexLine);
         void AddPropertyRecord(string bookmark, string value);
     }
 }

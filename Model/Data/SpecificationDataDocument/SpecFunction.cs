@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace Model.Data.SpecificationDataDocument
 {
+    /// <summary>
+    /// Набор специальных функций для создания специальных наборов данных
+    /// </summary>
     public class SpecFunction
     {
         private Dictionary<string, string> month;
-        protected const int DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE = 1;
+        protected const byte DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE = 1;
         public SpecFunction()
         {
             month = new Dictionary<string, string>
@@ -52,7 +55,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="id">id даты из массива дат</param>
         /// <param name="count">какое число взять</param>
         /// <returns>число из даты</returns>
-        public string GetNumberData(string date, int count)
+        public string GetNumberData(string date, byte count)
         {
             string Number = " ";
 
@@ -100,9 +103,9 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="student"></param>
         /// <param name="InitialString"></param>
         /// <returns></returns>
-        protected StudentRecord CorrectFIO(StudentRecord dataStudent, int idRecord)
+        protected StudentRecord CorrectFIO(StudentRecord dataStudent, byte idRecord)
         {
-            idRecord = idRecord + DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE;// Строки в массиве начинаются с 0, а в файле с 1
+            idRecord = (byte)(idRecord + DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE);// Строки в массиве начинаются с 0, а в файле с 1
             string[] fio = CutFromStringElements(dataStudent.GetOneStudent()["ФИО"], ' ');
             if (fio.Length < 3)
             {

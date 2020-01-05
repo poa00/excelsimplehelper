@@ -13,13 +13,13 @@ namespace Model.Write.Word.Document
     public class Statement
     {
         //Количество колонок в таблице
-        private const int COLUMN_REGISTER = 5;
+        private const byte COLUMN_REGISTER = 5;
         // Название программы обучения
         private string ProgramName;
 
         Table TableRegister;
         // Размер отступа в таблице
-        private int SizeIndentationHanging;
+        private short SizeIndentationHanging;
         private string[] BookamrkStatement;
         // Номер студента в ведомости
         public string Number;
@@ -98,7 +98,8 @@ namespace Model.Write.Word.Document
         {
             using (var document = DocX.Load(Properties.Settings.Default.PathFileWordStatementTemplate))
             {
-                TableRegister = document.AddTable(records.Length + 1, COLUMN_REGISTER);
+                const byte LINE_TITLE = 1;
+                TableRegister = document.AddTable(records.Length + LINE_TITLE, COLUMN_REGISTER);
                 SettingStatement();
                 var NameProgrammBookmark = document.Bookmarks["Программа"];
                 NameProgrammBookmark.SetText(records[0].GetOneStudent()["Программа"]);

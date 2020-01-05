@@ -8,7 +8,7 @@ namespace Model.Write.Word.Document
 {
     public class ManagerDocument
     {
-        private int IdDocument;
+        private byte IdDocument;
         private Programs Program;
         private ProgramDGs ProgramDG;
         private FileExcel_.FileExcel DateFromFile;
@@ -21,26 +21,26 @@ namespace Model.Write.Word.Document
 
         public ManagerDocument(Programs program, DocumentEvidenceAndUdostovereniyeModel evidenceAndUdostovereniye)
         {
-            IdDocument = program.TypeDocument.Id;
+            IdDocument = (byte)program.TypeDocument.Id;
             Program = program;
             EvidenceAndUdostovereniye = evidenceAndUdostovereniye;
         }
         public ManagerDocument(ProgramDGs program, CertificateDangerousGoodsModel certificateDangerousGoods)
         {
-            IdDocument = program.TypeDocument.Id;
+            IdDocument = (byte)program.TypeDocument.Id;
             ProgramDG = program;
             CertificateDangerousGoods = certificateDangerousGoods;
         }
 
-        public ManagerDocument(ProgramDGs program, CertificateDangerousGoodsModel certificateDangerousGoods, int type)
+        public ManagerDocument(ProgramDGs program, CertificateDangerousGoodsModel certificateDangerousGoods, byte type)
         {
-            IdDocument = type;
+            IdDocument = (byte)type;
             ProgramDG = program;
             CertificateDangerousGoods = certificateDangerousGoods;
         }
-        public ManagerDocument(Programs program, DocumentEvidenceAndUdostovereniyeModel evidenceAndUdostovereniye, int type)
+        public ManagerDocument(Programs program, DocumentEvidenceAndUdostovereniyeModel evidenceAndUdostovereniye, byte type)
         {
-            IdDocument = type;
+            IdDocument = (byte)type;
             Program = program;
             EvidenceAndUdostovereniye = evidenceAndUdostovereniye;
         }
@@ -74,7 +74,7 @@ namespace Model.Write.Word.Document
         /// <param name="bookmarkWord"></param>
         private void CreateCertificate()
         {
-            DocumentEvidenceAndUdostovereniyeSpec dataSpec = new DocumentEvidenceAndUdostovereniyeSpec(DateFromFile.GetRecords(), EvidenceAndUdostovereniye.DateStartEducation, EvidenceAndUdostovereniye.DateEndEducation,
+            EvidenceAndUdostovereniyeSpec dataSpec = new EvidenceAndUdostovereniyeSpec(DateFromFile.GetRecords(), EvidenceAndUdostovereniye.DateStartEducation, EvidenceAndUdostovereniye.DateEndEducation,
                                                                         EvidenceAndUdostovereniye.DateIssueDocument, EvidenceAndUdostovereniye.Group, Program);
             dataSpec.Correction();
             if (IdDocument == 0)
@@ -123,8 +123,7 @@ namespace Model.Write.Word.Document
                     Properties.Settings.Default.PathFileWordEvidenceTemplate == "Выбери свой путь" ||
                 Properties.Settings.Default.PathFileWordStatementTemplate == "Выбери свой путь" ||
                     Properties.Settings.Default.PathFileWordUdostovereniyeTemplate == "Выбери свой путь" ||
-                Properties.Settings.Default.PathFolderResult == "Выбери свой путь" ||
-                    Properties.Settings.Default.PathResulInputForParallelFolder == "Выбери свой путь")
+                Properties.Settings.Default.PathFolderResult == "Выбери свой путь")
                 
             {
                 MessageBug.AddMessage(MessageBug.message.Проблема_с_путем_к_файлу_или_папке, "посмотрите файл настройки");

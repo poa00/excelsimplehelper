@@ -17,13 +17,13 @@ namespace Model.FileExcel_
         /// <summary>
         /// Количество заполненых строк в файле
         /// </summary>
-        private int filledString;
+        private byte filledString;
         public FileInfo existingFile;
         public ExcelPackage package;
         public ExcelWorksheet worksheet;
-        const sbyte LINE_NUMBER_FROM_WHICH_FILE_IS_FILED = 2;
+        const byte LINE_NUMBER_FROM_WHICH_FILE_IS_FILED = 2;
 
-        public FileExcel(string path, sbyte Sheet)
+        public FileExcel(string path, byte Sheet)
         {
             existingFile = new FileInfo(path);
             package = new ExcelPackage(existingFile);
@@ -43,12 +43,12 @@ namespace Model.FileExcel_
         private void GetLineAndColumn()
         {
             // 1 строка в файле названия колонок, со 2 начинаются данные
-            sbyte fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;
+            byte fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;
             while (worksheet.Cells[fileLine, 1].Value != null)
             {
                 fileLine++;
             }
-            filledString = fileLine - LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;
+            filledString = (byte)(fileLine - LINE_NUMBER_FROM_WHICH_FILE_IS_FILED);
             studentRecords = new StudentRecord[filledString];
         }
 
@@ -60,7 +60,7 @@ namespace Model.FileExcel_
         {
             using (package)
             {
-                sbyte fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;// текущая строка в файле excel
+                byte fileLine = LINE_NUMBER_FROM_WHICH_FILE_IS_FILED;// текущая строка в файле excel
                 GetLineAndColumn();
                 while (worksheet.Cells[fileLine, 1].Value != null)
                 {

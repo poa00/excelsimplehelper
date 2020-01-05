@@ -101,7 +101,7 @@ namespace UnitTest.SpecificationData
         [TestMethod]
         public void TestMethodCorrection()
         {
-            DocumentEvidenceAndUdostovereniyeSpec certificationSpec = new DocumentEvidenceAndUdostovereniyeSpec(Records, "01.01.2018", "02.01.2019",
+            EvidenceAndUdostovereniyeSpec certificationSpec = new EvidenceAndUdostovereniyeSpec(Records, "01.01.2018", "02.01.2019",
                                                                         "03.02.2020", "666", Program);
             certificationSpec.Correction();
             Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Отчество"], "Зиннурович");
