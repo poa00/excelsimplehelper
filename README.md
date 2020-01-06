@@ -11,8 +11,7 @@
   "<connectionStrings>
     <add name="Context" connectionString="data source=C:\OfficeMagusBD\officeWizard.db" providerName="System.Data.SQLite.EF6" />
   </connectionStrings>"
-  
-или Создать на диске C: папку c названием OfficeMagusBD и положить туда файл с базой данных
+  или Создать на диске C: папку c названием OfficeMagusBD и положить туда файл с базой данных
 6. В решении OfficeWizard, вместе с кодом проекта, так же лежат и файлы для работы(Без них приложение работать не будет по середине снизу будет появляться сообщение: 
 "О не прописанных путях").
 В проекте Model, в папке "ExternalFiles" лежат файлы, к которым надо прописать пути при включение приложения. 
