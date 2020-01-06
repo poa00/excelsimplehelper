@@ -6,7 +6,7 @@
 Выберите: Установить сборки в глобальный кэш сборок - Установить компоненты конструктора VS
 (Галочки везде проставить)
 4. Востановить пакеты NuGet, уже при открытом проекте.
-5. Вместе со скаченным проектом в папке Debug лежит файл officeWizard.db ("officewizard-master\Model\officeWizard.db),
+5. Вместе со скаченным проектом в папке лежит файл officeWizard.db ("officewizard-master\Model\officeWizard.db),
 в файле App.config можно изменить путь к файлу найдя такие строки:
   "<connectionStrings>
     <add name="Context" connectionString="data source=C:\OfficeMagusBD\officeWizard.db" providerName="System.Data.SQLite.EF6" />
