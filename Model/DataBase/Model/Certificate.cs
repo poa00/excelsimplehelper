@@ -75,7 +75,7 @@ namespace Model.DataBase.Model
                                                                 certification.issueDate, certification.party, certification.Programs);
             dataSpec.CorrectionLoad();
             Document_ Evidence = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.PathFileWordEvidenceTemplate, certification.party);
-            Evidence.CreateDocument("");
+            Evidence.CreateDocument();
         }
 
         /// <summary>

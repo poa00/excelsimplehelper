@@ -44,10 +44,10 @@ namespace Model.Write.Word.Document
             BookmarksWord = bookmarksWord;
         }
 
-        public void CreateDocument(string typeDocument)
+        public void CreateDocument()
         {
             CreatingFolderForDocuments();
-            CreateDoc(typeDocument);
+            CreateDoc();
         }
 
         public void CreatingFolderForDocuments()
@@ -59,7 +59,7 @@ namespace Model.Write.Word.Document
         /// <summary>
         /// Создание документа(Word)
         /// </summary>
-        private void CreateDoc(string typeDocument)
+        private void CreateDoc()
         {
             byte[] textByteArray = File.ReadAllBytes(PathTemplateWord);
 
@@ -79,7 +79,7 @@ namespace Model.Write.Word.Document
                                 continue;
                             }
 
-                            if (current.Key == "ПовышенияКвалификации" &&(typeDocument == "Удостоверения (Лицензия)" || typeDocument == "Удостоверение (Реквизит)"))
+                            if (current.Key == "ПовышенияКвалификации" &&(TypeDocument == "Удостоверения (Лицензия)" || TypeDocument == "Удостоверение (Реквизит)"))
                             {
                                 continue;
                             }
@@ -90,7 +90,7 @@ namespace Model.Write.Word.Document
                                 for (int i = lesson.Length - 1; i > -1; i--)
                                 {
                                     var text = new Text(lesson[i]);
-                                    run = propertiesDocument.GetProperties(typeDocument, current.Key, text);
+                                    run = propertiesDocument.GetProperties(TypeDocument, current.Key, text);
                                     current.Value.InsertAfterSelf(run);
 
                                     var run2 = new Run(new Break());
@@ -101,30 +101,18 @@ namespace Model.Write.Word.Document
 
                             var textElement = new Text(DataForDocuments[j].GetOneStudent()[current.Key]);
                             
-                            run = propertiesDocument.GetProperties(typeDocument, current.Key, textElement);
+                            run = propertiesDocument.GetProperties(TypeDocument, current.Key, textElement);
 
                             current.Value.InsertAfterSelf(run);
                         }
                     }
-
-                    if(typeDocument == "Ведомость"){
-                        File.WriteAllBytes(PathResult +
-                                                    "\\" + DataForDocuments[j].GetOneStudent()["Группа"] +
-                                                    "_" + typeDocument + ".docx",
-                                                    stream.ToArray());
-                    }
-                    else
-                    {
-                        // Записываем всё в наш файл
-                        File.WriteAllBytes(PathResult +
+                    File.WriteAllBytes(PathResult +
                                 "\\" + DataForDocuments[j].GetOneStudent()["Фамилия"] +
                                 "_" + DataForDocuments[j].GetOneStudent()["Имя"] +
                                 "_" + DataForDocuments[j].GetOneStudent()["Отчество"] +
-                                "_" + DataForDocuments[j].GetOneStudent()["Номер"] +
-                                "_" + typeDocument + ".docx",
+                                "_" + DataForDocuments[j].GetOneStudent()["Номер"] + ".docx",
                                 stream.ToArray());
                         SaveDocument(DataForDocuments[j]);
-                    }
                 }
             }
         }

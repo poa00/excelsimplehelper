@@ -87,7 +87,7 @@ namespace Model.Write.Word.Document
             }
 
             Document_ Evidence = new Document_(dataSpec.GetRecords(), PathTemplateDocument, EvidenceAndUdostovereniye.Group);
-            Evidence.CreateDocument(DateFromFile.GetRecords()[0].GetOneStudent()["Тип"]);
+            Evidence.CreateDocument();
 
             CreateStatement(DateFromFile.GetRecords(), EvidenceAndUdostovereniye.Group);
         }
@@ -110,7 +110,7 @@ namespace Model.Write.Word.Document
             }
 
             Document_ CertificatDG = new Document_(dataSpec.GetRecords(), PathTemplateDocument, CertificateDangerousGoods.Number);
-            CertificatDG.CreateDocument(DateFromFile.GetRecords()[0].GetOneStudent()["Тип"]);
+            CertificatDG.CreateDocument();
 
             CreateStatement(DateFromFile.GetRecords(), CertificateDangerousGoods.Group, CertificateDangerousGoods.Number);
         }

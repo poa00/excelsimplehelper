@@ -13,7 +13,7 @@
                 <ListViewItem Height="300">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Margin="0 10"  Kind="Home" Width="30" Height="30"/>
-                        <TextBlock Text="Сертификаты" Margin="40 10 10 10" FontSize="20"/>
+                        <TextBlock Text="Удостоверния\Свидетельства" Margin="40 10 10 10" FontSize="20"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="400">
