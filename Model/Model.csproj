@@ -150,8 +150,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ExternalFiles\Ведомость выдачи документа3.docx" />
-    <None Include="ExternalFiles\Образец ОГ.docx" />
-    <None Include="ExternalFiles\Образец ОГ12.docx" />
+    <None Include="ExternalFiles\Опасные грузы 12 категория.docx" />
+    <None Include="ExternalFiles\Опасные грузы.docx" />
     <None Include="ExternalFiles\Свидетельство2.docx" />
     <None Include="ExternalFiles\Удостоверение2.docx" />
     <None Include="ExternalFiles\Файл с данными студентов.xlsx" />
