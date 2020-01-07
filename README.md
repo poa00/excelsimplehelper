@@ -7,7 +7,7 @@
 (Галочки везде проставить)
 4. Востановить пакеты NuGet, уже при открытом проекте.
 5. Вместе со скаченным проектом в папке лежит файл officeWizard.db ("officewizard-master\Model\officeWizard.db),
-в файле App.config можно изменить путь к файлу найдя такие строки:add name="Context" connectionString="data source=C:\OfficeMagusBD\officeWizard.db" providerName="System.Data.SQLite.EF6"
+в файле App.config можно изменить путь к файлу найдя такие строки:add name="Context" connectionString="data source=D:\OfficeMagusBD\officeWizard.db" providerName="System.Data.SQLite.EF6"
   или Создать на диске C: папку c названием OfficeMagusBD и положить туда файл с базой данных
 6. В решении OfficeWizard, вместе с кодом проекта, так же лежат и файлы для работы(Без них приложение работать не будет по середине снизу будет появляться сообщение: 
 "О не прописанных путях").
