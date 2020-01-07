@@ -149,12 +149,24 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ExternalFiles\Ведомость выдачи документа3.docx" />
-    <None Include="ExternalFiles\Опасные грузы 12 категория.docx" />
-    <None Include="ExternalFiles\Опасные грузы.docx" />
-    <None Include="ExternalFiles\Свидетельство2.docx" />
-    <None Include="ExternalFiles\Удостоверение2.docx" />
-    <None Include="ExternalFiles\Файл с данными студентов.xlsx" />
+    <None Include="ExternalFiles\Ведомость выдачи документа3.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ExternalFiles\Опасные грузы 12 категория.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ExternalFiles\Опасные грузы.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ExternalFiles\Свидетельство2.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ExternalFiles\Удостоверение2.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ExternalFiles\Файл с данными студентов.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="officeWizard.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
