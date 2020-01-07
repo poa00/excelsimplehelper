@@ -1,5 +1,5 @@
 Чтобы проект заработал у себя надо:
-1. Установить Visual studio 2017.
+1. Установить Visual studio 2017(У меня Community).
 2. Установить расширение SQLite & SQL Server Compact Toolbox для Visual Studio.
 3. По адресу https://system.data.sqlite.org/index.html/doc/trunk/www/downloads.wiki скачать sqlite-netFx46-setup-bundle-x86-2015-1.0.112.0.exe.
 Выберите «Полная установка»
