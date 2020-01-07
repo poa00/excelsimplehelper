@@ -126,7 +126,7 @@ namespace Model.Write.Word.Document
                 Properties.Settings.Default.PathFolderResult == "Выбери свой путь")
                 
             {
-                MessageBug.AddMessage(MessageBug.message.Проблема_с_путем_к_файлу_или_папке, "посмотрите файл настройки");
+                MessageBug.AddMessage(MessageBug.message.Проблема_с_путем_к_файлу_или_папке, "посмотрите вкладку настройки");
             }
             else
             {
