@@ -13,7 +13,8 @@ namespace Model.Data.SpecificationDataDocument
     public class SpecFunction
     {
         private Dictionary<string, string> month;
-        protected const byte DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE = 1;
+        const byte DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE = 1;
+
         public SpecFunction()
         {
             month = new Dictionary<string, string>
@@ -42,7 +43,7 @@ namespace Model.Data.SpecificationDataDocument
         /// </summary>
         /// <param name="initialString">изначальная строка</param>
         /// <param name="elementCut">элемент по которрому произойдет разделения</param>
-        public static string[] CutFromStringElements(string initialString, char elementCut)
+        public string[] CutFromStringElements(string initialString, char elementCut)
         {
             string[] array_full_name = initialString.Split(new char[] { elementCut }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -103,7 +104,7 @@ namespace Model.Data.SpecificationDataDocument
         /// <param name="student"></param>
         /// <param name="InitialString"></param>
         /// <returns></returns>
-        protected StudentRecord CorrectFIO(StudentRecord dataStudent, byte idRecord)
+        public StudentRecord CorrectFIO(StudentRecord dataStudent, byte idRecord)
         {
             idRecord = (byte)(idRecord + DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE);// Строки в массиве начинаются с 0, а в файле с 1
             string[] fio = CutFromStringElements(dataStudent.GetOneStudent()["ФИО"], ' ');

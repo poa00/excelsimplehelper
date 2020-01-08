@@ -21,6 +21,7 @@ namespace Model.Write.Word.Document
         private string TypeDocument;
         private string Group;
         private PropertiesDocument propertiesDocument;
+        private SpecFunction SpecFunction_;
 
         /// <summary>
         /// 
@@ -37,6 +38,8 @@ namespace Model.Write.Word.Document
             DataForDocuments = recordSpec;
             TypeDocument = DataForDocuments[0].GetOneStudent()["Тип"];
             Group = group;
+
+            SpecFunction_ = new SpecFunction();
         }
         
         public void AddBookmarksWord(string[] bookmarksWord)
@@ -86,7 +89,7 @@ namespace Model.Write.Word.Document
 
                             if (current.Key == "Уроки")
                             {
-                                string[] lesson = SpecFunction.CutFromStringElements(DataForDocuments[j].GetOneStudent()[current.Key], '\r');
+                                string[] lesson = SpecFunction_.CutFromStringElements(DataForDocuments[j].GetOneStudent()[current.Key], '\r');
                                 for (int i = lesson.Length - 1; i > -1; i--)
                                 {
                                     var text = new Text(lesson[i]);
@@ -100,9 +103,7 @@ namespace Model.Write.Word.Document
                             }
 
                             var textElement = new Text(DataForDocuments[j].GetOneStudent()[current.Key]);
-                            
                             run = propertiesDocument.GetProperties(TypeDocument, current.Key, textElement);
-
                             current.Value.InsertAfterSelf(run);
                         }
                     }

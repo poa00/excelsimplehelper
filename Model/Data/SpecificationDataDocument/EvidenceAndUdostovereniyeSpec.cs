@@ -9,7 +9,7 @@ namespace Model.Data.SpecificationDataDocument
     /// <summary>
     /// Данные в форме для свидетельства и удостоверений
     /// </summary>
-    public class EvidenceAndUdostovereniyeSpec : SpecFunction
+    public class EvidenceAndUdostovereniyeSpec
     {
         private StudentRecord[] CorrectRecords;// Массив откоректированных записей который возвращается
 
@@ -20,6 +20,8 @@ namespace Model.Data.SpecificationDataDocument
         private string EndEducation;
         private string IssueDocumentDate;
         private Programs Programm;
+        private SpecFunction SpecFunction_;
+        const byte DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE = 1;
 
         public EvidenceAndUdostovereniyeSpec(StudentRecord[] records, string startEducation, string endEducation, string issueDocumentDate, string numberCard, Programs programm)
         {
@@ -30,7 +32,7 @@ namespace Model.Data.SpecificationDataDocument
             EndEducation = endEducation;
             IssueDocumentDate = issueDocumentDate;
             Programm = programm;
-            
+            SpecFunction_ = new SpecFunction();
             date = new Dictionary<int, string>
             { 
                 { 1, "Д" },// день
@@ -51,7 +53,7 @@ namespace Model.Data.SpecificationDataDocument
         {
             for (byte i = 0; i < CorrectRecords.Length; i++)
             {
-                CorrectRecords[i] = CorrectFIO(CorrectRecords[i], i);
+                CorrectRecords[i] = SpecFunction_.CorrectFIO(CorrectRecords[i], i);
                 CorrectRecords[i] = CorrectNumberSertificate(CorrectRecords[i], i);
                 CorrectRecords[i] = CorrectDate(CorrectRecords[i]);
                 CorrectRecords[i] = CorrectMark(CorrectRecords[i], i);
@@ -131,15 +133,15 @@ namespace Model.Data.SpecificationDataDocument
             {
                 if (i == 2)
                 {
-                    dataStudent.AddPropertyRecord("Н" + date[i], ConvertingNumberPerMonth(GetNumberData(StartEducation, i)).Trim());
-                    dataStudent.AddPropertyRecord("К" + date[i], ConvertingNumberPerMonth(GetNumberData(EndEducation, i)).Trim());
-                    dataStudent.AddPropertyRecord("П" + date[i], ConvertingNumberPerMonth(GetNumberData(IssueDocumentDate, i)).Trim());
+                    dataStudent.AddPropertyRecord("Н" + date[i], SpecFunction_.ConvertingNumberPerMonth(SpecFunction_.GetNumberData(StartEducation, i)).Trim());
+                    dataStudent.AddPropertyRecord("К" + date[i], SpecFunction_.ConvertingNumberPerMonth(SpecFunction_.GetNumberData(EndEducation, i)).Trim());
+                    dataStudent.AddPropertyRecord("П" + date[i], SpecFunction_.ConvertingNumberPerMonth(SpecFunction_.GetNumberData(IssueDocumentDate, i)).Trim());
                 }
                 else
                 {
-                    dataStudent.AddPropertyRecord("Н" + date[i], GetNumberData(StartEducation, i).Trim());
-                    dataStudent.AddPropertyRecord("К" + date[i], GetNumberData(EndEducation, i).Trim());
-                    dataStudent.AddPropertyRecord("П" + date[i], GetNumberData(IssueDocumentDate, i).Trim());
+                    dataStudent.AddPropertyRecord("Н" + date[i], SpecFunction_.GetNumberData(StartEducation, i).Trim());
+                    dataStudent.AddPropertyRecord("К" + date[i], SpecFunction_.GetNumberData(EndEducation, i).Trim());
+                    dataStudent.AddPropertyRecord("П" + date[i], SpecFunction_.GetNumberData(IssueDocumentDate, i).Trim());
                 }
             }
             return dataStudent;

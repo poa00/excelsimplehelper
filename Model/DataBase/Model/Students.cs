@@ -8,11 +8,15 @@ namespace Model.DataBase.Model
 
     public partial class Students
     {
+        private SpecFunction SpecFunction_;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Students()
         {
             Certificate = new HashSet<Certificate>();
             CertificateDGs = new HashSet<CertificateDGs>();
+
+            SpecFunction_ = new SpecFunction();
         }
 
         public int id { get; set; }
@@ -169,7 +173,7 @@ namespace Model.DataBase.Model
         /// <returns></returns>
         public int FindIdStudentByFio(DataBaseContext context, string fio)
         {
-            string[] fioArray = SpecFunction.CutFromStringElements(fio, ' ');
+            string[] fioArray = SpecFunction_.CutFromStringElements(fio, ' ');
             Students students = new Students();
             int idStudent = 0; ;
 
@@ -230,7 +234,7 @@ namespace Model.DataBase.Model
         /// <returns></returns>
         public int FindIdStudentByFioAndDateBirth(DataBaseContext context, string fio, string dateBirth)
         {
-            string[] fioArray = SpecFunction.CutFromStringElements(fio, ' ');
+            string[] fioArray = SpecFunction_.CutFromStringElements(fio, ' ');
             Students students = new Students();
             int idStudent = 0;
 

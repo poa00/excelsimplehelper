@@ -7,13 +7,14 @@ namespace Model.Data.SpecificationDataDocument
     /// <summary>
     /// Данные в форме для сертификата ОГ
     /// </summary>
-    public class CertificateDangerousGoodsSpec : SpecFunction
+    public class CertificateDangerousGoodsSpec
     {
         private StudentRecord[] CertificateDangerousGoodsRecords;
         private string Number;
         private string DateIssue;
         private ProgramDGs Programm;
         public bool IsCertificate12Category;
+        private SpecFunction SpecFunction_;
 
         public CertificateDangerousGoodsSpec(StudentRecord[] records, string dateIssue, string number, ProgramDGs programm)
         {
@@ -22,6 +23,8 @@ namespace Model.Data.SpecificationDataDocument
             Number = number;
             Programm = programm;
             IsCertificate12Category = false;
+
+            SpecFunction_ = new SpecFunction();
         }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace Model.Data.SpecificationDataDocument
             IsCertificate12Category = isCertificate12Category();
             for (byte i = 0; i < CertificateDangerousGoodsRecords.Length; i++)
             {
-                CertificateDangerousGoodsRecords[i] = CorrectFIO(CertificateDangerousGoodsRecords[i], i);
+                CertificateDangerousGoodsRecords[i] = SpecFunction_.CorrectFIO(CertificateDangerousGoodsRecords[i], i);
                 CertificateDangerousGoodsRecords[i] = CorrectData(CertificateDangerousGoodsRecords[i]);
                 CertificateDangerousGoodsRecords[i] = CorrectNumberDocument(CertificateDangerousGoodsRecords[i], i);
                 CertificateDangerousGoodsRecords[i] = CorrectProgram(CertificateDangerousGoodsRecords[i]);
