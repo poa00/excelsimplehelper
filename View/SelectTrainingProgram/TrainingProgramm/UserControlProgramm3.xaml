@@ -34,7 +34,7 @@
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Margin="0,0,0,61.2">
                     <DataGrid AutoGenerateColumns="False" x:Name="DataGridProgram"  Margin="40 40 0 0"
-                                      ItemsSource="{Binding Program3.Programs}" Height="540" Width="551">
+                                      ItemsSource="{Binding Program3.Programs}" Height="540" Width="551" CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding name}" Header="Название программы"   Width="400">
                                 <DataGridTextColumn.ElementStyle>

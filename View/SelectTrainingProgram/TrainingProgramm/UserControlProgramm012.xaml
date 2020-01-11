@@ -54,7 +54,7 @@
 
             <StackPanel HorizontalAlignment="Right" Margin="0,0,0,61.2">
                 <DataGrid AutoGenerateColumns="False" Name="DataGridProgram" Margin="40 40 0 0"
-                            ItemsSource="{Binding Path=Program012.Programs}" Height="543" Width="550">
+                            ItemsSource="{Binding Path=Program012.Programs}" Height="543" Width="550"  CanUserAddRows="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding name}" Header="Название программы" Width="200">
                             <DataGridTextColumn.ElementStyle>

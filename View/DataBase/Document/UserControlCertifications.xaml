@@ -12,7 +12,7 @@
 
             <StackPanel HorizontalAlignment="Left" Width="1100" >
                 <StackPanel Height="470">
-                    <DataGrid x:Name="DataGridDataBase" AutoGenerateColumns="false" Height="470" ItemsSource="{Binding _certificate.Certifications}">
+                    <DataGrid x:Name="DataGridDataBase" AutoGenerateColumns="false" Height="470" ItemsSource="{Binding _certificate.Certifications}" CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Номер" Binding="{Binding id}" Width="200"/>
                             <DataGridTextColumn Header="№ Документа" Binding="{Binding party}" Width="200"/>

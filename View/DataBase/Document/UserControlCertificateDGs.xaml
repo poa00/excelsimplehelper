@@ -9,7 +9,7 @@
     <Grid Background="#dad4da">
         <materialDesign:TransitioningContent x:Name="TransitionContentSlide">
             <StackPanel HorizontalAlignment="Left" Width="1100" >
-                <DataGrid x:Name="DataGridDataBase" AutoGenerateColumns="false" Height="645" ItemsSource="{Binding _certificate.Certificate}">
+                <DataGrid x:Name="DataGridDataBase" AutoGenerateColumns="false" Height="645" ItemsSource="{Binding _certificate.Certificate}" CanUserAddRows="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="№ Документа" Binding="{Binding party}" Width="200"/>
                         <DataGridTextColumn Header="Дата выдачи" Binding="{Binding issueDate}" />
