@@ -54,7 +54,7 @@ namespace Model.DataBase.Model
             DateFromFile[0].AddPropertyRecord("Отчество", certification.Students.patronymic);
             DateFromFile[0].AddPropertyRecord("ДатаРождения", certification.Students.dateDirth);
             DateFromFile[0].AddPropertyRecord("Номер", certification.party);
-            CertificateDangerousGoodsSpec dataSpec = new CertificateDangerousGoodsSpec(DateFromFile, certification.issueDate, certification.party, certification.ProgramDGs);
+            CertificateDangerousGoods dataSpec = new CertificateDangerousGoods(DateFromFile, certification.issueDate, certification.party, certification.ProgramDGs);
             dataSpec.CorrectionLoad();
             Document_ document = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.PathFileWordCertificateDGTemplate, certification.party);
             document.AddBookmarksWord(bookmarkWord);

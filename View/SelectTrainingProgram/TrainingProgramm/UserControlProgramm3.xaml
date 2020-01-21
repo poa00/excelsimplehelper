@@ -1,11 +1,13 @@
 ﻿<!--Программы Опасных грузов-->
-<UserControl x:Class="View.SelectTrainingProgram.TrainingProgramm.UserControlProgramm3"
+<UserControl
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-            mc:Ignorable="d" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" 
+            x:Class="View.SelectTrainingProgram.TrainingProgramm.UserControlProgramm3"
+            mc:Ignorable="d"
             d:DesignHeight="720" d:DesignWidth="1100">
     <Grid Background="#dad4da">
         <materialDesign:TransitioningContent x:Name="TransitionContentSlide">

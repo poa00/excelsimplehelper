@@ -15,8 +15,22 @@ namespace Model.Write.Word.Document
         private DocumentEvidenceAndUdostovereniyeModel EvidenceAndUdostovereniye;
         private CertificateDangerousGoodsModel CertificateDangerousGoods;
         private string PathTemplateDocument;
+
         public ManagerDocument()
         {
+        }
+
+        public ManagerDocument(ProgramDGs program, CertificateDangerousGoodsModel certificateDangerousGoods)
+        {
+            IdDocument = (byte)program.TypeDocument.Id;
+            ProgramDG = program;
+            CertificateDangerousGoods = certificateDangerousGoods;
+        }
+        public ManagerDocument(ProgramDGs program, CertificateDangerousGoodsModel certificateDangerousGoods, byte type)
+        {
+            IdDocument = (byte)type;
+            ProgramDG = program;
+            CertificateDangerousGoods = certificateDangerousGoods;
         }
 
         public ManagerDocument(Programs program, DocumentEvidenceAndUdostovereniyeModel evidenceAndUdostovereniye)
@@ -24,19 +38,6 @@ namespace Model.Write.Word.Document
             IdDocument = (byte)program.TypeDocument.Id;
             Program = program;
             EvidenceAndUdostovereniye = evidenceAndUdostovereniye;
-        }
-        public ManagerDocument(ProgramDGs program, CertificateDangerousGoodsModel certificateDangerousGoods)
-        {
-            IdDocument = (byte)program.TypeDocument.Id;
-            ProgramDG = program;
-            CertificateDangerousGoods = certificateDangerousGoods;
-        }
-
-        public ManagerDocument(ProgramDGs program, CertificateDangerousGoodsModel certificateDangerousGoods, byte type)
-        {
-            IdDocument = (byte)type;
-            ProgramDG = program;
-            CertificateDangerousGoods = certificateDangerousGoods;
         }
         public ManagerDocument(Programs program, DocumentEvidenceAndUdostovereniyeModel evidenceAndUdostovereniye, byte type)
         {
@@ -74,7 +75,7 @@ namespace Model.Write.Word.Document
         /// <param name="bookmarkWord"></param>
         private void CreateCertificate()
         {
-            EvidenceAndUdostovereniyeSpec dataSpec = new EvidenceAndUdostovereniyeSpec(DateFromFile.GetRecords(), EvidenceAndUdostovereniye.DateStartEducation, EvidenceAndUdostovereniye.DateEndEducation,
+            EvidenceAndUdostovereniye dataSpec = new EvidenceAndUdostovereniye(DateFromFile.GetRecords(), EvidenceAndUdostovereniye.DateStartEducation, EvidenceAndUdostovereniye.DateEndEducation,
                                                                         EvidenceAndUdostovereniye.DateIssueDocument, EvidenceAndUdostovereniye.Group, Program);
             dataSpec.Correction();
             if (IdDocument == 0)
@@ -98,7 +99,7 @@ namespace Model.Write.Word.Document
         /// <param name="bookmarkWord"></param>
         private void CreateCertificateDG()
         {
-            CertificateDangerousGoodsSpec dataSpec = new CertificateDangerousGoodsSpec(DateFromFile.GetRecords(), CertificateDangerousGoods.DateIssue, CertificateDangerousGoods.Number, ProgramDG);
+            CertificateDangerousGoods dataSpec = new CertificateDangerousGoods(DateFromFile.GetRecords(), CertificateDangerousGoods.DateIssue, CertificateDangerousGoods.Number, ProgramDG);
             dataSpec.Correction();
             if (dataSpec.IsCertificate12Category == true)
             {

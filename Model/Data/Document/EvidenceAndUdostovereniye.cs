@@ -7,9 +7,9 @@ using System.Linq;
 namespace Model.Data.SpecificationDataDocument
 {
     /// <summary>
-    /// Данные в форме для свидетельства и удостоверений
+    /// Данные для свидетельства и удостоверений
     /// </summary>
-    public class EvidenceAndUdostovereniyeSpec
+    public class EvidenceAndUdostovereniye
     {
         private StudentRecord[] CorrectRecords;// Массив откоректированных записей который возвращается
 
@@ -23,7 +23,7 @@ namespace Model.Data.SpecificationDataDocument
         private SpecFunction SpecFunction_;
         const byte DEGGERENCE_BETWEEN_BEGINNING_ARRAY_AND_FILE = 1;
 
-        public EvidenceAndUdostovereniyeSpec(StudentRecord[] records, string startEducation, string endEducation, string issueDocumentDate, string numberCard, Programs programm)
+        public EvidenceAndUdostovereniye(StudentRecord[] records, string startEducation, string endEducation, string issueDocumentDate, string numberCard, Programs programm)
         {
             CorrectRecords = records;
 

@@ -5,9 +5,9 @@ using System.Text.RegularExpressions;
 namespace Model.Data.SpecificationDataDocument
 {
     /// <summary>
-    /// Данные в форме для сертификата ОГ
+    /// Данные для сертификата ОГ
     /// </summary>
-    public class CertificateDangerousGoodsSpec
+    public class CertificateDangerousGoods
     {
         private StudentRecord[] CertificateDangerousGoodsRecords;
         private string Number;
@@ -16,7 +16,7 @@ namespace Model.Data.SpecificationDataDocument
         public bool IsCertificate12Category;
         private SpecFunction SpecFunction_;
 
-        public CertificateDangerousGoodsSpec(StudentRecord[] records, string dateIssue, string number, ProgramDGs programm)
+        public CertificateDangerousGoods(StudentRecord[] records, string dateIssue, string number, ProgramDGs programm)
         {
             CertificateDangerousGoodsRecords = records;
             DateIssue = dateIssue;

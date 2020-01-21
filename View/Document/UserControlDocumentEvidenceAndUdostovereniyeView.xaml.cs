@@ -11,7 +11,7 @@ namespace View.Document
         public UserControlDocumentEvidenceAndUdostovereniyeView()
         {
             InitializeComponent();
-            DataContext = new DocumentEvidenceAndUdostovereniyeViewModel();
+            DataContext = new EvidenceAndUdostovereniyeViewModel();
         }
     }
 }

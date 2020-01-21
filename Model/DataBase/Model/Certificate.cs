@@ -71,7 +71,7 @@ namespace Model.DataBase.Model
             DateFromFile[0].AddPropertyRecord("ДатаРождения", certification.Students.dateDirth);
             DateFromFile[0].AddPropertyRecord("Оценка", certification.mark);
             DateFromFile[0].AddPropertyRecord("Номер", certification.party);
-            EvidenceAndUdostovereniyeSpec dataSpec = new EvidenceAndUdostovereniyeSpec(DateFromFile, certification.startEducation, certification.endEducation,
+            EvidenceAndUdostovereniye dataSpec = new EvidenceAndUdostovereniye(DateFromFile, certification.startEducation, certification.endEducation,
                                                                 certification.issueDate, certification.party, certification.Programs);
             dataSpec.CorrectionLoad();
             Document_ Evidence = new Document_(dataSpec.GetRecords(), Properties.Settings.Default.PathFileWordEvidenceTemplate, certification.party);

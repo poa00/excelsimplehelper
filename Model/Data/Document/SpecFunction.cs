@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Model.Data.SpecificationDataDocument
 {
     /// <summary>
-    /// Набор специальных функций для создания специальных наборов данных
+    /// Как бы библиотека специальных функций для создания специальных наборов данных
     /// </summary>
     public class SpecFunction
     {

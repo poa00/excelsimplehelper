@@ -33,18 +33,6 @@ namespace ViewModel.Path
                 Path.PathFolderResult = folderBrowser.SelectedPath;
             }
         }
-
-        //public ICommand SelectPathResulInputForParallelFolder { get; set; }
-        //public void СhoicePathResulInputForParallelFolder()
-        //{
-        //    FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-        //    DialogResult result = folderBrowser.ShowDialog();
-
-        //    if (!string.IsNullOrWhiteSpace(folderBrowser.SelectedPath))
-        //    {
-        //        Path.PathResulInputForParallelFolder = folderBrowser.SelectedPath;
-        //    }
-        //}
                         
         public ICommand SelectPathFileExcelDataStudents { get; set; }
         public void СhoicePathFileExcelDataStudents()

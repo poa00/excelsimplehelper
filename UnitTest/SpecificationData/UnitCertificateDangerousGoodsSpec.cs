@@ -101,7 +101,7 @@ namespace UnitTest.SpecificationData
         [TestMethod]
         public void TestMethodCorrection()
         {
-            CertificateDangerousGoodsSpec certificationSpec = new CertificateDangerousGoodsSpec(Records, "01.01.2018", "2", Program);
+            CertificateDangerousGoods certificationSpec = new CertificateDangerousGoods(Records, "01.01.2018", "2", Program);
             certificationSpec.Correction();
             Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Отчество"], "Зиннурович");
             Assert.AreEqual(certificationSpec.GetRecords()[0].GetOneStudent()["Фамилия"], "Бакиров");

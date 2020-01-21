@@ -82,7 +82,7 @@
     <Compile Include="DataBase\CertificateDGsViewModel.cs" />
     <Compile Include="DataBase\CertificationsViewModel.cs" />
     <Compile Include="Document\CertificateDangerousGoodsViewModel.cs" />
-    <Compile Include="Document\DocumentEvidenceAndUdostovereniyeViewModel.cs" />
+    <Compile Include="Document\EvidenceAndUdostovereniyeViewModel.cs" />
     <Compile Include="Path\PathSettingsViewModel.cs" />
     <Compile Include="Programs\Program012ViewModel.cs" />
     <Compile Include="Programs\Program3ViewModel.cs" />

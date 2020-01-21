@@ -118,6 +118,8 @@
     <Compile Include="DataBase\Model\ProgramDGs.cs" />
     <Compile Include="DataBase\Model\Students.cs" />
     <Compile Include="DataBase\Model\TypeDocument.cs" />
+    <Compile Include="Data\Document\CertificateDangerousGoods.cs" />
+    <Compile Include="Data\Document\EvidenceAndUdostovereniye.cs" />
     <Compile Include="Data\IStudentRecord.cs" />
     <Compile Include="Data\PatternMVVM\CertificateDangerousGoodsModel.cs" />
     <Compile Include="Data\PatternMVVM\DataBase\CertificateDGsModel.cs" />
@@ -127,9 +129,7 @@
     <Compile Include="Data\PatternMVVM\PathModel.cs" />
     <Compile Include="Data\PatternMVVM\TrainingProgramm\Programm012Model.cs" />
     <Compile Include="Data\PatternMVVM\TrainingProgramm\Programm3Model.cs" />
-    <Compile Include="Data\SpecificationDataDocument\CertificateDangerousGoodsSpec.cs" />
-    <Compile Include="Data\SpecificationDataDocument\EvidenceAndUdostovereniyeSpec.cs" />
-    <Compile Include="Data\SpecificationDataDocument\SpecFunction.cs" />
+    <Compile Include="Data\Document\SpecFunction.cs" />
     <Compile Include="Data\StudentRecord.cs" />
     <Compile Include="Message\MessageBug.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,6 +140,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Write\Word\Document\Document_.cs" />
+    <Compile Include="Write\Word\Document\Element\Table.cs" />
+    <Compile Include="Write\Word\Document\Element\Text.cs" />
     <Compile Include="Write\Word\Document\IPropertiesDocument.cs" />
     <Compile Include="Write\Word\Document\ManagerDocument.cs" />
     <Compile Include="Write\Word\Document\PropertiesDocument.cs" />

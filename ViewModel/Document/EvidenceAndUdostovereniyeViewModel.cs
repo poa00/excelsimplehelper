@@ -6,12 +6,12 @@ using System.Data.Entity;
 
 namespace ViewModel.Document
 {
-    public class DocumentEvidenceAndUdostovereniyeViewModel
+    public class EvidenceAndUdostovereniyeViewModel
     {
         public DocumentEvidenceAndUdostovereniyeModel EvidenceAndUdostovereniye { get; set; }
         DataBaseContext DataBaseContext;
 
-        public DocumentEvidenceAndUdostovereniyeViewModel()
+        public EvidenceAndUdostovereniyeViewModel()
         {
             DataBaseContext = new DataBaseContext();
             DataBaseContext.Programs.Load();
