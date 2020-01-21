@@ -69,5 +69,6 @@
 4. SQLIite
 5. Паттерн MVVM
 6. Entity framework
+7. WPF
 
 
