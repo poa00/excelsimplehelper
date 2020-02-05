@@ -7,7 +7,7 @@ namespace Model.Write.Word.Document
     /// Настройки документа,
     /// возможно лучше это считывать из файла
     /// </summary>
-    class PropertiesDocument : IPropertiesDocument
+    internal class PropertiesDocument : IPropertiesDocument
     {
         public Run GetPropertiesEvidenceAndUdostovereniye(string bookmark, Text textElement)
         {

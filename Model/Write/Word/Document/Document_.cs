@@ -11,7 +11,7 @@ using Model.Data.SpecificationDataDocument;
 
 namespace Model.Write.Word.Document
 {
-    public class Document_
+    internal class Document_
     {
         private string[] BookmarksWord;
         private FileExcel DateFromFile;

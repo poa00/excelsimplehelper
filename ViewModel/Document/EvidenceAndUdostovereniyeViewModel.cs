@@ -43,7 +43,7 @@ namespace ViewModel.Document
                         ManagerDocument evidenceAndUdostovereniye = new ManagerDocument(programs, EvidenceAndUdostovereniye);
                         evidenceAndUdostovereniye.DocumentCreate();
 
-                        ManagerDocument statement = new ManagerDocument(programs, EvidenceAndUdostovereniye, 4);
+                        ManagerDocument statement = new ManagerDocument(programs, EvidenceAndUdostovereniye);
                         statement.DocumentCreate();
 
                         string message = " ";

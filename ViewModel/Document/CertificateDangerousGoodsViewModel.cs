@@ -41,7 +41,7 @@ namespace ViewModel.Document
                         ManagerDocument certificateDangerousGoods = new ManagerDocument(programs, CertificateDangerousGoods);
                         certificateDangerousGoods.DocumentCreate();
 
-                        ManagerDocument statement = new ManagerDocument(programs, CertificateDangerousGoods, 4);
+                        ManagerDocument statement = new ManagerDocument(programs, CertificateDangerousGoods);
                         statement.DocumentCreate();
 
                         string message = " ";

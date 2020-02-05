@@ -26,22 +26,10 @@ namespace Model.Write.Word.Document
             ProgramDG = program;
             CertificateDangerousGoods = certificateDangerousGoods;
         }
-        public ManagerDocument(ProgramDGs program, CertificateDangerousGoodsModel certificateDangerousGoods, byte type)
-        {
-            IdDocument = (byte)type;
-            ProgramDG = program;
-            CertificateDangerousGoods = certificateDangerousGoods;
-        }
 
         public ManagerDocument(Programs program, DocumentEvidenceAndUdostovereniyeModel evidenceAndUdostovereniye)
         {
             IdDocument = (byte)program.TypeDocument.Id;
-            Program = program;
-            EvidenceAndUdostovereniye = evidenceAndUdostovereniye;
-        }
-        public ManagerDocument(Programs program, DocumentEvidenceAndUdostovereniyeModel evidenceAndUdostovereniye, byte type)
-        {
-            IdDocument = (byte)type;
             Program = program;
             EvidenceAndUdostovereniye = evidenceAndUdostovereniye;
         }
